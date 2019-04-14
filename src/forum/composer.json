@@ -1,0 +1,31 @@
+{
+    "name": "naraki/forum",
+    "description": "Forum functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Forum\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Forum\\ServiceProvider"
+            ],
+            "aliases": {
+                "Forum": "Naraki\\Forum\\Facades\\Forum"
+            }
+        }
+    }
+}

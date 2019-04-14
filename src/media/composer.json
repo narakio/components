@@ -1,0 +1,31 @@
+{
+    "name": "naraki/media",
+    "description": "Media functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Media\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Media\\ServiceProvider"
+            ],
+            "aliases": {
+                "Blog": "Naraki\\Media\\Facades\\Media"
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "naraki/sitemap",
+    "description": "Sitemap functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+      "thepixeldeveloper/sitemap": "^5.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Sitemap\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Sitemap\\ServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "name": "naraki/mail",
+    "description": "E-Mail functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+       "mailgun/mailgun-php": "^2.8.1",
+       "php-http/guzzle6-adapter": "^1.1",
+       "php-http/message": "^1.7.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Mail\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Mail\\ServiceProvider"
+            ],
+            "aliases": {
+                "Mail": "Naraki\\Mail\\Facades\\Mail"
+            }
+        }
+    }
+}

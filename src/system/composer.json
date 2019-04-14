@@ -1,0 +1,32 @@
+{
+    "name": "naraki/system",
+    "description": "System functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+      "thepixeldeveloper/sitemap": "^5.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\System\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\System\\ServiceProvider"
+            ],
+          "aliases": {
+            "System": "Naraki\\System\\Facades\\System"
+          }
+        }
+    }
+}

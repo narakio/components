@@ -1,0 +1,28 @@
+{
+    "name": "naraki/oauth",
+    "description": "OAuth functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Oauth\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Oauth\\ServiceProvider"
+            ]
+        }
+    }
+}

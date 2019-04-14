@@ -18,6 +18,18 @@
       }
     },
     "replace": {
-        "naraki/elasticsearch": "self.version"
+        "naraki/blog": "0.1.0",
+        "naraki/core": "0.1.0",
+        "naraki/elasticsearch": "self.version",
+        "naraki/forum": "0.1.0",
+        "naraki/mail": "0.1.0",
+        "naraki/media": "0.1.0",
+        "naraki/oauth": "0.1.0",
+        "naraki/permission": "0.1.0",
+        "naraki/rss": "0.1.0",
+        "naraki/sentry": "0.1.0",
+        "naraki/shop": "0.1.0",
+        "naraki/sitemap": "0.1.0",
+        "naraki/system": "0.1.0"
     }
 }

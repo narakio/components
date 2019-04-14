@@ -1,0 +1,33 @@
+{
+    "name": "naraki/sentry",
+    "description": "Sentry functionality for the Naraki platform",
+    "keywords": ["laravel", "naraki"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno D.C",
+            "email": "dev.naraki.io@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+      "suin/php-rss-writer": "^1.6"
+    },
+    "autoload": {
+      "psr-4": {
+        "Naraki\\Sentry\\": ""
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Naraki\\Sentry\\ServiceProvider"
+            ],
+          "aliases": {
+            "User": "Naraki\\Sentry\\Facades\\User",
+            "Group": "Naraki\\Sentry\\Facades\\Group"
+          }
+        }
+    }
+}
