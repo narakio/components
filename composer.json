@@ -15,7 +15,10 @@
     "autoload": {
       "psr-4": {
         "Naraki\\": "src/"
-      }
+      },
+      "files": [
+        "src/core/helpers.php"
+      ]
     },
     "replace": {
         "naraki/blog": "0.1.0",
