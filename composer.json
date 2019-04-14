@@ -16,5 +16,8 @@
       "psr-4": {
         "Naraki\\": "src/"
       }
+    },
+    "replace": {
+        "naraki/elasticsearch": "self.version"
     }
 }
