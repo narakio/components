@@ -9,7 +9,6 @@
             "email": "dev.naraki.io@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
       "cyrildewit/eloquent-viewable": "^3.2",
       "elasticsearch/elasticsearch": "^6.1",
@@ -47,5 +46,10 @@
         "naraki/shop": "0.1.0",
         "naraki/sitemap": "0.1.0",
         "naraki/system": "0.1.0"
-    }
+    },
+    "config": {
+      "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
