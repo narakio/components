@@ -13,7 +13,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../resources/config/mail.php' => config_path('mail-naraki.php'),
+            __DIR__.'/resources/config/mail.php' => config_path('mail-naraki.php'),
         ], 'config');
 
         $this->app->singleton(Contracts\Listing::class, Providers\Listing::class);
@@ -31,7 +31,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mail');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'mail');
 
         $this->app->singleton('command.naraki.test_email', function () {
             return new SendTestEmail();

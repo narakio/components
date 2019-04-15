@@ -7,7 +7,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $this->publishes([
-            __DIR__.'/../config/rss.php' => config_path('rss.php'),
+            __DIR__.'/config/rss.php' => config_path('rss.php'),
         ], 'config');
     }
 

@@ -29,10 +29,10 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'core');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'core');
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/views' => resource_path('views/vendor/core'),
+                __DIR__ . '/resources/views' => resource_path('views/vendor/core'),
             ]);
         }
         $this->registerComposers();

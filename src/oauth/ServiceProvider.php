@@ -22,7 +22,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'oauth');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'oauth');
         $this->app['router']->group([
             'namespace' => 'Naraki\Oauth\Controllers',
             'middleware' => ['web']

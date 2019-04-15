@@ -28,7 +28,7 @@ class ServiceProvider extends LaravelServiceProvider
     {
         app('events')->listen(Events\PostCreated::class,Listeners\PostCreated::class);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'forum');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'forum');
 
         app('router')->group([
             'prefix' => '/ajax/',

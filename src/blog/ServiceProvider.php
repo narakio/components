@@ -35,10 +35,10 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         Gate::policy(Models\BlogPost::class, Policies\BlogPost::class);
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'blog');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'blog');
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/views' => resource_path('views/vendor/blog'),
+                __DIR__ . '/resources/views' => resource_path('views/vendor/blog'),
             ]);
         }
         $this->app->make('view')->composer(['blog::post'], BlogComposer::class);

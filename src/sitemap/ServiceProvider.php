@@ -7,7 +7,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $this->publishes([
-            __DIR__ . '/../config/sitemap.php' => config_path('sitemap.php'),
+            __DIR__ . '/config/sitemap.php' => config_path('sitemap.php'),
         ], 'config');
 
 //        $this->app('storage')->copy(__DIR__.'/../resources/xsl/sitemap.xsl',public_path('resources'));
