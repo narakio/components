@@ -11,6 +11,19 @@
     ],
     "minimum-stability": "dev",
     "require": {
+      "cyrildewit/eloquent-viewable": "^3.2",
+      "elasticsearch/elasticsearch": "^6.1",
+      "google/apiclient": "^2.2",
+      "laravel/socialite": "^4.1",
+      "laravolt/avatar": "^2.2",
+      "mailgun/mailgun-php": "^2.8.1",
+      "mews/purifier": "^2.1",
+      "ongr/elasticsearch-dsl": "^6.0",
+      "php-http/guzzle6-adapter": "^1.1",
+      "php-http/message": "^1.7.2",
+      "ramsey/uuid": "^3.8",
+      "suin/php-rss-writer": "^1.6",
+      "thepixeldeveloper/sitemap": "^5.1"
     },
     "autoload": {
       "psr-4": {
