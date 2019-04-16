@@ -29,6 +29,16 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        if (env('APP_OLD_ASS_RDBMS')) {
+            Schema::defaultStringLength(191);
+        }
+
+        if (env('APP_HTTPS_ON')) {
+            \URL::forceScheme('https');
+        } else {
+            \URL::forceScheme('http');
+        }
+
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'core');
         if ($this->app->runningInConsole()) {
             $this->publishes([

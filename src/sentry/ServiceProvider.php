@@ -32,6 +32,14 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        app('events')->listen(
+            \Illuminate\Auth\Events\Login::class,
+            Listeners\UserLogin::class
+        );
+        app('events')->listen(
+            Events\UserRegistered::class,
+            Listeners\UserRegistered::class
+        );
         Gate::policy(Models\User::class, Policies\User::class);
         Gate::policy(Models\Group::class, Policies\Group::class);
 

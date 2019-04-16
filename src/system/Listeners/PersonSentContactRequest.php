@@ -1,4 +1,4 @@
-<?php namespace Naraki\Sentry\Listeners;
+<?php namespace Naraki\System\Listeners;
 
 use Naraki\Core\Listener;
 use Naraki\Mail\Emails\Frontend\Contact;

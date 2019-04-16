@@ -34,7 +34,7 @@ class Dashboard extends Controller
             'users' => 'user',
             'groups' => 'users',
             'blog_posts' => 'newspaper-o',
-            'medias' => 'image',
+            'media' => 'image',
         ];
         foreach ($entityCounts as $count) {
             $counts[$count['tbl']] = [

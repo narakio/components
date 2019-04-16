@@ -16,7 +16,12 @@ class Frontend extends Routes
                 'namespace' => 'Naraki\Core\Controllers\Frontend',
             ], call_user_func('static::defaultRouteGroup', $k));
         }
-//                $router->group([
+
+        if (config('app.env') === 'local') {
+            $router->get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+        }
+
+//        $router->group([
 //            'prefix' => '/',
 //            'middleware' => ['misc'],
 //            'namespace' => 'Naraki\Core\Controllers\Frontend',
@@ -68,16 +73,16 @@ class Frontend extends Routes
                 trans('routes.password_reset_token', [], $locale),
                 'Auth\ResetPassword@showResetForm'
             )->name(self::i18nRouteNames($locale, 'password.reset'));
-            $r->post('password/reset', 'Auth\ResetPassword@reset')->name( 'password.reset.do');
+            $r->post('password/reset', 'Auth\ResetPassword@reset')->name('password.reset.do');
             $r->get(trans('routes.contact', [], $locale), 'Frontend@contact')
                 ->name(self::i18nRouteNames($locale, 'contact'));
-            $r->post('contact/send', 'Frontend@sendContactEmail')->name( 'contact.send');
+            $r->post('contact/send', 'Frontend@sendContactEmail')->name('contact.send');
 
             $r->get(trans('routes.search', [], $locale), 'Search@get')
                 ->name(self::i18nRouteNames($locale, 'search'));
 
             $r->post('email/subscribe/newsletter', 'Frontend@newsletterSubscribe')
-                ->name( 'subscribe_newsletter');
+                ->name('subscribe_newsletter');
 
             $r->get(trans('routes.privacy', [], $locale), 'Frontend@privacy')
                 ->name(self::i18nRouteNames($locale, 'privacy'));
@@ -104,8 +109,6 @@ class Frontend extends Routes
 
     public static function misc()
     {
-        return function(Router $r) {
-        };
     }
 
 }

@@ -1,7 +1,6 @@
 <?php namespace Naraki\Permission;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Naraki\Permission\Commands\UpdatePermissions;
 
 class ServiceProvider extends LaravelServiceProvider
 {
@@ -22,6 +21,10 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        app('events')->listen(
+            Events\PermissionEntityUpdated::class,
+            Listeners\UpdatePermissions::class
+        );
         $this->app->singleton('command.naraki.permissions', function () {
             return new UpdatePermissions();
         });

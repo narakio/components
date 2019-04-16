@@ -15,6 +15,10 @@ class ServiceProvider extends LaravelServiceProvider
 
     public function boot()
     {
+        app('events')->listen(
+            Events\PersonSentContactRequest::class,
+            Listeners\PersonSentContactRequest::class
+        );
         Gate::policy(Models\System::class, Policies\System::class);
 
         $this->app['router']->group([

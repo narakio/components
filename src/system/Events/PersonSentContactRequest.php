@@ -1,4 +1,4 @@
-<?php namespace Naraki\Sentry\Events;
+<?php namespace Naraki\System\Events;
 
 use Naraki\Core\Event;
 use Naraki\System\Models\SystemEvent;
