@@ -1,0 +1,139 @@
+.input-tag-wrapper {
+  background-color: #284248;
+  font-size: .8rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  .input-tag {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .input-tag input {
+    flex: 1;
+    background: transparent;
+    border: none;
+  }
+
+  input {
+    background-color: #284248;
+    border: none;
+    color: #FFFFFF;
+    padding: .3rem;
+    flex: 1;
+
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .badge {
+    padding: .8em;
+    margin: .2em;
+    cursor: default;
+
+    &:first-child {
+      margin-left: .5em;
+    }
+  }
+
+  .badge-tag-icon {
+    margin-left: .3em;
+  }
+
+}
+
+.input-tag-search-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .input-tag-container {
+    width: 90%;
+  }
+
+  .input-tag {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: inherit;
+  }
+
+  .input-tag input {
+    flex: 1;
+    background: transparent;
+    border: none;
+
+    &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .badge {
+    cursor:pointer;
+  }
+
+  .input-tag span {
+    padding: .6rem .4rem;
+  }
+
+  .button-badge-close {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    overflow: hidden;
+  }
+
+  .button-badge-close:before, .button-badge-close:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #0b0963;
+
+    height: 2px;
+    margin-top: -1px;
+  }
+
+  .button-badge-close:before {
+    transform: rotate(45deg);
+  }
+
+  .button-badge-close:after {
+    transform: rotate(-45deg);
+  }
+
+  .search-results-area {
+    position: relative;
+    z-index: 1;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      z-index:5;
+      background-color: #fff;
+    }
+
+    li{
+      margin:0 .15em;
+    }
+
+    & > span {
+      cursor: pointer;
+      //margin-right: 0.3rem;
+    }
+  }
+}
+
+.search-spinner-wrapper {
+  width: 1rem;
+  margin: .5rem .5rem 0 0;
+}

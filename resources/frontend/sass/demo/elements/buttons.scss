@@ -1,0 +1,120 @@
+button {
+  font-family: $font-family-title;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  padding: 0.3rem 0.5rem 0.25rem;
+}
+
+.btn-primary {
+  background-color: $primary;
+  border: none;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    transition: background-color 350ms;
+    background-color: #000;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(75, 15, 9, 0.2);
+  }
+
+  &.disabled, &:disabled {
+    background-color: $primary;
+    border: none;
+  }
+}
+
+.btn-success {
+  background-color: #2D882D;
+  border: none;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    transition: background-color 350ms;
+    background-color: #004400;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(120, 100, 26, 0.2);
+  }
+
+  &.disabled, &:disabled {
+    background-color: #2D882D;
+    border: none;
+  }
+}
+
+.btn-outline-primary {
+  font-family: $font-family-title;
+  color: $primary;
+  background-color: #fff;
+  border-color: $primary;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    background-color: #aa5585;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(192, 83, 66, 0.2);
+  }
+
+  &.disabled, &:disabled {
+    background-color: #fff;
+    border-color: $primary;
+  }
+}
+
+.btn-outline-info {
+  font-family: $font-family-title;
+  color: #226666;
+  background-color: #fff;
+  border-color: #226666;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    background-color: #226666;
+    color: #fff;
+    border: 1px solid transparent;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(154, 84, 40, 0.2);
+  }
+
+  &.disabled, &:disabled {
+    background-color: #fff;
+    border-color: #226666;
+  }
+}
+
+.google-bg {
+  background-color: $google-color;
+  border: 1px solid transparent;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    background-color: darken($google-color, 10%);
+    border: 1px solid transparent;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(154, 84, 40, 0.2);
+  }
+
+}
+
+.twitter-bg {
+  background-color: $twitter-color;
+  border: 1px solid transparent;
+  color: #fff;
+
+  &:hover, &:active, &:not(:disabled):not(.disabled):active {
+    background-color: darken($twitter-color, 10%);
+    border: 1px solid transparent;
+  }
+
+  &:focus, &:not(:disabled):not(.disabled):active:focus {
+    box-shadow: 0 0 0 0.1rem rgba(0, 172, 237, 0.2);
+  }
+}
+

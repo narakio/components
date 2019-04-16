@@ -1,0 +1,118 @@
+#search-container {
+  #search-input {
+    font-family: $font-family-title;
+    font-weight: bold;
+    background-color: $body-bg;
+    width: 100%;
+    font-size: 2rem;
+    min-height: 3rem;
+    padding: 0.5rem;
+    line-height: 2.5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+    outline: none;
+
+    &.focus {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid #dee2e6;
+      outline: none;
+    }
+  }
+
+  .header-no-results {
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  #articles {
+    margin-top: 1rem;
+
+    ul {
+      list-style-type: none;
+      margin: 1rem 0;
+
+      li {
+        margin: 0.5rem 0;
+        padding: 0;
+
+        .article-info {
+          font-family: $font-family-title;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    figure {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  #sidebar {
+    margin-top: 1rem;
+  }
+
+  .search-header {
+    font-size: 1.4rem;
+    width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  #search-tag-wrapper {
+    ul.search-tags {
+      margin-top: 1rem;
+      display: block;
+
+      li {
+        margin: 0.4rem;
+
+        a {
+          padding: 0.5rem;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  #paginator-wrapper {
+    #paginator {
+      margin: 0 auto;
+
+      li.page-item {
+        margin: 0.25rem;
+
+        &.active {
+          a.page-link {
+            background-color: lighten($primary, 40%);
+
+            &:hover {
+              background-color: lighten($primary, 40%);
+              cursor:default;
+            }
+          }
+        }
+      }
+
+      a.page-link {
+        color: #fff;
+        background-color: $primary;
+        border: none;
+        border-radius: 50%;
+        transition: .4s background-color;
+        box-shadow: rgba(0, 0, 0, .2) 0 2px 3px;
+
+        &:hover {
+          background-color: lighten($primary, 20%);
+        }
+      }
+    }
+
+  }
+}

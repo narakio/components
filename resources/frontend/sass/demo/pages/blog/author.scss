@@ -1,0 +1,28 @@
+#blog-author {
+  margin-top:2rem;
+  font-family: $font-family-title;
+
+  img {
+    width: 100%;
+  }
+
+  .card {
+    border: none;
+    margin: 1rem 0;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, .05);
+  }
+
+  .label-title{
+    font-weight: 700;
+    font-size:1.3rem;
+  }
+
+  .label-date {
+    padding-left: 1rem;
+    font-size: 0.9rem;
+
+    i {
+      padding-right: 0.3rem;
+    }
+  }
+}

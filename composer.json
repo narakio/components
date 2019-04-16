@@ -25,6 +25,11 @@
       "thepixeldeveloper/sitemap": "^5.1"
     },
     "autoload": {
+      "classmap": [
+        "database/seeds",
+        "database/elasticsearch",
+        "database/factories"
+      ],
       "psr-4": {
         "Naraki\\": "src/"
       },

@@ -1,0 +1,71 @@
+.error-page-wrapper {
+  font-family: $font-family-title;
+  padding-top: 5rem;
+
+  .card {
+    padding: 3rem;
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmZmZmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0yOCA2NkwwIDUwTDAgMTZMMjggMEw1NiAxNkw1NiA1MEwyOCA2NkwyOCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhZjdmNyIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+CjxwYXRoIGQ9Ik0yOCAwTDI4IDM0TDAgNTBMMCA4NEwyOCAxMDBMNTYgODRMNTYgNTBMMjggMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZhZjVmNSIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==");
+
+    .fa-container {
+      min-height: 7rem;
+
+      .fa.circle {
+        font-size: 7rem;
+        color: $brand-color1;
+      }
+
+      .fa.exclamation {
+        position: relative;
+        top: 1.8rem;
+        font-size: 5rem;
+        color: #fff;
+      }
+    }
+
+    .row.message {
+      font-size: 1.4rem;
+      letter-spacing: 0.1rem;
+      font-weight: 300;
+      text-align: center
+    }
+
+    .code {
+      font-weight: 700;
+      font-size: 6rem;
+    }
+  }
+
+  .reserve {
+    background-color: #faf7f7;
+    color: #faf5f5;
+  }
+
+  .flash {
+    animation-name: jackInTheBox;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-delay: .5s;
+  }
+}
+
+@keyframes jackInTheBox {
+  from {
+    opacity: 0;
+    transform: scale(0.1) rotate(30deg);
+    transform-origin: center bottom;
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  70% {
+    transform: rotate(3deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

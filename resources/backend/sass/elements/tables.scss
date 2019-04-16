@@ -1,0 +1,29 @@
+#app_backend_wrapper {
+  .table {
+    margin-bottom: 0;
+
+    .column-header {
+      font-family: $be-font-buttons;
+      letter-spacing: 0.05rem;
+      background: linear-gradient(to top, #e8ebeb 0%, #fcffff 50%, #e8ebeb 100%);
+    }
+
+    .sort-header {
+      &:hover {
+        cursor: pointer;
+      }
+
+      i {
+        margin-left: 1rem;
+      }
+    }
+
+    td {
+      border: none;
+    }
+  }
+
+  .table-container > h3 {
+    padding: 2rem 5rem;
+  }
+}

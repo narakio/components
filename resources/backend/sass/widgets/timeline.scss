@@ -1,0 +1,143 @@
+.timeline {
+  position: relative;
+  margin: 0.5rem 0 3rem 0;
+  padding: 0 0 1rem 0;
+  list-style: none;
+  font-size: 0.9rem;
+
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0.3rem;
+    background: repeating-linear-gradient(
+      45deg,
+      $red,
+      $red 10px,
+      #fff 10px,
+      #fff 20px
+    );
+    left: 3rem;
+    margin: 0;
+    @include border-radius(2px);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 1rem;
+    width: 1rem;
+    background: #fff;
+    left: 2.65rem;
+    margin: 0;
+    border-radius: 50%;
+  }
+
+  > li > div {
+    position: relative;
+    margin-bottom: 1.2rem;
+    @include clearfix();
+
+    > .timeline-item {
+      @include box-shadow($box-boxshadow);
+      @include border-radius($box-border-radius);
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+      margin-top: 0;
+      background: #fff;
+      color: #444;
+      margin-left: 5rem;
+      padding: 0;
+      position: relative;
+
+      > .time {
+        color: #999;
+        float: right;
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      > .timeline-header {
+        margin: 0;
+        color: #555;
+        border-bottom: 1px solid $box-border-color;
+        padding: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.1;
+
+        > a {
+          font-weight: 300;
+        }
+      }
+
+      > .timeline-body, > .timeline-footer {
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    > .svg-inline--fa {
+      width: 2.5rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+      font-size: 50%;
+      padding: 0.5rem;
+      position: absolute;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      left: 1.9rem;
+      top: 0.5rem;
+    }
+  }
+
+  > .time-label {
+    > .label {
+      font-weight: 400;
+      padding: 0.5rem 0.8rem;
+      display: inline-block;
+      margin: 0 0 1.5rem 3.4rem;
+      height: 2.5rem;
+      border-radius: 3px;
+      user-select: none;
+      cursor: default;
+
+      &.label-today {
+        background-color: $red;
+        color: #fff;
+        border-radius: 3px 0 0 3px;
+      }
+    }
+
+    .label.arrowed-in-right {
+      position: relative;
+      z-index: 1;
+    }
+
+    .label.arrowed-in-right:after {
+      display: inline-block;
+      content: "";
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      border: 1px solid transparent;
+      border-left-color: inherit;
+    }
+
+    .label.arrowed-in-right:after {
+      border-color: inherit;
+      border-right-color: transparent;
+    }
+
+    .label.arrowed-in-right.label-today:after {
+      border-color: $red;
+      border-right-color: transparent;
+    }
+
+    .label.arrowed-in-right:after {
+      right: -1rem;
+      border-width: 1.25rem 0.625rem
+    }
+  }
+}

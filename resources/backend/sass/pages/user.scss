@@ -1,0 +1,29 @@
+.form-groups-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin: 0.2rem 0;
+
+    &.odd {
+      background-color: #f7f7f7;
+    }
+
+    .group-name {
+      display:block;
+      vertical-align: middle;
+      padding:0.7rem 0 0 0;
+    }
+  }
+}
+
+.group-button-wrapper {
+  display:block;
+  padding:0.3rem 0;
+  .btn.btn-circle {
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 1px 0 0 0;
+  }
+}

@@ -1,0 +1,75 @@
+.thumbnail-group {
+  position: relative;
+  display: block;
+  text-align: center;
+
+  &.thumbnail-loading:before {
+    position: absolute;
+    background-color: #fff;
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    content: ' ';
+  }
+
+  li.thumbnail-container {
+    position: relative;
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 5px;
+    min-height:180px;
+
+    &:nth-of-type(n+4) {
+      margin-top: 15px;
+    }
+
+    .thumbnail-selectable {
+      width: 150px;
+      height: 150px;
+      border-radius: 3px;
+      border: 1px solid #000;
+      z-index: 0;
+      &.selected {
+        background-color: #0cb400;
+        &:hover {
+          cursor: default;
+        }
+      }
+        transition: background-color ease-in-out 0.3s;
+      &:hover {
+        background-color: #0cb400;
+        cursor: pointer;
+      }
+      & > .thumbnail-inner {
+        position: relative;
+        top: 10px;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        z-index: 1;
+        img {
+          position: relative;
+          z-index: 2;
+          width: 128px;
+          height: 128px;
+          border: 2px solid #e5ffe0;
+        }
+      }
+    }
+    &>.thumbnail-controls {
+      margin-top: 5px;
+    }
+  }
+
+  .sync-icon {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    opacity: .6;
+  }
+
+}

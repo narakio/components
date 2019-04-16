@@ -9,7 +9,6 @@ class ServiceProvider extends LaravelServiceProvider
 {
     private $routeSets = [
         Routes\Admin::class,
-        Routes\Frontend::class,
     ];
 
     /**

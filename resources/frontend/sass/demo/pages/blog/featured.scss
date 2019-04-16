@@ -1,0 +1,204 @@
+#blog-featured {
+  margin-top:2.5rem;
+  min-height: $blog-featured-height + 3rem;
+
+  & > .row {
+    padding: 2rem 0 0 0;
+    min-height: $blog-featured-height;
+  }
+
+  .carousel-control-prev{
+    left:-10%;
+  }
+
+  .carousel-control-next{
+    right:-10%;
+  }
+
+  .carousel-control-prev,.carousel-control-next{
+    top: 42%;
+    bottom: 39%;
+    width:33%;
+  }
+
+  .featured-content {
+    .fc-title, .fc-date {
+      background-color: rgba(48, 10, 6, 0.4);
+      border-radius: 10px;
+    }
+
+    .fc-date{
+      margin: 1rem 0.5rem 0 0;
+      padding:0.5rem;
+    }
+  }
+
+  .fc-cat {
+    font-size: 80%;
+    padding: 0.3rem;
+    border-radius: 2px;
+  }
+
+  .fc-title {
+    margin: 0.5rem 0 0.75rem 0;
+    font-weight: bold;
+    letter-spacing: -0.1rem;
+    padding: 0.5rem;
+  }
+
+  #blog-featured-carousel {
+    padding: 0;
+    min-height: $blog-featured-height;
+
+    #carousel-home {
+      min-height: $blog-featured-height;
+
+      .carousel-inner {
+        .carousel-item {
+          min-height: $blog-featured-height;
+          position: relative;
+          text-align: left;
+          overflow: hidden;
+          z-index: 0;
+
+          .carousel-featured {
+            position: absolute;
+            z-index: 9;
+            bottom: 1rem;
+            left: 0;
+            padding: 1rem;
+
+            a, span {
+              color: #fff;
+            }
+
+            .fc-cat {
+              font-size: 90%;
+              padding: 0.3rem;
+              border-radius: 2px;
+            }
+
+          }
+
+          figure {
+            img {
+              position: relative;
+              display: block;
+              left: 50%;
+              transform: translate(-50%, 0);
+              height: 100%;
+              overflow: hidden;
+              @include media-breakpoint-down(md) {
+                width: $blog-featured-max-width;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  #blog-featured-right {
+    padding: 0 0 0 1.1rem;
+    margin: 0;
+    min-height: $blog-featured-height;
+    @include media-breakpoint-down(md) {
+      padding: 0.5rem 0;
+    }
+
+    .fc-title {
+      font-size: 1.5rem;
+      //letter-spacing: normal;
+      letter-spacing: -0.1rem;
+    }
+
+    .col-lg-12 {
+      padding: 0;
+      margin: 0;
+      max-height: $blog-featured-height / 2;
+      overflow: hidden;
+      width: 100%;
+      @include media-breakpoint-down(md) {
+          width: $blog-featured-max-width;
+        max-height: unset;
+      }
+
+      img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 100%;
+        @include media-breakpoint-down(md) {
+        }
+      }
+    }
+
+    .col-lg-6 {
+      height: $blog-featured-height / 2;
+      text-align: center;
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+      @include media-breakpoint-down(md) {
+        height:$blog-featured-height;
+        //max-height: ;
+      }
+
+      .fc-title {
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+      }
+
+      &:nth-child(2) {
+        padding: 0.2rem 0 0 0;
+      }
+
+      &:last-child {
+        padding: 0.2rem 0 0 0.2rem;
+        @include media-breakpoint-down(md) {
+          padding: 0.2rem 0 0 0;
+        }
+      }
+
+
+      img {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%, 0);
+        max-height: $blog-featured-height / 2;
+        @include media-breakpoint-down(md) {
+          max-height: $blog-featured-height;
+          width: $blog-featured-max-width;
+        }
+      }
+    }
+
+    .right-featured {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      padding: 0.5rem 1rem;
+      text-align: left;
+
+      a, span {
+        color: #fff;
+      }
+    }
+
+    .bottom-featured {
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      padding: 0.3rem 0.6rem;
+      text-align: left;
+
+      a, span {
+        color: #fff;
+      }
+    }
+
+  }
+}

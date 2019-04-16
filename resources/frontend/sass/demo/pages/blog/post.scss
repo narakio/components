@@ -1,0 +1,266 @@
+#blog-post {
+  margin-bottom: 8rem;
+
+  figure.img-embed {
+    margin: 1.5rem 0;
+    min-height: 20rem;
+    @include media-breakpoint-down(md) {
+      min-height: unset;
+    }
+
+    img {
+      border-radius: 3px;
+      border: 1px solid #c4c4c4;
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+
+    figcaption {
+      font-weight: 700;
+      font-family: $font-family-title;
+      font-size: 0.9rem;
+      color: #352521;
+      font-style: italic;
+    }
+  }
+
+  .share-container {
+    position:relative;
+    min-height:3rem;
+    padding:1rem 0;
+    margin:0 auto;
+    width:10rem;
+
+    .share-buttons {
+      margin:0 auto;
+      width: 6rem;
+      right: 0.3rem;
+      top: 0.05rem;
+      height: 2.4rem;
+
+      a {
+        display: table-cell;
+        width: 2.8rem;
+        height:2.8rem;
+        position: relative;
+        cursor:pointer;
+      }
+
+      i {
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+      }
+
+      i.circle {
+        font-size: 2.8rem;
+        width: 2.8rem;
+        height:2.8rem;
+        transition:color 0.5s ease;
+      }
+
+      .fa.facebook {
+        i.circle {
+          color: #3B5998;
+        }
+      }
+
+      .fa.twitter {
+        i.circle {
+          color: #00ACED;
+        }
+      }
+
+      a:hover{
+        .fa {
+          i.circle {
+            color: #000;
+            transition:color 0.5s ease;
+          }
+        }
+      }
+    }
+  }
+
+  .post-title {
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 0;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+
+    figure {
+      max-height: 20rem;
+      width: 100%;
+
+      img {
+        position: relative;
+        display: block;
+        //left: 50%;
+        width: 100%;
+        transform: translate(0%, -10%);
+        overflow: hidden;
+        filter: blur(0.2rem);
+      }
+    }
+
+    .post-title-label {
+      position: absolute;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.4);
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      padding: 1rem;
+      z-index: 1;
+
+      .title-label {
+        color: #fff;
+        position: relative;
+        top: 12rem;
+        height: 7rem;
+        @include media-breakpoint-down(md) {
+          top: 10rem;
+        }
+        @include media-breakpoint-down(sm) {
+          top: 3rem;
+        }
+
+        i {
+          padding: 0 0.5rem
+        }
+
+        .page-views-label {
+          margin-left: 2rem;
+        }
+
+        .date-label {
+          margin-right: 2rem;
+        }
+
+        .author-label {
+          font-size: 1.3rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          a {
+            color: #fff;
+          }
+
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    h3 {
+      font-family: $font-family-title;
+      font-weight: 900;
+    }
+  }
+
+  .post-content-wrapper {
+    border: 1px solid rgba(74, 14, 9, 0.05);
+
+    h3 {
+      padding-top: 1.5rem;
+      line-height: 2.5rem;
+      font-family: $font-family-title;
+      font-weight: 700;
+    }
+
+    .post-content {
+      font-size: 1.2rem;
+      line-height: 1.9rem;
+      padding: 1rem 2rem 3rem;
+      margin-bottom: 1rem;
+      position: relative;
+
+      &:after {
+        position: absolute;
+        bottom: 1rem;
+        left: 10%;
+        content: '';
+        width: 80%;
+        margin: 0 auto;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  #post-source-wrapper {
+    .post-sources {
+      margin-bottom: 3rem;
+    }
+
+    li.source-label {
+      list-style: none;
+      font-size: 0.8rem;
+    }
+  }
+
+  #post-tag-wrapper {
+    .post-tags {
+      li:first-child {
+        font-family: $font-family-title;
+        margin-right: 2rem;
+      }
+
+      .badge.badge-info {
+        padding: 0.8rem;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  #blog-post-other {
+    .post-other-item {
+      font-family: $font-family-title;
+      margin-top: 2rem;
+
+      .card {
+        overflow: hidden;
+        box-shadow: 0 1px 7px rgba(0, 0, 0, .05);
+        border: none;
+
+        .card-body {
+          padding: 0 1.25rem 0.8rem;
+        }
+
+        .label-more-reading {
+          color: #303030;
+          font-weight: 300;
+        }
+
+        .label-title {
+          padding: 0.4rem 0;
+        }
+
+        .label-rest {
+          text-align: center;
+          font-weight: 300;
+          font-size: 0.8rem;
+
+          div {
+            padding: 0.3rem 0;
+          }
+
+          i {
+            margin-right: 0.3rem;
+          }
+        }
+
+        img {
+          position: relative;
+          display: block;
+          width: 100%;
+          transform: translate(0%, -10%);
+        }
+      }
+
+    }
+  }
+}

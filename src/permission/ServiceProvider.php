@@ -26,7 +26,7 @@ class ServiceProvider extends LaravelServiceProvider
             Listeners\UpdatePermissions::class
         );
         $this->app->singleton('command.naraki.permissions', function () {
-            return new UpdatePermissions();
+            return new Commands\UpdatePermissions();
         });
 
         $this->commands(['command.naraki.permissions']);

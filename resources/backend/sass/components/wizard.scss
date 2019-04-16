@@ -1,0 +1,195 @@
+$wizard-bottom-background:#f7f7f7;
+$wizard-actions-link: #0073b7;
+$wizard-actions-link-hover: #00629c;
+$wizard-step-indicator: #6781a6;
+$wizard-body-border: #afafaf;
+$wizard-step-line:#afafaf;
+$wizard-step-active:#18B800;
+$wizard-actions-link-final: #B84300;
+
+/* Header Steps
+*******************************/
+.wizard {
+  position: relative;
+  width:  100%;
+}
+.wizard_steps{
+  list-style-type:  none;
+  text-align: justify;
+  //-ms-text-justify: distribute-all-lines;
+  //text-justify: distribute-all-lines;
+  padding:  0;
+  height:  3.5rem;
+  position:  relative;
+  //margin-bottom: .5rem;
+}
+.stretch {
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
+}
+.wizard_step{
+  height: 3rem;
+  vertical-align: bottom;
+  display: inline-block;
+  text-align: center;
+  position:  relative;
+}
+.wizard_step:not(:first-child) .wizard_step_line{
+  position: absolute;
+  width:  100%;
+  left:  -50%;
+  bottom:  12px;
+  height:  3px;
+  background-color: $wizard-step-line;
+}
+.wizard_step_indicator{
+  box-sizing: content-box;
+  display:  block;
+  width:  16px;
+  height:  16px;
+  background-color: $wizard-step-indicator;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  position:  absolute;
+  left:  50%;
+  margin-left:  -10px;
+  bottom:  2px;
+  z-index: 1;
+}
+.wizard_step.active .wizard_step_indicator{
+  background-color: $wizard-step-active;
+}
+.wizard_step.active:not(:first-child) .wizard_step_line{
+  background-color: $wizard-step-active;
+}
+.wizard_step_label{
+  color:  #98a4af;
+  font-weight: bold;
+}
+/* Wizard body 
+*******************************/
+.wizard_body{
+  margin:  1rem 0 10px;
+  border:  1px solid $wizard-body-border;
+  background-color: #fff;
+  position: relative;
+  border-radius: 5px;
+  padding-bottom: 50px;
+}
+.wizard_body_step{
+  padding:  16px;
+}
+.wizard_arrow{
+  position:  absolute;
+  display: block;
+  width:  20px;
+  height:  20px;
+  border:  1px solid #aebac4;
+  top:  3.9rem;
+  border-top-right-radius: 5px;
+  background-color: #fff;
+  border-left: none;
+  border-bottom:  none;
+  transform: rotate(-45deg);
+  z-index: 2;
+  -webkit-transition: left 0.3s;
+  -o-transition: left 0.3s;
+  transition: left 0.3s;
+}
+/* Wizard body 
+*******************************/
+.wizard_body_actions{
+  color:#fff;
+  position:  absolute;
+  bottom:  0px;
+  height:  50px;
+  width:  100%;
+  border-top:  1px solid #aebac4;
+  background-color: $wizard-bottom-background;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.wizard_body_actions a{
+  width:  120px;
+  height:  100%;
+  display: block;
+  background-color: $wizard-actions-link;
+  color:  #fff;
+  //font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  -o-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.wizard_body_actions a.disabled{
+  cursor: not-allowed;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  opacity: 0.5;
+}
+.wizard_body_actions a>.vgw-icon, .wizard_body_actions a>span{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.wizard_body_actions .vgw-icon::after{
+  position: absolute;
+  content: "";
+  transform: rotate(-45deg);
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  margin-top: -5px;
+}
+.vgw-icon.vgw-next::after{
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+.vgw-icon.vgw-prev::after{
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  left: -10px;
+}
+.wizard_body_actions a:hover{
+  background-color: $wizard-actions-link-hover;
+}
+.wizard_body_actions a.final-step{
+  background-color: $wizard-actions-link-final;
+}
+/* mobile */
+.wizard_body.vgw-mobile{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.wizard_step.vgw-mobile{
+  display: none;
+}
+.wizard_step .wizard_step_line.vgw-mobile{
+  display: none;
+}
+.wizard_step.active.vgw-mobile{
+  display: inline-block;
+}
+
+/*
+Non-Wizard elements
+******************************* */
+.blinker {
+  animation: blinker 1s linear infinite;
+}
+
+.blinker-red {
+  color: #8a0003;
+  font-weight: bold;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}

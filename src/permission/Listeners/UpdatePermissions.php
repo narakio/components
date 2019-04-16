@@ -1,4 +1,4 @@
-<?php namespace Naraki\Permission;
+<?php namespace Naraki\Permission\Listeners;
 
 use Naraki\Core\Listener;
 

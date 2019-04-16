@@ -3,7 +3,7 @@
 use Naraki\Core\Routes\Routes;
 use Illuminate\Routing\Router;
 
-class Frontend extends Routes
+class Frontend
 {
     public function bind(Router $router)
     {
@@ -31,7 +31,7 @@ class Frontend extends Routes
     {
         return function (Router $r) use ($locale) {
             $r->get(trans('routes.user', [], $locale), 'User@show')
-                ->name(self::i18nRouteNames($locale, 'user'));
+                ->name(i18nRouteNames($locale, 'user'));
             $r->delete('user/delete', 'User@delete');
         };
 

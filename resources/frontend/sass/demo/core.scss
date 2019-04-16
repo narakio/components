@@ -1,0 +1,83 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+  background-color: $body-bg;
+}
+
+@include media-breakpoint-down(sm) {
+  .container {
+    margin: 0 auto;
+    max-width: 95%;
+  }
+}
+
+a {
+  color: $anchor;
+
+  &:hover {
+    color: $anchor-hover;
+  }
+}
+
+img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+img[data-src] {
+  opacity: 0;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+#app {
+  min-height: calc(100vh - 18.3rem);
+  position: relative;
+
+  .list-group-item.active {
+    border-left: 3px solid $primary;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+#scroll-up {
+  background-color: $primary;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 3px;
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  bottom: 2rem;
+  right: 2rem;
+  text-align: center;
+  z-index: 99;
+
+  &:hover {
+    background-color: lighten($primary, 10%);
+    transition: background-color 0.5s ease-in-out;
+  }
+}
+
+//Don't display body until fontawesome icons have finished loading
+.fontawesome-i2svg-pending body {
+  display: none;
+}
+
+.fontawesome-i2svg-active body {
+  display: initial;
+  transition: all 0.5s ease-in-out;
+}
+
+.min-height-2{
+  min-height:2.3rem;
+}
+

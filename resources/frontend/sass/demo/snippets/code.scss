@@ -1,0 +1,70 @@
+pre {
+  color:#fff;
+  .str {
+    color: #65B042;
+  }
+
+  .kwd {
+    color: #E28964;
+  }
+
+  .com {
+    color: #AEAEAE;
+    font-style: italic;
+  }
+
+  .typ {
+    color: #89bdff;
+  }
+
+  .lit {
+    color: #becc93;
+  }
+
+  .pln, .pun {
+    color: #fff;
+  }
+
+  .tag {
+    color: #89bdff;
+  }
+
+  .atn {
+    color: #bdb76b;
+  }
+
+  .atv {
+    color: #65B042;
+  }
+
+  .dec {
+    color: #3387CC;
+  }
+
+  &.prettyprint {
+    background-color: #000;
+    border-radius: 8px;
+  }
+
+  &.prettyprint {
+    width: 75%;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    white-space: pre-wrap;
+  }
+
+  &.lang-bash {
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #AEAEAE;
+}

@@ -15,11 +15,6 @@ class Blog extends Controller
     use DispatchesJobs;
 
     /**
-     * @var \Naraki\Blog\Contracts\Blog|\Naraki\Blog\Providers\Blog
-     */
-    private $blogRepo;
-
-    /**
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -206,7 +201,7 @@ class Blog extends Controller
      * @param \Illuminate\Database\Eloquent\Collection $collection
      * @return array
      */
-    private function getImages($collection)
+    protected function getImages($collection)
     {
         $dbImages = Media::image()->getImages(
             $collection->pluck('type')->all(), [
@@ -227,7 +222,7 @@ class Blog extends Controller
      * @param $slug
      * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    private function getMostViewedPosts($slug)
+    protected function getMostViewedPosts($slug)
     {
         return BlogFacade::buildWithScopes([
             'blog_post_title as title',

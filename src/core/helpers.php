@@ -126,6 +126,21 @@ if (!function_exists('route_i18n')) {
     }
 }
 
+if (!function_exists('i18nRouteNames')) {
+    /**
+     * @param string $locale
+     * @param string $name
+     * @return string
+     */
+    function i18nRouteNames($locale, $name)
+    {
+        if ($locale != null) {
+            return sprintf('%s.%s', $locale, $name);
+        }
+        return $name;
+    }
+}
+
 if (!function_exists('get_page_id')) {
     function get_page_id()
     {

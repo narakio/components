@@ -1,0 +1,106 @@
+// Background colors
+%bg-red,
+%bg-yellow,
+%bg-aqua,
+%bg-green {
+  color: #fff;
+}
+
+%bg-red {
+  background-color: $red;
+}
+
+%bg-yellow {
+  background-color: darken($yellow, 5%);
+}
+
+%bg-aqua {
+  background-color: darken($aqua, 5%);
+}
+
+%bg-green {
+  background-color: $green;
+}
+
+.bg-red,
+.bg-yellow,
+.bg-aqua,
+.bg-green {
+  color: #fff;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-yellow {
+  background-color: darken($yellow, 5%);
+}
+
+.bg-aqua {
+  background-color: darken($aqua, 5%);
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-light-blue {
+  background-color: $light-blue
+}
+
+.bg-red {
+  background-color: $red
+}
+
+.bg-green {
+  background-color: $green
+}
+
+.bg-aqua {
+  background-color: darken($aqua,10%)
+}
+
+.bg-yellow {
+  background-color: darken($yellow,10%)
+}
+
+.bg-blue {
+  background-color: $blue
+}
+
+.bg-navy {
+  background-color: lighten($navy,15%)
+}
+
+.bg-teal {
+  background-color: darken($teal,10%)
+}
+
+.bg-olive {
+  background-color: $olive
+}
+
+.bg-lime {
+  background-color: darken($lime,10%)
+}
+
+.bg-orange {
+  background-color: $orange
+}
+
+.bg-fuchsia {
+  background-color: darken($fuchsia,10%)
+}
+
+.bg-purple {
+  background-color: $purple
+}
+
+.bg-maroon {
+  background-color: $maroon
+}
+
+.bg-black {
+  background-color: $black
+}

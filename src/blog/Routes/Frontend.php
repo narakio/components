@@ -3,7 +3,7 @@
 use Naraki\Core\Routes\Routes;
 use Illuminate\Routing\Router;
 
-class Frontend extends Routes
+class Frontend
 {
     public function bind(Router $router)
     {
@@ -31,13 +31,13 @@ class Frontend extends Routes
     {
         return function (Router $r) use ($locale) {
             $r->get(trans('routes.blog_slug', [], $locale), 'Blog@getPost')
-                ->name(self::i18nRouteNames($locale, 'blog'));
+                ->name(i18nRouteNames($locale, 'blog'));
             $r->get(trans('routes.blog_cat', [], $locale), 'Blog@category')
-                ->name(self::i18nRouteNames($locale, 'blog.category'));
+                ->name(i18nRouteNames($locale, 'blog.category'));
             $r->get(trans('routes.blog_tag', [], $locale), 'Blog@tag')
-                ->name(self::i18nRouteNames($locale, 'blog.tag'));
+                ->name(i18nRouteNames($locale, 'blog.tag'));
             $r->get(trans('routes.blog_author', [], $locale), 'Blog@author')
-                ->name(self::i18nRouteNames($locale, 'blog.author'));
+                ->name(i18nRouteNames($locale, 'blog.author'));
         };
 
     }

@@ -42,9 +42,9 @@
                 </li>
                 <li class="nav-item dropdown dropdown-hover">
                     <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
-                       role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+                       role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Shop Categories</a>
+                        <a class="dropdown-item" href="#">Menu Items</a>
                     </div>
                 </li>
 

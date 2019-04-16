@@ -1,0 +1,43 @@
+#form_edit_blog {
+  span.form-field-togglable {
+    border-bottom: 1px dotted blue;
+    color: blue;
+    cursor: pointer
+  }
+
+  #head-row {
+    min-height: 2.75rem;
+    padding: .5rem .5rem 0;
+    margin-bottom: 0;
+
+
+    #head-col-draft {
+      .custom-select {
+        width: auto;
+        margin: 0 .25rem;
+      }
+    }
+
+    button {
+      max-height: 2rem;
+    }
+  }
+
+  .input-hour-minute {
+    width: 3rem;
+    height: 2rem;
+    margin: 0 .3rem
+  }
+
+  #span-published-at {
+    height: 2.15rem;
+
+    #span-nice-datetime {
+      color: blue;
+      border-bottom: 1px dotted blue;
+      cursor: pointer
+    }
+  }
+
+
+}

@@ -1,0 +1,104 @@
+@import 'fonts';
+//************* Vendor Libraries ****************
+//Font Awesome
+@import "~font-awesome/scss/variables";
+$fa-font-path2: "../../_fonts/vendor" !default;
+@import "~font-awesome/scss/mixins";
+//@import "~font-awesome/scss/path";
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('#{$fa-font-path2}/icomoon.woff?v=#{$fa-version}') format('woff'),
+  url('#{$fa-font-path2}/icomoon.ttf?v=#{$fa-version}') format('truetype'),
+  url('#{$fa-font-path2}/icomoon.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@import "~font-awesome/scss/core";
+@import "~font-awesome/scss/larger";
+@import "~font-awesome/scss/fixed-width";
+@import "~font-awesome/scss/list";
+@import "~font-awesome/scss/bordered-pulled";
+@import "~font-awesome/scss/animated";
+@import "~font-awesome/scss/rotated-flipped";
+@import "~font-awesome/scss/stacked";
+@import "~font-awesome/scss/icons";
+@import "~font-awesome/scss/screen-reader";
+
+
+// Bootstrap
+@import "variables";
+//@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/transitions";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/input-group";
+@import "~bootstrap/scss/custom-forms";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+@import "~bootstrap/scss/card";
+@import "~bootstrap/scss/breadcrumb";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+//@import "~bootstrap/scss/jumbotron";
+//@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/progress";
+@import "~bootstrap/scss/media";
+@import "~bootstrap/scss/list-group";
+@import "~bootstrap/scss/close";
+//@import "~bootstrap/scss/modal";
+@import "~bootstrap/scss/tooltip";
+@import "~bootstrap/scss/popover";
+//@import "~bootstrap/scss/carousel";
+@import "~bootstrap/scss/utilities";
+//@import "~bootstrap/scss/print";
+
+@import '~sweetalert2/src/sweetalert2';
+
+//@import "~trumbowyg/dist/ui/sass/trumbowyg.scss";
+
+//**********************************************
+@import "mixins";
+@import "core";
+@import "misc";
+@import "header";
+@import "sidebar-drawer/sidebar";
+@import "sidebar-drawer/sidebar-mini";
+@import "sidebar-drawer/dropdown";
+@import "skin";
+@import "transitions";
+@import "content";
+
+@import "pages/blog";
+@import "pages/user";
+
+@import "elements/submit-button";
+@import "elements/buttons";
+@import "elements/tables";
+@import "elements/images";
+
+@import "components/input-tag";
+@import "components/form";
+@import "components/dropzone";
+@import "components/wizard";
+@import "components/tree";
+
+@import "widgets/callout";
+@import "widgets/small-box";
+@import "widgets/timeline";
+
+@import "vendor/datepicker";
+@import "vendor/cropper";
+@import "vendor/trumbowyg";
+@import "bootstrap";

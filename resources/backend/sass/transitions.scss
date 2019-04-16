@@ -1,0 +1,39 @@
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.fade-leave-active {
+  animation-name: fadeOut;
+  animation-duration: 1s;
+}
+
+.fade-enter-active {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 
-class Admin extends Routes
+class Admin
 {
     public function bind(Router $router)
     {
@@ -46,7 +46,9 @@ class Admin extends Routes
             unset($availableLocales[app()->getLocale()]);
             $availableLocales[''] = '';
             foreach($availableLocales as $locale =>$v){
-                $r->post(trans('routes.admin_login', [], $locale), 'Auth\Login@login')->name(self::i18nRouteNames($locale, 'admin.login'));
+                $r->post(trans('routes.admin_login', [], $locale), 
+                    'Auth\Login@login')->name(i18nRouteNames($locale, 'admin.login')
+                );
             }
         };
     }

@@ -1,0 +1,261 @@
+.card.card-shadow {
+  border: none;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.form-group {
+  color: #4b0f09;
+
+  .form-control {
+    &:not(:focus):not([disabled]):not([readonly]) {
+      background-color: #f8f9fa;
+    }
+  }
+}
+
+.form-heading-wrapper {
+  margin-bottom: 1rem;
+
+  .form-heading {
+    padding-bottom: .4rem;
+    font-weight: 300;
+    border-bottom: 1px solid #e1e4e8;
+  }
+
+}
+
+#user_register_container {
+  .form-group .form-has-help {
+    border-bottom: 1px dashed #cc0f00;
+  }
+
+  .validator-wrapper {
+    position: relative;
+
+    .validator-valid {
+      position: absolute;
+      right: 0.5rem;
+      top: 0;
+
+      .icon {
+        height: 2.3rem;
+        width: 2.3rem;
+
+        i {
+          &.fa-circle {
+            font-size: 2.3rem;
+            line-height: 2.3rem;
+
+            &.danger {
+              color: $danger;
+            }
+
+            &.success {
+              color: $success;
+            }
+          }
+
+          &.status {
+            font-size: 1.5rem;
+            line-height: 2.3rem;
+            color: #fff;
+
+          }
+        }
+      }
+
+    }
+  }
+}
+
+label.field-required {
+  &:before {
+    position: absolute;
+    content: '*';
+    color: #cc0f00;
+    top: 0;
+    right: 0;
+    font-size: 1.5rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  label.field-required {
+    &:before {
+      left: 0;
+      right: unset;
+    }
+  }
+}
+
+#avatar-uploader {
+  padding: 0 1.5rem;
+}
+
+.password-wrapper {
+  .password-group {
+    position: relative;
+  }
+
+  .password-strength-meter {
+    position: relative;
+    height: 3px;
+    background: #DDD;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+  }
+
+  .fade-enter-active, .fadeIn,
+  .fade-leave-active, .fadeOut {
+    animation-duration: .5s;
+    animation-fill-mode: both;
+  }
+
+  .fade-enter-active, .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+  }
+
+  .fade-leave-active, .fadeOut {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+  }
+
+  .password-recommends {
+    font-size: .7rem;
+  }
+
+  .password-strength-meter-fill {
+    background: transparent;
+    height: inherit;
+    position: absolute;
+    width: 0;
+    border-radius: inherit;
+    transition: width 0.5s ease-in-out, background 0.25s;
+  }
+
+  $password-fill-class: password-strength-meter-fill !default;
+  $password-fill-colors: darkred, orangered, orange, yellow, yellowgreen, green, green;
+
+  @for $i from 1 through 7 {
+    .#{$password-fill-class}[data-score='#{$i - 1 }'] {
+      background: nth($password-fill-colors, $i);
+      width: calc(#{($i - 1)*17} * 1%);
+    }
+  }
+
+  .password-field {
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 13px;
+    width: 100%;
+  }
+
+  .password-field--disabled {
+    background-color: #f6f6f6;
+    border: 1px solid #f6f6f6;
+  }
+
+  .password-icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .password-toggle {
+    line-height: 1.1;
+    margin-right: 13px;
+  }
+
+  .password-badge {
+    position: relative;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    width: 30px;
+    font-size: 14px;
+    line-height: 1.1;
+    margin-right: 13px;
+    height: 24px;
+    padding: 3px;
+    cursor: default;
+    user-select: none;
+
+    i {
+      padding-top: 1px;
+    }
+  }
+
+  .password-badge-error {
+    background: red;
+  }
+
+  .password-badge-success {
+    background: #1bbf1b;
+  }
+
+  .btn-clean {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: #777777;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:hover, &:focus {
+      color: #404B69;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
