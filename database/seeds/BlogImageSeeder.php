@@ -126,17 +126,17 @@ class ImageSeeder extends Seeder
             )
         );
 
-//        ImageProcessor::saveImg(
-//            ImageProcessor::makeCroppedImage(
-//                $path,
-//                \Naraki\Media\Models\MediaImgFormat::HD
-//            ),
-//            media_entity_root_path(
-//                \Naraki\Core\Models\Entity::BLOG_POSTS,
-//                \Naraki\Media\Models\Media::IMAGE,
-//                ImageProcessor::makeFormatFilename($uuid, $fileExtension, \Naraki\Media\Models\MediaImgFormat::HD)
-//            )
-//        );
+        ImageProcessor::saveImg(
+            ImageProcessor::makeCroppedImage(
+                $path,
+                \Naraki\Media\Models\MediaImgFormat::HD
+            ),
+            media_entity_root_path(
+                \Naraki\Core\Models\Entity::BLOG_POSTS,
+                \Naraki\Media\Models\Media::IMAGE,
+                ImageProcessor::makeFormatFilename($uuid, $fileExtension, \Naraki\Media\Models\MediaImgFormat::HD)
+            )
+        );
 
         //Copying the original file
         ImageProcessor::copyImg(

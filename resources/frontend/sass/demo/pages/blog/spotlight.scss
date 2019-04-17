@@ -2,6 +2,10 @@
   margin: 2.5rem 0 8rem 0;
   padding: 0;
 
+  @include media-breakpoint-down(md) {
+    margin: 2.5rem auto 8rem auto;
+  }
+
   .col-lg {
     padding: 0;
   }
@@ -13,6 +17,9 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      @include media-breakpoint-down(md) {
+        margin: 0 auto;
+      }
     }
 
     > .container {
@@ -30,6 +37,9 @@
     .spotlight-category {
       &:nth-child(2n+1) {
         padding-right: 0.5rem;
+        @include media-breakpoint-down(md) {
+          padding-right: 0;
+        }
       }
     }
 
@@ -56,10 +66,24 @@
       z-index: 0;
       margin-bottom: 0.75rem;
       @include media-breakpoint-down(md) {
-        width: $blog-featured-max-width;
-        height: $blog-featured-height;
+        margin: 0 auto;
+        width: unset;
+        height: unset;
+        padding:0.4rem 0;
       }
 
+      figure {
+        @include media-breakpoint-down(md) {
+          margin: 0 auto;
+        }
+
+        img {
+          @include media-breakpoint-down(md) {
+            width: 31.25rem;
+            height: 18.75rem;
+          }
+        }
+      }
 
       .headline-content {
         position: absolute;
@@ -70,6 +94,17 @@
         left: 0.5rem;
         right: 0.5rem;
 
+        @include media-breakpoint-down(md) {
+          position: relative;
+          text-align: center;
+          font-size: 1.5rem;
+          margin: 0 auto;
+        }
+
+        @include media-breakpoint-down(sm) {
+          font-size: 1.3rem;
+        }
+
         .lfc-title {
           background-color: rgba(48, 10, 6, 0.4);
           border-radius: 10px;
@@ -77,13 +112,16 @@
           padding: 0.2rem;
           margin-bottom: 0.3rem;
 
-          a {
-            color: #fff;
+          @include media-breakpoint-down(md) {
+            background-color:unset;
+            color:$primary;
           }
 
-          @include media-breakpoint-down(md) {
-            font-size: 1.5rem;
-            width: 80%;
+          a {
+            @include media-breakpoint-down(md) {
+              color:$primary;
+            }
+            color: #fff;
           }
         }
 
@@ -92,6 +130,10 @@
           padding: 0.2rem;
           font-size: 0.85rem;
           background-color: rgba(48, 10, 6, 0.4);
+          @include media-breakpoint-down(md) {
+            background-color:unset;
+            color:$primary;
+          }
         }
       }
     }
@@ -115,6 +157,9 @@
       font-weight: bold;
       @include media-breakpoint-down(md) {
         font-size: 1.5rem;
+      }
+      @include media-breakpoint-down(sm) {
+        font-size: 0.9rem;
       }
     }
 
@@ -146,51 +191,4 @@
       }
     }
   }
-
-  .list-txt-container {
-
-  }
 }
-
-//#blog-spotlight {
-//  ul#spotlight-tabs {
-//    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-//
-//    li {
-//      position: relative;
-//
-//      &#spotlight-title {
-//        position: absolute;
-//        z-index: 1;
-//        left: 0.95rem;
-//        top: 0.5rem;
-//        padding: 0 1rem 4px;
-//        color: $primary;
-//        border-bottom: 3px solid $primary;
-//
-//        span {
-//          font-size: 1.2rem;
-//        }
-//      }
-//
-//      a.nav-link.active {
-//        border: none;
-//        border-bottom: none;
-//        color:$primary;
-//        transition: all 0.5s ease-in-out;
-//      }
-//
-//      a.nav-link {
-//        color: #b3a9a1;
-//        &:hover {
-//border-color:transparent;
-//          //border-bottom;
-//        }
-//        &:active{
-//          outline:none;
-//        }
-//      }
-//    }
-//
-//  }
-//}

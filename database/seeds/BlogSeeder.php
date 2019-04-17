@@ -42,13 +42,14 @@ select entity_type_id,blog_post_slug as slug, blog_post_id from blog_posts
 inner join entity_types on entity_types.entity_type_target_id = blog_posts.blog_post_id 
 and entity_types.entity_id = 300'
         );
-        $bpes = [8689 => 1, 1220 => 1, 3477 => 1, 12339 => 1, 4086 => 1, 1799 => 1];
+        $bpes = [1220 => 1, 2332 => 1, 10387 => 1, 3477 => 1, 35472 => 1, 36107 => 1,
+        33510=>1, 5554=>1, 456=>1, 1001=>1, 34654=>1, 4492=>1];
         foreach ($blogPostEntityIds as $bpe) {
 //            $viewsRecords = [];
             $num = rand(118, 350);
             if (isset($images[$bpe->slug])) {
                 if (isset($bpes[intval($bpe->blog_post_id)])) {
-                    $num = rand(600, 12000);
+                    $num = rand(1200, 1400);
                 } else {
                     $num = rand(350, 500);
                 }

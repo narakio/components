@@ -7,7 +7,7 @@ class BlogPost extends Presenter
 {
     public function date()
     {
-        return new \Carbon\Carbon($this->entity->getAttribute('date'));
+        return \Carbon\Carbon::make($this->entity->getAttribute('date'))->toFormattedDateString();
     }
 
     public function title()

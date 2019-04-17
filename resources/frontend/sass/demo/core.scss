@@ -6,10 +6,14 @@ body {
   background-color: $body-bg;
 }
 
+.container {
+  padding:0;
+}
+
 @include media-breakpoint-down(sm) {
   .container {
-    margin: 0 auto;
-    max-width: 95%;
+    margin: 0 0 0 0.6rem;
+    max-width: 99%;
   }
 }
 

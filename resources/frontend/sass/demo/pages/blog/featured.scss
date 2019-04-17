@@ -1,24 +1,30 @@
 #blog-featured {
-  margin-top:2.5rem;
+  margin-top: 2.5rem;
   min-height: $blog-featured-height + 3rem;
 
   & > .row {
     padding: 2rem 0 0 0;
     min-height: $blog-featured-height;
+
+    @include media-breakpoint-down(md) {
+      max-width:100%;
+      padding-bottom:1rem;
+      margin:0;
+    }
   }
 
-  .carousel-control-prev{
-    left:-10%;
+  .carousel-control-prev {
+    left: -10%;
   }
 
-  .carousel-control-next{
-    right:-10%;
+  .carousel-control-next {
+    right: -10%;
   }
 
-  .carousel-control-prev,.carousel-control-next{
+  .carousel-control-prev, .carousel-control-next {
     top: 42%;
     bottom: 39%;
-    width:33%;
+    width: 33%;
   }
 
   .featured-content {
@@ -27,9 +33,9 @@
       border-radius: 10px;
     }
 
-    .fc-date{
+    .fc-date {
       margin: 1rem 0.5rem 0 0;
-      padding:0.5rem;
+      padding: 0.5rem;
     }
   }
 
@@ -81,6 +87,7 @@
           }
 
           figure {
+              max-height: $blog-featured-height;
             img {
               position: relative;
               display: block;
@@ -89,7 +96,7 @@
               height: 100%;
               overflow: hidden;
               @include media-breakpoint-down(md) {
-                width: $blog-featured-max-width;
+                min-height: $blog-featured-height;
               }
             }
           }
@@ -98,13 +105,21 @@
     }
   }
 
-
   #blog-featured-right {
-    padding: 0 0 0 1.1rem;
+    .row {
+      margin: 0;
+    }
+
+    padding: 0 0 0 0.2rem;
     margin: 0;
     min-height: $blog-featured-height;
     @include media-breakpoint-down(md) {
       padding: 0.5rem 0;
+    }
+    @include media-breakpoint-down(sm) {
+      padding:unset;
+      height: unset;
+      min-height:unset;
     }
 
     .fc-title {
@@ -120,7 +135,7 @@
       overflow: hidden;
       width: 100%;
       @include media-breakpoint-down(md) {
-          width: $blog-featured-max-width;
+        //width: $blog-featured-max-width;
         max-height: unset;
       }
 
@@ -128,11 +143,12 @@
         position: relative;
         left: 50%;
         transform: translate(-50%, 0);
-        width: 100%;
-        @include media-breakpoint-down(md) {
-        }
+        //width: 100%;
+        //@include media-breakpoint-down(md) {
+        //}
       }
     }
+
 
     .col-lg-6 {
       height: $blog-featured-height / 2;
@@ -141,8 +157,10 @@
       padding: 0;
       margin: 0;
       @include media-breakpoint-down(md) {
-        height:$blog-featured-height;
-        //max-height: ;
+        height: $blog-featured-height;
+      }
+      @include media-breakpoint-down(sm) {
+        height: unset;
       }
 
       .fc-title {
@@ -169,7 +187,7 @@
         max-height: $blog-featured-height / 2;
         @include media-breakpoint-down(md) {
           max-height: $blog-featured-height;
-          width: $blog-featured-max-width;
+          //width: $blog-featured-max-width;
         }
       }
     }

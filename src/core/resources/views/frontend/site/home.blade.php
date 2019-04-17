@@ -1,5 +1,4 @@
 @extends('core::frontend.default')
-
 @section('content')
     <section id="blog-featured">
         <div class="row">
@@ -26,7 +25,7 @@
                                 </div>
                                 @if(isset($media[$posts['featured'][$i]->getAttribute('type')]))
                                 @include('core::partials.img',[
-                                    'media'=>$media[$posts['featured'][$i]->getAttribute('type')]->present('asset'),
+                                    'media'=>$media[$posts['featured'][$i]->getAttribute('type')]->present('asset',[\Naraki\Media\Models\Media::IMAGE,\Naraki\Media\Models\MediaImgFormat::HD]),
                                     'alt'=>$posts['featured'][$i]->present('title')
                                 ])
                                 @endif
@@ -132,6 +131,7 @@
                                         @endif
                                     </li>
                                     @for($i=1;$i<=4;$i++)
+                                        @if(isset($mostViewedItems[$i]))
                                         <li class="row list-post">
                                             <div class="container">
                                                 <div class="row d-flex align-items-center">
@@ -145,13 +145,19 @@
                                                     </div>
                                                     <div class="col-lg-9 col-md-6 list-txt-container">
                                                         <div class="row lfc-title"><a
-                                                                    href="{{route_i18n('blog',$mostViewedItems[$i]['slug'])}}">{{$mostViewedItems[$i]->present('title')}}</a>
+                                                                    href="{{
+                                                                    route_i18n(
+                                                                    'blog',
+                                                                    $mostViewedItems[$i]['slug']
+                                                                    )}}">{{
+                                                                    $mostViewedItems[$i]->present('title')}}</a>
                                                         </div>
                                                         <div class="row lfc-date">{{$mostViewedItems[$i]->present('date')}}</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </li>
+                                        @endif
                                     @endfor
                                 </ul>
                             </li>
