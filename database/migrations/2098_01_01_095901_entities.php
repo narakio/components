@@ -65,20 +65,20 @@ class Entities extends Migration
 
     private static function createGroups()
     {
-        $u = factory(Naraki\Sentry\Models\User::class)->create([
+        (new \Naraki\Sentry\Models\User)->insert([[
             'username' => 'root',
             'password' => bcrypt(config('auth.root_password')),
             'activated' => true,
             'user_id' => 1,
             'remember_token' => null,
-        ]);
-        factory(Naraki\Sentry\Models\Person::class)->create([
+        ]]);
+        (new \Naraki\Sentry\Models\Person)->insert([[
             'person_id' => 1,
-            'email' => 'system@localhost.local',
+            'email' => env('ROOT_EMAIL'),
             'first_name' => 'root',
             'last_name' => '',
             'user_id' => 1
-        ]);
+        ]]);
 
         (new \Naraki\Sentry\Models\Group)->insert([
             [
@@ -106,10 +106,10 @@ class Entities extends Migration
                 'group_mask' => 5000
             ],
         ]);
-        factory(Naraki\Sentry\Models\GroupMember::class)->create([
+        (new \Naraki\Sentry\Models\GroupMember)->insert([[
             "group_id" => 1,
             'user_id' => 1
-        ]);
+        ]]);
     }
 
     private function addEntities()

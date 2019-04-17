@@ -44,9 +44,6 @@ class Frontend
     {
         return function (Router $r) use ($locale) {
 
-            $r->get(trans('routes.home', [], $locale), 'Home@index')
-                ->name(i18nRouteNames($locale, 'home'));
-
             $r->get('lc/{locale}', 'Home@setLocale')
                 ->name('home.locale');
 

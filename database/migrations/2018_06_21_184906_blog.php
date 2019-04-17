@@ -212,7 +212,7 @@ class Blog extends Migration
 
     private function extractLanguages()
     {
-        $languageCSV = \League\Csv\Reader::createFromPath(base_path() . '/database/files/data/languages.tsv', 'r');
+        $languageCSV = \League\Csv\Reader::createFromPath(__DIR__ . '/../files/data/languages.tsv', 'r');
         //Tab as delimiter
         $languageCSV->setDelimiter(chr(9));
         $languageDBColumns = [

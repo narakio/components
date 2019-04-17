@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Naraki\Media\Support\ImageProcessor;
 use Naraki\Media\Models\MediaImgFormat;
+use Illuminate\Support\Facades\DB;
 
 class ImageSeeder extends Seeder
 {
@@ -18,7 +19,6 @@ class ImageSeeder extends Seeder
     {
         $images = $this->parseImages();
         $posts = [];
-//        dd($images);
 
         $postSlugIds = \Naraki\Blog\Models\BlogPost::query()->select([
             'blog_post_slug',
@@ -36,21 +36,22 @@ class ImageSeeder extends Seeder
         $p = 0;
         foreach ($images as $image => $extension) {
             if (isset($posts[$image])) {
-                if($p>50){
-                    return;
-                }
+//                if ($p > 50) {
+//                    return;
+//                }
                 $p++;
                 $uuid = makeHexUuid();
-                $uuid=sprintf('%s_%s', substr($image, 0, 31), makeHexUuid());
+                $uuid = sprintf('%s_%s', substr($image, 0, 31), makeHexUuid());
                 $this->saveImage(
                     sprintf('%s/%s.%s', $this->origDir, $image, $extension),
                     $extension,
                     $uuid
                 );
-                \DB::beginTransaction();
+
+                DB::beginTransaction();
                 $this->saveDb($uuid, $extension, $posts[$image]->entity,
-                    [MediaImgFormat::FEATURED,MediaImgFormat::ORIGINAL]);
-                \DB::commit();
+                    [MediaImgFormat::FEATURED, MediaImgFormat::ORIGINAL]);
+                DB::commit();
             }
         }
     }
@@ -100,7 +101,7 @@ class ImageSeeder extends Seeder
 
     private function saveImage($path, $fileExtension, $uuid)
     {
-
+        //Making the thumbnail
         ImageProcessor::saveImg(
             ImageProcessor::makeCroppedImage($path),
             media_entity_root_path(
@@ -112,6 +113,7 @@ class ImageSeeder extends Seeder
             )
         );
 
+        //Saving the image using the featured format
         ImageProcessor::saveImg(
             ImageProcessor::makeCroppedImage(
                 $path,
@@ -136,6 +138,7 @@ class ImageSeeder extends Seeder
 //            )
 //        );
 
+        //Copying the original file
         ImageProcessor::copyImg(
             $path,
             media_entity_root_path(
@@ -145,14 +148,6 @@ class ImageSeeder extends Seeder
             )
         );
 
-    }
-
-    private function seedChunk($data, $model, $nbChunks = 25)
-    {
-        $chunks = array_chunk($data, $nbChunks);
-        foreach ($chunks as $chunk) {
-            forward_static_call(sprintf('%s::insert', $model), $chunk);
-        }
     }
 
     private function parseImages()

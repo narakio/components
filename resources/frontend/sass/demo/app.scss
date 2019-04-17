@@ -1,80 +1,8 @@
-/****************************************************************************
-                      FONT-AWESOME
-****************************************************************************/
-//@import "~font-awesome/scss/font-awesome";
-@import "~font-awesome/scss/variables";
-@import "~font-awesome/scss/mixins";
-
-$fa-font-path2: "fonts/vendor" !default;
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('#{$fa-font-path2}/icomoon.woff?v=#{$fa-version}') format('woff'),
-  url('#{$fa-font-path2}/icomoon.ttf?v=#{$fa-version}') format('truetype'),
-  url('#{$fa-font-path2}/icomoon.svg?v=#{$fa-version}#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-//@import "~font-awesome/scss/path";
-
-@import "~font-awesome/scss/core";
-@import "~font-awesome/scss/larger";
-@import "~font-awesome/scss/fixed-width";
-@import "~font-awesome/scss/list";
-@import "~font-awesome/scss/bordered-pulled";
-@import "~font-awesome/scss/animated";
-@import "~font-awesome/scss/rotated-flipped";
-@import "~font-awesome/scss/stacked";
-@import "~font-awesome/scss/icons";
-@import "~font-awesome/scss/screen-reader";
-
-
-/****************************************************************************
-                      TWITTER BOOTSTRAP
-****************************************************************************/
-
-//@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/root";
-@import "~bootstrap/scss/reboot";
-@import "~bootstrap/scss/type";
-@import "~bootstrap/scss/images";
-@import "~bootstrap/scss/code";
-@import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/tables";
-@import "~bootstrap/scss/forms";
-@import "~bootstrap/scss/buttons";
-@import "~bootstrap/scss/transitions";
-@import "~bootstrap/scss/dropdown";
-@import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/input-group";
-@import "~bootstrap/scss/custom-forms";
-@import "~bootstrap/scss/nav";
-@import "~bootstrap/scss/navbar";
-@import "~bootstrap/scss/card";
-//@import "~bootstrap/scss/breadcrumb";
-@import "~bootstrap/scss/pagination";
-@import "~bootstrap/scss/badge";
-//@import "~bootstrap/scss/jumbotron";
-@import "~bootstrap/scss/alert";
-@import "~bootstrap/scss/progress";
-//@import "~bootstrap/scss/media";
-@import "~bootstrap/scss/list-group";
-@import "~bootstrap/scss/close";
-//@import "~bootstrap/scss/modal";
-@import "~bootstrap/scss/tooltip";
-//@import "~bootstrap/scss/popover";
-@import "~bootstrap/scss/carousel";
-@import "~bootstrap/scss/utilities";
-//@import "~bootstrap/scss/print";
-
+@import "../common/core-vendors";
 
 /****************************************************************************
                       PLATFORM CSS
 ****************************************************************************/
-
 @import "variables";
 @import "core";
 @import "elements/form";
@@ -82,10 +10,7 @@ $fa-font-path2: "fonts/vendor" !default;
 @import "blocks/header";
 @import "blocks/footer";
 
-@import "../common/vendor/tiptap/editor";
-@import "../common/vendor/tiptap/menubar";
-@import "../common/vendor/tiptap/menububble";
-@import "../common/vendor/tippy";
+@import "../common/vendor/main";
 
 @import "pages/blog/general";
 @import "pages/blog/post";
@@ -101,11 +26,11 @@ $fa-font-path2: "fonts/vendor" !default;
 @import "snippets/breadcrumbs";
 @import "snippets/error";
 
+/****************************************************************************
+                      REUSED BACKEND STYLES
+****************************************************************************/
 @import "backend/sass/elements/submit-button";
 @import "backend/sass/elements/images";
 @import "backend/sass/components/dropzone";
 @import "backend/sass/components/wizard";
 @import "backend/sass/vendor/cropper";
-@import "../common/vendor/sweetalert2/app";
-
-
