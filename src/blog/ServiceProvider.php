@@ -3,7 +3,8 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Naraki\Blog\Composers\Blog as BlogComposer;
+use Naraki\Blog\Composers\Post as BlogComposer;
+use Naraki\Blog\Composers\Home as HomeComposer;
 
 class ServiceProvider extends LaravelServiceProvider
 {

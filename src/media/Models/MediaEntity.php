@@ -1,16 +1,16 @@
 <?php namespace Naraki\Media\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\JoinClause;
+use Naraki\Core\Contracts\Enumerable as EnumerableContract;
 use Naraki\Core\Contracts\HasAnEntity as HasAnEntityContract;
 use Naraki\Core\Traits\Enumerable;
 use Naraki\Core\Traits\Models\DoesSqlStuff;
 use Naraki\Core\Traits\Models\HasAnEntity as HasAnEntity;
 use Naraki\Core\Traits\Models\Presentable;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\JoinClause;
 use Naraki\Media\Support\Presenters\MediaEntity as MediaEntityPresenter;
-use Naraki\Core\Contracts\Enumerable as EnumerableContract;
 use Naraki\Permission\Contracts\HasPermissions as HasPermissionsContract;
 use Naraki\Permission\Traits\HasPermissions;
 

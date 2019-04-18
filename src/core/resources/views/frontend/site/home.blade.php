@@ -23,12 +23,10 @@
                                         <span class="fc-date">{{$posts['featured'][$i]->present('date')}}</span>
                                     </div>
                                 </div>
-                                @if(isset($media[$posts['featured'][$i]->getAttribute('type')]))
                                 @include('core::partials.img',[
                                     'media'=>$media[$posts['featured'][$i]->getAttribute('type')]->present('asset',[\Naraki\Media\Models\Media::IMAGE,\Naraki\Media\Models\MediaImgFormat::HD]),
                                     'alt'=>$posts['featured'][$i]->present('title')
                                 ])
-                                @endif
                             </div>
                         @endfor
                     </div>
@@ -110,25 +108,25 @@
             <div class="col-lg col-lg-8 col-md-12 spotlight-container">
                 <div class="container">
                     <ul class="row">
-                        @foreach($posts['most_viewed_cat'] as $keyMostViewed =>$mostViewedItems)
+                        @foreach($posts['mvpcat'] as $keyMostViewed =>$mostViewedItems)
                             <li class="col-lg col-lg-6 col-md-12 spotlight-category">
                                 <h5 class="bordered">
                                     <span><a href="{{route_i18n('blog.category',$keyMostViewed)}}">{{trans(sprintf('pages.blog.category.%s',$keyMostViewed))}}</a></span>
                                 </h5>
                                 <ul class="container">
                                     <li class="row headline-post">
-                                        <div class="headline-content">
-                                            <div class="lfc-title"><a
-                                                        href="{{route_i18n('blog',$mostViewedItems[0]['slug'])}}">{{$mostViewedItems[0]['title']}}</a>
-                                            </div>
-                                            <span class="lfc-date">{{$mostViewedItems[0]->present('date')}}</span>
-                                        </div>
                                         @if(isset($media[$mostViewedItems[0]->getAttribute('type')]))
                                             @include('core::partials.img',[
                                                 'media'=>$media[$mostViewedItems[0]->getAttribute('type')]->present('asset'),
                                                 'alt'=>$mostViewedItems[0]->present('title')
                                             ])
                                         @endif
+                                        <div class="headline-content">
+                                            <div class="lfc-title"><a
+                                                        href="{{route_i18n('blog',$mostViewedItems[0]['slug'])}}">{{$mostViewedItems[0]['title']}}</a>
+                                            </div>
+                                            <span class="lfc-date">{{$mostViewedItems[0]->present('date')}}</span>
+                                        </div>
                                     </li>
                                     @for($i=1;$i<=4;$i++)
                                         @if(isset($mostViewedItems[$i]))
@@ -152,7 +150,7 @@
                                                                     )}}">{{
                                                                     $mostViewedItems[$i]->present('title')}}</a>
                                                         </div>
-                                                        <div class="row lfc-date">{{$mostViewedItems[$i]->present('date')}}</div>
+                                                        <div class="row lfc-date"><span>{{$mostViewedItems[$i]->present('date')}}</span></div>
                                                     </div>
                                                 </div>
                                             </div>

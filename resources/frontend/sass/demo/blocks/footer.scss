@@ -1,10 +1,14 @@
 .footer {
   height: 14rem;
+  @include media-breakpoint-down(sm) {
+    height: unset;
+  }
+
   clear: both;
   background-color: #fff;
   border-top: 2px solid #dee2e6;
   padding-top: 1rem;
-  margin-top:2rem;
+  margin-top: 2rem;
 
   .container {
     padding: 0.5rem 0;
@@ -15,10 +19,25 @@
       font-size: 90%;
       color: #232323;
     }
-    .dir{
-      color:#0c0c0c;
+
+    .dir {
+      color: #0c0c0c;
     }
   }
+
+  .col-links {
+    padding: 0 0.4rem;
+
+    & > h6 {
+      border-bottom: 1px solid #f1f1f1;
+      padding: 1rem;
+    }
+
+    a {
+      padding: 0.5rem 0;
+    }
+  }
+
 
   .row > [class*=col-] {
     margin-bottom: 1.5rem
@@ -35,7 +54,7 @@
     color: $anchor-hover;
   }
 
-  .subscribe-newsletter{
+  .subscribe-newsletter {
     font-weight: 300;
   }
 }

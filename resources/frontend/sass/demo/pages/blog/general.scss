@@ -3,7 +3,7 @@ $blog-featured-max-width: 46.9rem;
 
 .embed-container {
   position: relative;
-  margin:0 auto;
+  margin: 0 auto;
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
@@ -21,8 +21,8 @@ $blog-featured-max-width: 46.9rem;
   }
 }
 
-.twitter-container{
-  margin:1.5rem 0;
+.twitter-container {
+  margin: 1.5rem 0;
 }
 
 figure {
@@ -39,6 +39,11 @@ h5.bordered {
   margin-bottom: 1.5rem;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  @include media-breakpoint-down(md) {
+    margin: 1.5rem auto;
+    text-align: center;
+  }
 
   span {
     border-bottom: 3px solid $primary;
@@ -106,8 +111,14 @@ h5.bordered {
   }
 }
 
+
 #blog-mvp-container {
   margin-top: 2.2rem;
+  padding: 0 1rem;
+
+  @include media-breakpoint-down(md) {
+    padding:0;
+  }
 
   figure {
     border-radius: 3px;
@@ -115,7 +126,6 @@ h5.bordered {
     @include media-breakpoint-down(md) {
       max-height: unset;
     }
-
 
     img {
       width: 8rem;

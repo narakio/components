@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-sm-6 col-lg-4 text-center px-5">
+            <div class="col-sm-6 col-lg-4 text-center px-5 col-left">
                 <h6 class="subscribe-newsletter">{{trans('titles.subscribe_newsletter')}}</h6>
                 <form id="form-newsletter-subscribe"
                       accept-charset="UTF-8"
@@ -24,16 +24,17 @@
                             class="btn btn-primary btn-block rounded-pill">{{trans('titles.subscribe')}}</button>
                 </form>
             </div>
-            <div class="col-6 col-lg-4">
+            <div class="col-6 col-lg-4 col-links">
                 <h6 class="bold">Service</h6>
                 <div class="list-group list-group-flush list-group-no-border list-group-sm">
-                    <a href="javascript:void(0)" class="list-group-item">Help</a>
+                    <a href="{{route_i18n('contact')}}">{{trans('titles.contact_us')}}</a>
+                    <a href="javascript:void(0)">{{trans('titles.help')}}</a>
                 </div>
             </div>
-            <div class="col-6 col-lg-4">
+            <div class="col-6 col-lg-4 col-links">
                 <h6 class="bold">{{config('app.name')}}</h6>
                 <div class="list-group list-group-flush list-group-no-border list-group-sm">
-                    <a href="about.html" class="list-group-item">About Us</a>
+                    <a href="javascript:void(0)">{{trans('titles.about_us')}}</a>
                 </div>
             </div>
         </div>

@@ -9,6 +9,10 @@ use Naraki\Media\Models\MediaImgFormat;
  */
 class MediaEntity extends Presenter
 {
+    /**
+     * @var \Naraki\Media\Models\MediaEntity
+     */
+    protected $entity;
     public function asset($media = Media::IMAGE, $format = MediaImgFormat::FEATURED)
     {
         return $this->entity->asset(
@@ -18,13 +22,18 @@ class MediaEntity extends Presenter
         );
     }
 
-    public function thumbnail($media = Media::IMAGE, $format = MediaImgFormat::FEATURED)
+    public function thumbnail($media = Media::IMAGE)
     {
+        $entity = $this->entity->getAttribute('entity_id');
+        if(is_int($entity)){
+
         return $this->entity->asset(
             $this->entity->getAttribute('entity_id'),
             $media,
-            $format
+            MediaImgFormat::THUMBNAIL
         );
+        }
+        return asset(sprintf('/media/img/site/placeholder_%s.png',\Naraki\Media\Models\MediaImgFormat::getFormatAcronyms(\Naraki\Media\Models\MediaImgFormat::FEATURED)));
     }
 
 }

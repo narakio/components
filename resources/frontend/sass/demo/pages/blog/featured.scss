@@ -7,9 +7,9 @@
     min-height: $blog-featured-height;
 
     @include media-breakpoint-down(md) {
-      max-width:100%;
-      padding-bottom:1rem;
-      margin:0;
+      max-width: 100%;
+      padding-bottom: 1rem;
+      margin: 0;
     }
   }
 
@@ -28,6 +28,10 @@
   }
 
   .featured-content {
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 1rem;
+    }
+
     .fc-title, .fc-date {
       background-color: rgba(48, 10, 6, 0.4);
       border-radius: 10px;
@@ -83,11 +87,11 @@
               padding: 0.3rem;
               border-radius: 2px;
             }
-
           }
 
           figure {
-              max-height: $blog-featured-height;
+            max-height: $blog-featured-height;
+
             img {
               position: relative;
               display: block;
@@ -95,6 +99,7 @@
               transform: translate(-50%, 0);
               height: 100%;
               overflow: hidden;
+              max-height: $blog-featured-height;
               @include media-breakpoint-down(md) {
                 min-height: $blog-featured-height;
               }
@@ -117,9 +122,9 @@
       padding: 0.5rem 0;
     }
     @include media-breakpoint-down(sm) {
-      padding:unset;
+      padding: unset;
       height: unset;
-      min-height:unset;
+      min-height: unset;
     }
 
     .fc-title {

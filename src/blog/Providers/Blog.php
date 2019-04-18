@@ -1,5 +1,9 @@
 <?php namespace Naraki\Blog\Providers;
 
+use Illuminate\Support\Facades\DB;
+use Naraki\Core\Models\Entity;
+use Naraki\Core\Models\Language;
+use Naraki\Media\Models\MediaEntity;
 use Naraki\Sentry\Models\Person;
 use Naraki\Core\EloquentProvider;
 use Illuminate\Database\Eloquent\Builder;
@@ -9,6 +13,8 @@ use Naraki\Blog\Contracts\Category as CategoryInterface;
 use Naraki\Blog\Contracts\Tag as TagInterface;
 use Naraki\Blog\Contracts\Source as SourceInterface;
 use Naraki\Blog\Contracts\Author as AuthorInterface;
+use Naraki\Blog\Support\Collections\Blog as BlogCollection;
+use Naraki\Media\Facades\Media as MediaProvider;
 
 class Blog extends EloquentProvider implements BlogInterface
 {
@@ -90,24 +96,82 @@ class Blog extends EloquentProvider implements BlogInterface
     /**
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function buildForDisplay(): Builder
+    public function mostViewedByCategoryTotal()
     {
-        return $this->buildWithScopes([
-            'blog_post_title as title',
-            'published_at as date',
-            'blog_category_slug as cat',
-            'full_name as author',
-            'blog_post_is_sticky as featured',
-            'entity_types.entity_type_id as type',
-            'blog_post_slug as slug',
-            'unq as page_views'
-        ], [
-            'entityType',
-            'status',
-            'person',
-            'category',
-            'pageViews'
-        ]);
+        return DB::select('
+select * from (select rank() OVER (PARTITION BY blog_categories.blog_category_id ORDER BY unq desc) rk,
+            blog_post_title as title,
+            published_at as date,
+            blog_category_slug as cat,
+            full_name as author,
+            blog_post_is_sticky as featured,
+            entity_types.entity_type_id as type,
+            blog_post_slug as slug,
+            unq as page_views
+from  blog_posts
+          inner join entity_types on entity_types.entity_type_target_id = blog_posts.blog_post_id
+    and entity_types.entity_id = ?
+          inner join blog_status on blog_status.blog_status_id = blog_posts.blog_status_id
+          inner join people on blog_posts.person_id = people.person_id
+          inner join blog_label_records on blog_posts.blog_post_id = blog_label_records.blog_post_id
+          inner join blog_label_types on blog_label_records.blog_label_type_id = blog_label_types.blog_label_type_id
+          join blog_categories on blog_categories.blog_label_type_id = blog_label_types.blog_label_type_id
+          left join stat_page_views on entity_types.entity_type_id = stat_page_views.entity_type_id
+where language_id = ?) as ranks where ranks.rk <? order by page_views desc;
+        ', [Entity::BLOG_POSTS, Language::getAppLanguageId(), 11]);
+    }
+
+    public function mostViewedByCategory()
+    {
+        $mostViewed = DB::select('
+select * from (select rank() OVER (PARTITION BY blog_categories.blog_category_id ORDER BY unq desc) rk,
+            blog_post_title as title,
+            published_at as date,
+            blog_category_slug as cat,
+            full_name as author,
+            blog_post_is_sticky as featured,
+            entity_types.entity_type_id as type,
+            blog_post_slug as slug,
+            unq as page_views
+from  blog_posts
+          inner join entity_types on entity_types.entity_type_target_id = blog_posts.blog_post_id
+    and entity_types.entity_id = ?
+          inner join blog_status on blog_status.blog_status_id = blog_posts.blog_status_id
+          inner join people on blog_posts.person_id = people.person_id
+          inner join blog_label_records on blog_posts.blog_post_id = blog_label_records.blog_post_id
+          inner join blog_label_types on blog_label_records.blog_label_type_id = blog_label_types.blog_label_type_id
+          join blog_categories on blog_categories.blog_label_type_id = blog_label_types.blog_label_type_id
+          left join stat_page_views on entity_types.entity_type_id = stat_page_views.entity_type_id
+where language_id = ?) as ranks where ranks.rk <? order by cat asc, page_views desc;
+        ', [Entity::BLOG_POSTS, Language::getAppLanguageId(), 6]);
+
+        $types=[];
+        foreach ($mostViewed as $mvp) {
+            $types[]=$mvp->type;
+        }
+        $dbImages = MediaProvider::image()->getImages(
+            $types, [
+                'media_uuid as uuid',
+                'media_extension as ext',
+                'entity_types.entity_type_id as type',
+                'entity_id'
+            ]
+        );
+        $mediaTmp = [];
+        foreach ($dbImages as $image) {
+            $mediaTmp[$image->type] = $image;
+        }
+        $result = [];
+        foreach ($mostViewed as $mvp) {
+            $tmp =new BlogCollection((array)$mvp);
+            if(isset($mediaTmp[$mvp->type])){
+                $tmp->put('media', $mediaTmp[$mvp->type]);
+            }else{
+                $tmp->put('media',new MediaEntity());
+            }
+            $result[$mvp->cat][] = $tmp;
+        }
+        return $result;
     }
 
     /**
@@ -170,7 +234,8 @@ class Blog extends EloquentProvider implements BlogInterface
             'language_id',
             'blog_post_id',
             'blog_post_slug',
-            'blog_status_id'],
+            'blog_status_id'
+        ],
             ['entityType'],
             [['blog_post_slug', $data['blog_post_slug'] ?? $slug]])
             ->first();

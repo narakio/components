@@ -31,6 +31,9 @@
   border-bottom: 1px solid #dee2e6;
   background-color: #fff;
   height: 2.2rem;
+  @include media-breakpoint-down(md) {
+    padding: 0 2rem;
+  }
 
   .nav-link {
     padding: .25rem 1rem;
@@ -74,7 +77,11 @@
     display: flex;
     -ms-flex-align: center;
     align-items: center;
+    @include media-breakpoint-down(md) {
+      margin: 0 1.5rem;
+    }
   }
+
 
   .form-search.form-inline {
     #navbar-search-input {
@@ -318,6 +325,10 @@
 }
 
 .nav-main {
+  .nav-item {
+    padding: 1rem 0;
+  }
+
   .nav-link {
     font-weight: 700;
     position: relative;
@@ -331,6 +342,52 @@
     height: 2px;
     content: '';
     background-color: $anchor;
+  }
+}
+
+
+.dropdown-mega {
+  //The default position for dropdowns is relative, which is not good in this case.
+  //Unsetting the position allows the menu position to be set relative to the whole menubar
+  //and not just the narrow menuitem
+  position: unset;
+
+  &:hover {
+    .dropdown-menu {
+      display: block;
+    }
+  }
+
+  .dropdown-menu {
+    right: 1rem;
+    left: 1rem;
+    padding: 1rem;
+  }
+
+  .megamenu-item-container {
+    padding: 0 0.4rem;
+  }
+
+  .megamenu-item {
+    margin-bottom: 0.4rem;
+
+    .date {
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
+    .title {
+      font-family: $font-family-title;
+    }
+
+    .date, .title {
+      text-align: center;
+    }
+
+    img {
+      width: 12rem;
+      height: 12rem;
+    }
   }
 }
 
