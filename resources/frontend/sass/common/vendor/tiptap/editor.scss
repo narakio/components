@@ -1,0 +1,92 @@
+.editor {
+  position: relative;
+  width: 100%;
+
+  &__content {
+    margin: 0 0.5rem 0.25rem;
+    word-wrap: break-word;
+    border-bottom: 1px dotted #d3d3d3;
+
+    &:hover {
+      cursor: text;
+    }
+
+    .ProseMirror {
+      min-height: 7rem;
+      padding: 0.5rem;
+      width: 100%;
+
+      a {
+        color: $primary;
+
+        &:hover {
+          cursor: pointer;
+          color: #000;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .ProseMirror.ProseMirror-focused {
+      &:focus {
+        outline: none;
+      }
+    }
+
+    pre {
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+      background: #000;
+      color: #fff;
+      font-size: 0.8rem;
+      overflow-x: auto;
+
+      code {
+        display: block;
+      }
+    }
+
+    p code {
+      display: inline-block;
+      padding: 0 0.4rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      background: rgba(#000, 0.1);
+      color: rgba(#000, 0.8);
+    }
+
+    ul,
+    ol {
+      padding-left: 1rem;
+    }
+
+    li > p,
+    li > ol,
+    li > ul {
+      margin: 0;
+    }
+
+    blockquote {
+      border-left: 3px solid rgba(#000, 0.1);
+      color: rgba(#000, 0.8);
+      padding-left: 0.8rem;
+      font-style: italic;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 3px;
+    }
+
+    .resize-cursor {
+      cursor: ew-resize;
+      cursor: col-resize;
+    }
+
+  }
+}

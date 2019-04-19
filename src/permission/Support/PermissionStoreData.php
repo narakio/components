@@ -66,7 +66,7 @@ class PermissionStoreData
         return $this->type;
     }
 
-    public function hasPremissions()
+    public function hasPermissions()
     {
         return !empty($this->permissions);
     }

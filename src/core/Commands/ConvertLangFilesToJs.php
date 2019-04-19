@@ -26,13 +26,13 @@ class ConvertLangFilesToJs extends Command
     public function handle()
     {
 
-        $origDir = "resources/lang/";
+        $origDir = 'resources/lang/';
+        $jsDir = 'vendor/naraki/components/resources/';
 
         $dir = opendir($origDir);
         if (!$dir) {
             die(sprintf("%s could not be read.", $origDir));
         }
-
         $this->info('The following files were converted:');
         $routes = [];
         while (($languageDir = readdir($dir)) !== false) {
@@ -51,7 +51,7 @@ class ConvertLangFilesToJs extends Command
                             $contents[$k] = $v;
                         }
                     }
-                    $fh = fopen(sprintf('resources/assets/backend/js/lang/%s.json', $languageDir), 'w');
+                    $fh = fopen(sprintf($jsDir.'backend/js/lang/%s.json', $languageDir), 'w');
                     fwrite($fh, json_encode($contents));
                     fclose($fh);
                     $this->info('    - Backend ' . $languageDir);
@@ -64,7 +64,7 @@ class ConvertLangFilesToJs extends Command
                             $contents[$k] = $v;
                         }
                     }
-                    $fh = fopen(sprintf('resources/assets/frontend/js/lang/%s.json', $languageDir), 'w');
+                    $fh = fopen(sprintf($jsDir.'frontend/js/lang/%s.json', $languageDir), 'w');
                     fwrite($fh, json_encode($contents));
                     fclose($fh);
                     $this->info('    - Frontend ' . $languageDir);
@@ -77,7 +77,7 @@ class ConvertLangFilesToJs extends Command
 
             }
         }
-        $fh = fopen('resources/assets/backend/js/lang/routes.json', 'w');
+        $fh = fopen($jsDir.'backend/js/lang/routes.json', 'w');
         fwrite($fh, json_encode($routes));
         fclose($fh);
 

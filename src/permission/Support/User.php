@@ -122,7 +122,7 @@ class User extends Permission
             }
             //If no special permissions have been processed, we stash away default permissions.
             if ($usesDefaultPermissions) {
-                if ($this->default->hasPremissions()) {
+                if ($this->default->hasPermissions()) {
                     continue;
                 }
                 $this->default = new PermissionStoreData(

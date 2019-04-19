@@ -19,15 +19,20 @@ class Admin extends Composer
         if ($tmp instanceof User) {
             $user = $tmp->only(['username']);
         }
-        $subs = System::subscriptions()
-            ->cacheLiveNotifications(auth()->user()->getKey());
+        $isAuthenticated = auth('jwt')->check();
+        $subs = [];
+
+        if ($isAuthenticated) {
+            $subs = System::subscriptions()
+                ->cacheLiveNotifications(auth()->user()->getKey());
+        }
         $user['events_subscribed'] = $subs;
 
         JavaScript::putArray([
             'appName' => config('app.name'),
             'locale' => app()->getLocale(),
             'user' => $user,
-            'permissions' => auth('jwt')->check()
+            'permissions' => $isAuthenticated
                 ? Permission::cacheUserPermissions(auth('jwt')->user()->getAttribute('entity_type_id'))
                 : null
         ]);
