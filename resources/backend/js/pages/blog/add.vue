@@ -15,7 +15,8 @@
                        :placeholder="$t('db.blog_post_title')"
                        aria-describedby="help_blog_post_title"
                        @change="changedField('blog_post_title')">
-                <div class="blog-post-title-length">{{form.fields.blog_post_title.length}}</div>
+                <div class="blog-post-title-length">{{
+                  form.fields.blog_post_title?form.fields.blog_post_title.length:0}}</div>
                 <small class="text-muted blog-post-url d-block mt-1" v-show="url">
                   <template v-if="!form_url_editing">
                     <template v-if="saveMode!=='create'">
@@ -252,7 +253,8 @@
                 <tree-list :data="this.blog_categories"
                            :edit-mode="false"
                            :add-root-button-label="$t('pages.blog.add_root_button')"
-                           @tree-selected="categorySelected"/>
+                           @tree-selected="categorySelected"
+                           :mini="true"></tree-list>
               </div>
             </div>
           </div>

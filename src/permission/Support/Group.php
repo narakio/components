@@ -22,6 +22,11 @@ class Group extends Permission
         foreach ($users as $user) {
             $userInfo[$user->user_id] = (object)$user->toArray();
         }
+        $usersWithoutGroups = array_diff(array_keys($usersWithPermissions),array_keys($userInfo));
+        $usersWithoutGroupsInfo = $this->sqlGetWithoutGroupUserInfo($usersWithoutGroups);
+        foreach($usersWithoutGroupsInfo as $user){
+            $userInfo[$user->user_id] = $user;
+        }
         unset($users);
 
         $permissionMasks = $permissionRecords = [];

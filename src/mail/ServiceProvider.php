@@ -12,9 +12,12 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/resources/config/mail.php' => config_path('mail-naraki.php'),
-        ], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/resources/config/mail.php' => config_path('mail-naraki.php'),
+            ], 'config');
+            $this->loadMigrationsFrom(__DIR__ . '/resources/migrations');
+        }
 
         $this->app->singleton(Contracts\Listing::class, Providers\Listing::class);
         $this->app->singleton(Contracts\UserEvent::class, Providers\UserEvent::class);

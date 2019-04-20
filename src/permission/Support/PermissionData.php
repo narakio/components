@@ -21,7 +21,7 @@ class PermissionData
      * @param \stdClass $holder
      * @param int $mask
      */
-    public function __construct($target, $holder, $mask=0)
+    public function __construct($target, $holder, $mask = 0)
     {
         $this->target = $target;
         $this->holder = $holder;

@@ -32,10 +32,6 @@ class UsersSeeder extends Seeder
             "group_id" => 2,
             'user_id' => $u->getAttribute('user_id')
         ]);
-        factory(Naraki\Sentry\Models\GroupMember::class)->create([
-            "group_id" => 4,
-            'user_id' => $u->getAttribute('user_id')
-        ]);
 
         $u = factory(Naraki\Sentry\Models\User::class)->create([
             'username' => 'jane_doe',
@@ -58,10 +54,6 @@ class UsersSeeder extends Seeder
             "group_id" => 2,
             'user_id' => $u->getAttribute('user_id')
         ]);
-        factory(Naraki\Sentry\Models\GroupMember::class)->create([
-            "group_id" => 4,
-            'user_id' => $u->getAttribute('user_id')
-        ]);
 
         $this->makeDevAccount($pwd);
 
@@ -69,7 +61,7 @@ class UsersSeeder extends Seeder
         $usernames = $slugs = [];
         $faker = Faker\Factory::create();
 
-        for ($i = 1; $i <= 500; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             if ($i % 20 == 0) {
                 $faker = Faker\Factory::create($locales[rand(0, 5)]);
             }
@@ -114,19 +106,19 @@ class UsersSeeder extends Seeder
 
 //            Media::image()->createAvatar($username, sprintf('%s %s', $fn, $ln));
 
-            if ($i % 50 == 0) {
-                $groupID = 3;
+            if ($i % 25 == 0) {
+//                $groupID = 3;
                 factory(Naraki\Sentry\Models\GroupMember::class)->create([
                     "group_id" => 4,
                     'user_id' => $u->getAttribute('user_id')
                 ]);
             } else {
-                $groupID = 4;
+//                $groupID = 4;
             }
-            factory(Naraki\Sentry\Models\GroupMember::class)->create([
-                "group_id" => $groupID,
-                'user_id' => $u->getAttribute('user_id')
-            ]);
+//            factory(Naraki\Sentry\Models\GroupMember::class)->create([
+//                "group_id" => $groupID,
+//                'user_id' => $u->getAttribute('user_id')
+//            ]);
 
         }
         if ($logging) {

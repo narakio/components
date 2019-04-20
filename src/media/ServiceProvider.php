@@ -32,6 +32,10 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/resources/migrations');
+        }
+
         Gate::policy(
             Models\MediaEntity::class,
             Policies\Media::class

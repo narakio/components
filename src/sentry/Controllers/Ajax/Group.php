@@ -19,13 +19,13 @@ class Group extends Controller
         $filter = GroupProvider::newFilter();
         return [
             'table' => GroupProvider::select([
-                    'groups.group_id',
-                    'group_name',
-                    'group_slug',
-                    'group_mask',
-                    'permission_mask',
-                    \DB::raw('count(group_members.user_id) as member_count')
-                ])->leftGroupMember()->entityType()
+                'groups.group_id',
+                'group_name',
+                'group_slug',
+                'group_mask',
+                'permission_mask',
+                \DB::raw('count(group_members.user_id) as member_count')
+            ])->leftGroupMember()->entityType()
                 ->permissionRecord()
                 ->permissionStore()
                 ->permissionMask($this->user->getAttribute('entity_type_id'))->groupBy([
@@ -101,6 +101,7 @@ class Group extends Controller
     public function destroy($groupName)
     {
         GroupProvider::deleteBySlug($groupName);
+        event(new PermissionEntityUpdated);
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
@@ -128,9 +129,9 @@ class Group extends Controller
         if (!is_null($permissions)) {
             Permission::updateIndividual(
                 $permissions,
-                $group->getAttribute('entity_type_id'),
-                Entity::GROUPS);
-            event(new PermissionEntityUpdated);
+                intval($group->getAttribute('entity_type_id')),
+                Entity::GROUPS
+            );
         }
         return response(null, Response::HTTP_NO_CONTENT);
     }

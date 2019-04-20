@@ -38,19 +38,22 @@ class Permission extends EloquentProvider implements PermissionInterface
         foreach ($result as $v) {
             $currentPermissions[$v['entity_id']] = (object)$v;
         }
-
+        $permissionMasks = [];
         foreach ($permissionData as $entityId => $newPermissionMask) {
             if (isset($currentPermissions[$entityId])) {
                 PermissionModel::query()
                     ->where('permission_id', $currentPermissions[$entityId]->permission_id)
                     ->update(['permission_mask' => $newPermissionMask]);
             } else {
-                $this->createModel([
+                $permissionMasks[] = [
                     'entity_type_id' => $entityTypeId,
                     'entity_id' => $entityId,
                     'permission_mask' => $newPermissionMask
-                ])->save();
+                ];
             }
+        }
+        if(!empty($permissionMasks)){
+            $this->createModel()->insert($permissionMasks);
         }
     }
 

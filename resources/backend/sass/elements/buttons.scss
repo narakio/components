@@ -38,9 +38,10 @@
 }
 
 button {
-  &.btn-primary {
+  &.btn-primary, &.btn-secondary {
     font-family:$be-font-buttons;
   }
+
   &.btn-sm {
     width: 30px;
     height: 30px;

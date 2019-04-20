@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 
 class User extends Permission
 {
-    public function __construct($entity)
+    public function __construct()
     {
         parent::__construct(Entity::USERS);
         //As a precaution, we initialize the following objects even though its very unlikely that they won't be overwritten down the line.
@@ -39,7 +39,7 @@ class User extends Permission
         //There is only one default permission, which allows us not to have to create X times X permissions for everyone.
         $default = $this->default->get();
         $defaultPermissionStoreId = (new PermissionStore)->insertGetId([]);
-        $permissionMasks = [];
+        $permissionMasks = $permissionRecords = [];
         foreach ($default as $permission) {
             $permissionMasks[] = [
                 'permission_store_id' => $defaultPermissionStoreId,
@@ -47,8 +47,14 @@ class User extends Permission
                 'permission_mask' => $permission->getMask(),
                 'permission_is_default' => true
             ];
+            $permissionRecords[] = [
+                'entity_id' => $this->entityId,
+                'permission_target_id' => $permission->getHolder(),
+                'permission_store_id' => $defaultPermissionStoreId
+            ];
         }
         (new PermissionMask)->insert($permissionMasks);
+        (new PermissionRecord)->insert($permissionRecords);
         unset($permissionMasks);
 
         $permissionRecords = [];
@@ -96,6 +102,11 @@ class User extends Permission
         foreach ($users as $user) {
             $this->allUsersInfo[$user->user_id] = (object)$user->toArray();
         }
+        $usersWithoutGroups = array_diff(array_keys($usersWithPermissions), array_keys($this->allUsersInfo));
+        $usersWithoutGroupsInfo = $this->sqlGetWithoutGroupUserInfo($usersWithoutGroups);
+        foreach ($usersWithoutGroupsInfo as $user) {
+            $this->allUsersInfo[$user->user_id] = (object)$user->toArray();
+        }
         unset($users);
         $defaultPermissions = null;
         $permissionsToInsert = [];
@@ -120,7 +131,7 @@ class User extends Permission
                 }
                 $tmp[] = $permission;
             }
-            //If no special permissions have been processed, we stash away default permissions.
+            //If no special permissions have been processed, we only need to store the default permission for this user.
             if ($usesDefaultPermissions) {
                 if ($this->default->hasPermissions()) {
                     continue;
@@ -130,6 +141,22 @@ class User extends Permission
             } else {
                 $permissionsToInsert[] = $tmp;
             }
+        }
+        //All users have been assessed and none of them have boilerplate permissions that we can use as default.
+        //We go over the list and make sure every user has a default permission that matches what was set when submitting the form.
+        if (!$this->default->hasPermissions()) {
+            $tmp = [];
+            foreach ($usersWithPermissions as $userWithPermission) {
+                $p = new PermissionData(
+                    $this->allUsersInfo[$userWithPermission->user_id],
+                    $this->allUsersInfo[$userWithPermission->user_id]
+                );
+                $p->setMask($userWithPermission->permission_mask);
+                $tmp[] = $p;
+            }
+//            dd(Arr::flatten($tmp, 1));
+            $this->default = new PermissionStoreData(PermissionStoreData::DEFAULT,
+                Arr::flatten($tmp, 1));
         }
 
         $this->computed = new PermissionStoreData(PermissionStoreData::COMPUTED,

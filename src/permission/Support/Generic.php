@@ -22,6 +22,11 @@ class Generic extends Permission
         foreach ($users as $user) {
             $userInfo[$user->user_id] = $user->getAttribute('entity_type_id');
         }
+        $usersWithoutGroups = array_diff(array_keys($usersWithPermissions), array_keys($userInfo));
+        $usersWithoutGroupsInfo = $this->sqlGetWithoutGroupUserInfo($usersWithoutGroups);
+        foreach ($usersWithoutGroupsInfo as $user) {
+            $userInfo[$user->user_id] = $user->getAttribute('entity_type_id');
+        }
         unset($users);
         $permissionMasks = $permissionRecords = [];
         foreach ($usersWithPermissions as $userWithPermission) {

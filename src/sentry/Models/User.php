@@ -76,7 +76,7 @@ class User extends LaravelUser implements JWTSubject, HasAnEntityContract, HasPe
      */
     public function getEntityType()
     {
-        return $this->getAttribute('entity_type_id');
+        return intval($this->getAttribute('entity_type_id'));
 
     }
 

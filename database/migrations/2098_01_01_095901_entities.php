@@ -65,20 +65,25 @@ class Entities extends Migration
 
     private static function createGroups()
     {
-        (new \Naraki\Sentry\Models\User)->insert([[
-            'username' => 'root',
-            'password' => bcrypt(config('auth.root_password')),
-            'activated' => true,
-            'user_id' => 1,
-            'remember_token' => null,
-        ]]);
-        (new \Naraki\Sentry\Models\Person)->insert([[
-            'person_id' => 1,
-            'email' => env('ROOT_EMAIL'),
-            'first_name' => 'root',
-            'last_name' => '',
-            'user_id' => 1
-        ]]);
+        (new \Naraki\Sentry\Models\User)->insert([
+            [
+                'username' => 'root',
+                'password' => bcrypt(config('auth.root_password')),
+                'activated' => true,
+                'user_id' => 1,
+                'remember_token' => null,
+            ]
+        ]);
+        (new \Naraki\Sentry\Models\Person)->insert([
+            [
+                'person_id' => 1,
+                'email' => env('ROOT_EMAIL'),
+                'person_slug' => 'root',
+                'first_name' => 'root',
+                'last_name' => '',
+                'user_id' => 1
+            ]
+        ]);
 
         (new \Naraki\Sentry\Models\Group)->insert([
             [
@@ -106,10 +111,12 @@ class Entities extends Migration
                 'group_mask' => 5000
             ],
         ]);
-        (new \Naraki\Sentry\Models\GroupMember)->insert([[
-            "group_id" => 1,
-            'user_id' => 1
-        ]]);
+        (new \Naraki\Sentry\Models\GroupMember)->insert([
+            [
+                "group_id" => 1,
+                'user_id' => 1
+            ]
+        ]);
     }
 
     private function addEntities()

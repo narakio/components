@@ -12,8 +12,9 @@ trait ProcessesPermissions
      */
     public function processPermissions($input)
     {
-        if (isset($input['hasChanged']) && $input['hasChanged'] == "true") {
+        if (isset($input['hasChanged']) && $input['hasChanged'] == 'true') {
             $result = [];
+            unset($input['hasChanged']);
             foreach ($input as $k => $v) {
                 if ($v['hasChanged'] == 'true') {
                     $result[Entity::getConstant(strtoupper($k))] = $v['mask'];

@@ -15,6 +15,10 @@ class ServiceProvider extends LaravelServiceProvider
 
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/resources/migrations');
+        }
+
         app('events')->listen(
             Events\PersonSentContactRequest::class,
             Listeners\PersonSentContactRequest::class

@@ -154,12 +154,28 @@ abstract class Permission
      */
     protected function sqlGetUsersAndHighestGroup($userIdList = null)
     {
-        $builder = EntityType::query()->select([
+        return EntityType::query()->select([
             'entity_types.entity_type_id',
             'users_highest_group.user_id',
             'users_highest_group.gmask as group_mask'
-        ])->highestGroup(Entity::USERS, $userIdList);
-        return $builder->get();
+        ])->highestGroup(Entity::USERS, $userIdList)
+            ->get();
+    }
+
+    /**
+     * @param int $userId
+     */
+    protected function sqlGetWithoutGroupUserInfo($userId)
+    {
+        if (is_null($userId) || empty($userId)) {
+            return [];
+        }
+        return EntityType::buildQueryFromTarget(Entity::USERS, $userId)
+            ->select([
+                'entity_types.entity_type_id',
+                'users.user_id',
+                \DB::raw('99999 as group_mask')
+            ])->get();
     }
 
 }

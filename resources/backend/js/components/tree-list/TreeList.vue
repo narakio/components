@@ -1,5 +1,5 @@
 <template>
-  <div class="tree-list container">
+  <div class="container" :class="[mini?'tree-list-mini':'tree-list']">
     <div class="row mb-3">
       <div class="col-lg">
         <search :terms="searchTerms" @show="searchEvent"/>
@@ -42,7 +42,8 @@
       addRootButtonLabel: {required: true},
       addCallback: {require: true, type: Function},
       editCallback: {require: true, type: Function},
-      deleteCallback: {require: true, type: Function}
+      deleteCallback: {require: true, type: Function},
+      mini: {default: () => false}
     },
     data () {
       return {

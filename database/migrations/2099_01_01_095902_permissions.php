@@ -84,6 +84,11 @@ class Permissions extends Migration
 
     private function seedPermissions()
     {
+        /**
+         * entity_type_id 4 = root
+         * entity_type_id 5 = super admins
+         * entity_type_id 6 = admins
+         */
         (new \Naraki\Permission\Models\Permission())->insert([
             [
                 'entity_type_id' => 4,
@@ -138,7 +143,7 @@ class Permissions extends Migration
             [
                 'entity_type_id' => 6,
                 'entity_id' => \Naraki\Core\Models\Entity::USERS,
-                'permission_mask' => 0b0101
+                'permission_mask' => 0b1111
             ],
             [
                 'entity_type_id' => 6,
@@ -153,7 +158,7 @@ class Permissions extends Migration
             [
                 'entity_type_id' => 6,
                 'entity_id' => \Naraki\Core\Models\Entity::SYSTEM,
-                'permission_mask' => 0b1001
+                'permission_mask' => 0b1111
             ],
         ]);
 

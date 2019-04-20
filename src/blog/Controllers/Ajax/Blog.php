@@ -62,6 +62,7 @@ class Blog extends Controller
                 'tags' => [],
             ],
             'status_list' => BlogStatus::getConstants('BLOG'),
+            'source_types' => BlogRepo::source()->listTypes(),
             'blog_categories' => \Naraki\Blog\Support\Trees\Category::getTree(),
             'thumbnails' => []
         ];

@@ -32,6 +32,10 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/resources/migrations');
+        }
+
         app('events')->listen(
             \Illuminate\Auth\Events\Login::class,
             Listeners\UserLogin::class
