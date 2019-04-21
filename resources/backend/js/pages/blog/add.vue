@@ -16,7 +16,8 @@
                        aria-describedby="help_blog_post_title"
                        @change="changedField('blog_post_title')">
                 <div class="blog-post-title-length">{{
-                  form.fields.blog_post_title?form.fields.blog_post_title.length:0}}</div>
+                  form.fields.blog_post_title?form.fields.blog_post_title.length:0}}
+                </div>
                 <small class="text-muted blog-post-url d-block mt-1" v-show="url">
                   <template v-if="!form_url_editing">
                     <template v-if="saveMode!=='create'">
@@ -422,17 +423,8 @@
         this.$refs.tag.focus()
         this.changedField('tags')
       },
-      categorySelected (val, mode) {
-        if (mode === 'add') {
-          if (this.form.fields.categories.indexOf(val) === -1) {
-            this.form.fields.categories.push(val)
-          }
-        } else {
-          let i = this.form.fields.categories.indexOf(val)
-          if (i > -1) {
-            this.form.fields.categories.splice(i, 1)
-          }
-        }
+      categorySelected (val) {
+        this.form.fields.categories = val
         this.changedField('categories')
       },
       getConfig () {

@@ -1,5 +1,6 @@
 <?php namespace Naraki\Blog\Controllers\Frontend;
 
+use Naraki\Blog\Models\BlogStatus;
 use Naraki\Core\Support\Viewable\Jobs\ProcessPageView;
 use Naraki\Core\Models\Language;
 use Naraki\Core\Support\Frontend\Breadcrumbs;
@@ -20,7 +21,7 @@ class Blog extends Controller
      */
     public function getPost($slug)
     {
-        $post = BlogFacade::buildOneBySlug($slug, [
+        $dbPost = BlogFacade::buildOneBySlug($slug, [
             'blog_post_title as title',
             'blog_post_content as content',
             'blog_post_excerpt as excerpt',
@@ -33,7 +34,11 @@ class Blog extends Controller
             'language_id as language',
             'blog_posts.updated_at as date_modified',
             'published_at as date_published'
-        ])->scopes(['pageViews'])->first();
+        ])->scopes(['pageViews']);
+        if (!app('request')->has('preview')) {
+            $dbPost->where('blog_posts.blog_status_id', '=', BlogStatus::BLOG_STATUS_PUBLISHED);
+        }
+        $post = $dbPost->first();
         if (is_null($post)) {
             throw new NotFoundHttpException('Blog Post not found');
         }

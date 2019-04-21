@@ -55,15 +55,15 @@
           <template v-else>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="checkbox"
-                     v-model="isChecked">
+                     v-model="isChecked" @click="toggleSelected(node.id,isChecked)">
               <label class="li-label form-check-label" :class="{'li-label-searched':node.mode===5}"
                      @dblclick="toggleShow(node.label)">{{node.label}}</label>
             </div>
           </template>
         </div>
         <div v-if="node.open" :key="'p'+node.label+idx"
-            v-for="(child,idx) of node.children">
-          <tree-list-item :node="child" @event="emits" @category-selected="categorySelected"
+             v-for="(child,idx) of node.children">
+          <tree-list-item :node="child" @event="emits" @tree-selected="treeSelected"
                           :edit-mode="editMode" :last="(idx===node.children.length-1)"
                           :key="'c'+node.label+idx"></tree-list-item>
         </div>
@@ -107,14 +107,6 @@
         }
       }
     },
-    watch: {
-      isChecked (value) {
-        this.categorySelected(
-          this.node.id,
-          (value) ? 'add' : 'del'
-        )
-      }
-    },
     directives: {
       focus: {
         inserted: function (el) {
@@ -135,8 +127,12 @@
       emits (nodeMap, data) {
         this.$emit('event', [this.node.id].concat(nodeMap), data)
       },
-      categorySelected (value, mode) {
-        this.$emit('category-selected', value, mode)
+      treeSelected (id, value) {
+        this.$emit('tree-selected', id, value)
+      },
+      toggleSelected (id, value) {
+        this.emits([], this.makeDataObject('toggleSelected'))
+        this.$emit('tree-selected', id, (value) ? 'del' : 'add')
       },
       addItem () {
         this.emits([], this.makeDataObject('add'))

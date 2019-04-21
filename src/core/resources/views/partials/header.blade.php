@@ -38,78 +38,82 @@
                 <li class="nav-item"><a class="nav-link active"
                                         href="{{route_i18n('home')}}">{{trans('general.home')}}</a>
                 </li>
-                <li class="nav-item dropdown dropdown-hover">
-                    <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
-                       role="button" aria-haspopup="true" aria-expanded="false">{{trans('pages.blog.categories')}}</a>
-                    <div class="dropdown-menu">
-                        @foreach($blog_categories as $category)
-                            <a class="dropdown-item"
-                               href="{{route_i18n('blog.category',$category)}}">{{
+                @if(isset($blog_categories)&&!is_null($blog_categories)&&!empty($blog_categories))
+                    <li class="nav-item dropdown dropdown-hover">
+                        <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="true"
+                           aria-expanded="false">{{trans('pages.blog.categories')}}</a>
+                        <div class="dropdown-menu">
+                            @foreach($blog_categories as $category)
+                                <a class="dropdown-item"
+                                   href="{{route_i18n('blog.category',$category)}}">{{
                                trans(sprintf('pages.blog.category.%s',$category))
                                }}</a>
-                        @endforeach
-                    </div>
-                </li>
-
-                <li class="nav-item dropdown dropdown-hover dropdown-mega">
-                    <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
-                       role="button" aria-haspopup="true" aria-expanded="false">{{trans('pages.blog.most_viewed')}}</a>
-                    <div class="dropdown-menu">
-                        <div class="row">
-                            <div class="col-lg-3 border-right">
-                                <ul class="nav d-block" id="category-items" role="tablist">
-                                    @foreach($blog_categories as $category)
-                                        <li class="nav-item d-block">
-                                            <a class="nav-link" id="{{$category}}-tab"
-                                               data-toggle="tab"
-                                               href="#{{$category}}"
-                                               role="tab" aria-controls="{{$category}}"
-                                               aria-selected="true">{{
+                            @endforeach
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown-hover dropdown-mega">
+                        <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
+                           role="button" aria-haspopup="true"
+                           aria-expanded="false">{{trans('pages.blog.most_viewed')}}</a>
+                        <div class="dropdown-menu">
+                            <div class="row">
+                                <div class="col-lg-3 border-right">
+                                    <ul class="nav d-block" id="category-items" role="tablist">
+                                        @foreach($blog_categories as $category)
+                                            <li class="nav-item d-block">
+                                                <a class="nav-link" id="{{$category}}-tab"
+                                                   data-toggle="tab"
+                                                   href="#{{$category}}"
+                                                   role="tab" aria-controls="{{$category}}"
+                                                   aria-selected="true">{{
                                trans(sprintf('pages.blog.category.%s',$category))
                                }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="container">
-                                    <div class="row p-0 tab-content">
-                                        @php
-                                            $i=0
-                                        @endphp
-                                        @foreach($blog_mvp as $category => $posts)
-                                            <div class="tab-pane fade show {{($i===0)?' active':''}}"
-                                                 id="{{$category}}"
-                                                 role="tabpanel"
-                                                 aria-labelledby="{{$category}}-tab">
-                                                @php
-                                                    $i++;
-                                                @endphp
-                                                <div class="container megamenu-item-container">
-                                                    <div class="row">
-                                                        @foreach($posts as $post)
-                                                            <div class="col-lg-4 megamenu-item">
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="container">
+                                        <div class="row p-0 tab-content">
+                                            @php
+                                                $i=0
+                                            @endphp
+                                            @foreach($blog_mvp as $category => $posts)
+                                                <div class="tab-pane fade show {{($i===0)?' active':''}}"
+                                                     id="{{$category}}"
+                                                     role="tabpanel"
+                                                     aria-labelledby="{{$category}}-tab">
+                                                    @php
+                                                        $i++;
+                                                    @endphp
+                                                    <div class="container megamenu-item-container">
+                                                        <div class="row">
+                                                            @foreach($posts as $post)
+                                                                <div class="col-lg-4 megamenu-item">
                                                                     @include('core::partials.img',[
                                                                         'media'=>$post->getAttribute('media')->present('thumbnail'),
                                                                         'alt'=>$post->present('title')
                                                                     ])
-                                                                <div class="date">{{$post->present('date')}}</div>
-                                                                <div class="title"><a
-                                                                            href="{{route_i18n('blog',$post['slug'])}}">{{$post->present('title')}}</a>
+                                                                    <div class="date">{{$post->present('date')}}</div>
+                                                                    <div class="title"><a
+                                                                                href="{{
+                                                                            route_i18n('blog',$post['slug'])}}">{{
+                                                                            $post->present('title')}}</a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        @endforeach
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                    </div>
-                </li>
+                    </li>
+                @endif
             </ul>
             @if(get_page_id()!=='06a943c59f')
                 <div class="form-inline form-search ml-auto mr-0 mr-sm-1 d-none d-sm-flex">

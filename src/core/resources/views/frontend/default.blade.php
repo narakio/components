@@ -42,7 +42,7 @@
 <div id="app">
     @include('core::partials.header')
     <div id="content_container" class="container">
-        @if(isset($breadcrumbs))
+        @if(isset($breadcrumbs)&&(!empty($breadcrumbs)))
             <div id="breadcrumb-wrapper" class="col p-0">
                 <div class="card">
                     {!! $breadcrumbs !!}

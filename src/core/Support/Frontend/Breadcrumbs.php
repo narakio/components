@@ -4,13 +4,24 @@ class Breadcrumbs
 {
     private $breadcrumbs = '';
 
-    public static function render($chain)
+    /**
+     * @param array $chain
+     * @return string
+     */
+    public static function render(array $chain): string
     {
         return (new self())->make($chain);
     }
 
-    private function make($chain)
+    /**
+     * @param array $chain
+     * @return string
+     */
+    private function make(array $chain): string
     {
+        if (empty($chain)) {
+            return '';
+        }
         $this->breadcrumbs = '<ul class="breadcrumbs">';
         foreach ($chain as $item) {
             $this->addNode((object)$item);
@@ -19,6 +30,10 @@ class Breadcrumbs
         return $this->breadcrumbs;
     }
 
+    /**
+     * @param \stdClass $node
+     * @return void
+     */
     private function addNode(\stdClass $node)
     {
         $this->breadcrumbs .= '<li><span class="breadcrumb-item">';

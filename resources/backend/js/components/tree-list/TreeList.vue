@@ -20,7 +20,7 @@
                       :key="node.label+idx"
                       :node="node"
                       @event="handleEvent"
-                      @category-selected="categorySelected"
+                      @tree-selected="treeSelected"
                       :edit-mode="editMode" :last="idx===treeData.length-1">
       </tree-list-item>
     </div>
@@ -43,7 +43,8 @@
       addCallback: {require: true, type: Function},
       editCallback: {require: true, type: Function},
       deleteCallback: {require: true, type: Function},
-      mini: {default: () => false}
+      mini: {default: () => false},
+      multiSelect: {default: () => false}
     },
     data () {
       return {
@@ -51,7 +52,8 @@
         searchInput: null,
         searchTerms: [],
         buffer: [],
-        treeExpanded: false
+        treeExpanded: false,
+        selectedNodes: []
       }
     },
     watch: {
@@ -66,8 +68,26 @@
       }
     },
     methods: {
-      categorySelected (val, mode) {
-        this.$emit('tree-selected', val, mode)
+      treeSelected (val, mode) {
+        if (mode === 'add') {
+          if (this.selectedNodes.indexOf(val) === -1) {
+            if (this.multiSelect) {
+              this.selectedNodes.push(val)
+            } else {
+              this.selectedNodes = [val]
+            }
+          }
+        } else {
+          let i = this.selectedNodes.indexOf(val)
+          if (i > -1) {
+            if (this.multiSelect) {
+              this.selectedNodes.splice(i, 1)
+            } else {
+              this.selectedNodes = []
+            }
+          }
+        }
+        this.$emit('tree-selected', this.selectedNodes)
       },
       async toggleExpand () {
         this.treeExpanded = !this.treeExpanded
@@ -120,12 +140,39 @@
         this.buffer = [nodeMap, payload]
       },
       async handleThis (nodeMap, payload, node) {
-        let vm = this
-        let failed = false
+        if (payload.method === 'toggleSelected') {
+          //If we have a single select tree, we deselect all other nodes when the current node is clicked
+          if (!this.multiSelect) {
+            if (node.selected && node.id !== payload.target.id) {
+              node.selected = false
+            }
+          } else {
+            return node
+          }
+        }
+
+        //If the current node is not in the tested node map, we don't do any processing
+        //We still have to update children in case a new node has been selected and we're in single select mode.
         if (node.id !== nodeMap[0]) {
+          //We reset the node back to normal mode as a precaution.
           node.mode = 1
+          if (payload.method === 'toggleSelected'&&!this.multiSelect) {
+            if (node.children.length) {
+              let td = []
+              for (let subNode of node.children) {
+                let n = await this.handleThis(nodeMap.slice(1), payload, subNode)
+                if (n) {
+                  td.push(n)
+                }
+              }
+              node.children = td
+            }
+          }
           return node
         }
+
+        //The node currently tested is a part of the tree for which an open/close event has been triggered
+        //so if a show event is triggered we open every node in the tree
         if (payload.method === 'show') {
           node.open = true
         }
@@ -144,6 +191,18 @@
               break
             case 'toggleShow':
               node.open = !node.open
+              break
+            case 'toggleSelected':
+              if (node.children.length) {
+                let td = []
+                for (let subNode of node.children) {
+                  let n = await this.handleThis(nodeMap.slice(1), payload, subNode)
+                  if (n) {
+                    td.push(n)
+                  }
+                }
+                node.children = td
+              }
               break
             case 'add':
               node.open = true
@@ -186,6 +245,7 @@
               node.mode = 1
               break
           }
+          //In case we want to manipulate the children of a sibling element
         } else if (node.children.length) {
           let td = []
           for (let subNode of node.children) {
