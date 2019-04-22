@@ -1,12 +1,13 @@
 <?php namespace Naraki\System\Controllers;
 
+use Illuminate\Http\Response;
 use Naraki\Core\Controllers\Admin\Controller;
+use Naraki\Core\Support\Frontend\Jsonld\Models\General as GeneralJsonldManager;
+use Naraki\Core\Support\Frontend\Social\General as SocialTagManager;
+use Naraki\System\Facades\System as SystemProvider;
 use Naraki\System\Requests\UpdateSettings;
 use Naraki\System\Requests\UpdateSitemapSettings;
 use Naraki\System\Requests\UpdateSocialSettings;
-use Naraki\Core\Support\Frontend\Jsonld\Models\General as GeneralJsonldManager;
-use Naraki\Core\Support\Frontend\Social\General as SocialTagManager;
-use Illuminate\Http\Response;
 use Naraki\System\Support\Settings as SettingsDataObject;
 
 class Settings extends Controller
@@ -56,6 +57,21 @@ class Settings extends Controller
         $settings->save('general_formatted');
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function editHomepage()
+    {
+//        dd(SystemProvider::getFeaturableEntities());
+        
+    }
+
+    public function entitySearch($q){
+        dd(SystemProvider::searchFeaturableEntities($q));
+    }
+
+    public function updateHomepage()
+    {
+        
     }
 
     /**

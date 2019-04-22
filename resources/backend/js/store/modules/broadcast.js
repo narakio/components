@@ -22,6 +22,7 @@ export const getters = {
 export const mutations = {
   [types.BROADCAST_INIT] (state, data) {
     if (data.user.hasOwnProperty('events_subscribed') &&
+      data.user.events_subscribed != null &&
       data.user.events_subscribed.length > 0 && !state.isBroadcasting) {
       state.broadcaster = new Echo({
         broadcaster: 'socket.io',

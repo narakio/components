@@ -190,10 +190,6 @@
             <div class="col p-0 m-0">
               <div class="container">
                 <div class="row form-inline blog-source-form">
-                  <!--<div class="form-group info-icon"  :title="$t('pages.blog.sources_info')" v-b-tooltip.hover>-->
-                  <!--<i class="fa fa-circle fa-stack-1x"></i>-->
-                  <!--<i class="fa fa-info fa-stack-1x fa-inverse"></i>-->
-                  <!--</div>-->
                   <div class="form-group w-25 pr-2">
                     <select v-model='newSource.type' class="form-control w-100">
                       <option v-for="(type, idx) in source_types" :key="'st_'+idx" :value="idx">{{type}}</option>
@@ -204,7 +200,7 @@
                   </div>
                   <div class="form-group w-25">
                     <submit-button :native-type="'button'" :loading="loadingButton===0"
-                                   @click="addSource">{{$t('pages.blog.add_source_button')}}
+                                   @click="addSource" :disabled="saveMode === 'create'">{{$t('pages.blog.add_source_button')}}
                     </submit-button>
                   </div>
                 </div>

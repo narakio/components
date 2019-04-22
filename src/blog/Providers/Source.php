@@ -4,11 +4,17 @@ use Naraki\Core\EloquentProvider;
 use Naraki\Blog\Contracts\Source as BlogSourceInterface;
 use Naraki\Blog\Models\BlogSource as BlogSourceModel;
 use Naraki\Blog\Models\BlogSourceRecord;
+use Naraki\Blog\Facades\Blog as BlogProvider;
 
 class Source extends EloquentProvider implements BlogSourceInterface
 {
     protected $model = \Naraki\Blog\Models\BlogSourceRecord::class;
 
+    /**
+     * @param string $slug
+     * @param array $columns
+     * @return mixed
+     */
     public function buildByBlogSlug($slug, $columns = null)
     {
         if (is_null($columns)) {
@@ -18,17 +24,23 @@ class Source extends EloquentProvider implements BlogSourceInterface
                 'blog_source_record_id as record'
             ];
         }
-        return $this->select($columns)
-            ->post($slug)->source();
+        return $this->buildWithScopes($columns, ['post' => $slug, 'source']);
     }
 
+    /**
+     * @param int $type
+     * @param string $content
+     * @param string $blogSlug
+     * @return void
+     */
     public function createOne($type, $content, $blogSlug)
     {
-        $blogPost = $this->select(['blog_posts.blog_post_id'])
-            ->post($blogSlug)->first();
-        if (!is_null($blogPost)) {
+        $blogPostId = BlogProvider::select(['blog_posts.blog_post_id'])
+            ->where('blog_post_slug', $blogSlug)
+            ->value('blog_post_id');
+        if (!is_null($blogPostId)) {
             BlogSourceRecord::create([
-                'blog_post_id' => $blogPost->getAttribute('blog_post_id'),
+                'blog_post_id' => $blogPostId,
                 'blog_source_id' => $type,
                 'blog_source_content' => $content
             ]);

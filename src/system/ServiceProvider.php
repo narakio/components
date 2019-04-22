@@ -52,6 +52,9 @@ class ServiceProvider extends LaravelServiceProvider
             $r->post('settings/social', 'Settings@updateSocial');
             $r->get('settings/sitemap', 'Settings@editSitemap');
             $r->post('settings/sitemap', 'Settings@updateSitemap');
+            $r->get('settings/homepage', 'Settings@editHomepage');
+            $r->post('settings/homepage/search/{q}', 'Settings@entitySearch');
+            $r->post('settings/homepage', 'Settings@updateHomepage');
         });
 
     }

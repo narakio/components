@@ -124,6 +124,16 @@ class Category extends EloquentProvider implements BlogCategoryInterface
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function getMain()
+    {
+        return $this->select(['blog_category_name'])->whereNull('parent_id')
+            ->orderBy('blog_category_name','asc');
+        
+    }
+
+    /**
      * @param string $slug
      * @return array
      */

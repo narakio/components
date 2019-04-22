@@ -1,6 +1,7 @@
 <?php namespace Naraki\System\Providers;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Naraki\Core\EloquentProvider;
 use Naraki\Core\Models\Entity;
 use Naraki\System\Contracts\System as SystemInterface;
@@ -80,6 +81,23 @@ class System extends EloquentProvider implements SystemInterface
             Cache::put('frontend_blog_events', $events, 2600000);
         }
         return $events;
+    }
+
+    public function searchFeaturableEntities($name)
+    {
+        return DB::select('
+select entity_types.entity_type_id,entity_name from entity_types
+join (
+select entity_type_id, blog_post_title as entity_name
+from blog_posts
+join entity_types on entity_types.entity_type_target_id = blog_posts.blog_post_id
+and entity_id = ?
+    and blog_post_title like ?
+) bp on entity_types.entity_type_id = bp.entity_type_id',
+            [Entity::BLOG_POSTS,sprintf('%%%s%%',$slug)]
+        );
+
+
     }
 
 }

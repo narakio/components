@@ -42,6 +42,11 @@
             route: 'admin.settings.general'
           },
           {
+            icon: 'home',
+            name: this.$t('pages.settings.homepage'),
+            route: 'admin.settings.homepage'
+          },
+          {
             icon: 'share-alt',
             name: this.$t('pages.settings.social'),
             route: 'admin.settings.social'
