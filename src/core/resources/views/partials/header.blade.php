@@ -12,7 +12,7 @@
                        data-toggle="dropdown" href="#" role="button"
                        aria-haspopup="true" aria-expanded="false">{{$user->getAttribute('username')}}</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a href="{{route_i18n('profile')}}" class="dropdown-item">{{trans('general.user_profile')}}</a>
+                        <a href="{{route_i18n('profile')}}" class="dropdown-item">{{trans('nk::general.user_profile')}}</a>
                         <div class="dropdown-divider"></div>
                         <form id="logout_form" accept-charset="UTF-8" action="{{route('logout')}}" method="POST">
                             <input type="hidden" value="{{csrf_token()}}" name="_token">
@@ -23,7 +23,7 @@
                 </li>
             @else
                 <li class="nav nav-item">
-                    <a class="nav-link" href="{{route_i18n('login')}}">{{trans('general.login')}}</a>
+                    <a class="nav-link" href="{{route_i18n('login')}}">{{trans('nk::general.login')}}</a>
                 </li>
             @endif
         </ul>
@@ -36,18 +36,18 @@
                         src="{{asset(sprintf('media/img/site/%s',env('APP_LOGO_FILENAME')))}}"></a>
             <ul class="nav nav-main d-none d-lg-flex">
                 <li class="nav-item"><a class="nav-link active"
-                                        href="{{route_i18n('home')}}">{{trans('general.home')}}</a>
+                                        href="{{route_i18n('home')}}">{{trans('nk::general.home')}}</a>
                 </li>
                 @if(isset($blog_categories)&&!is_null($blog_categories)&&!empty($blog_categories))
                     <li class="nav-item dropdown dropdown-hover">
                         <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
                            role="button" aria-haspopup="true"
-                           aria-expanded="false">{{trans('pages.blog.categories')}}</a>
+                           aria-expanded="false">{{trans('blog::tr.categories')}}</a>
                         <div class="dropdown-menu">
                             @foreach($blog_categories as $category)
                                 <a class="dropdown-item"
                                    href="{{route_i18n('blog.category',$category)}}">{{
-                               trans(sprintf('pages.blog.category.%s',$category))
+                               trans(sprintf('blog::tr.category.%s',$category))
                                }}</a>
                             @endforeach
                         </div>
@@ -55,7 +55,7 @@
                     <li class="nav-item dropdown dropdown-hover dropdown-mega">
                         <a class="nav-link dropdown-toggle forwardable" data-toggle="dropdown" href="#"
                            role="button" aria-haspopup="true"
-                           aria-expanded="false">{{trans('pages.blog.most_viewed')}}</a>
+                           aria-expanded="false">{{trans('blog::tr.most_viewed')}}</a>
                         <div class="dropdown-menu">
                             <div class="row">
                                 <div class="col-lg-3 border-right">
@@ -67,7 +67,7 @@
                                                    href="#{{$category}}"
                                                    role="tab" aria-controls="{{$category}}"
                                                    aria-selected="true">{{
-                               trans(sprintf('pages.blog.category.%s',$category))
+                               trans(sprintf('blog::tr.category.%s',$category))
                                }}</a>
                                             </li>
                                         @endforeach
@@ -117,7 +117,7 @@
             </ul>
             @if(get_page_id()!=='06a943c59f')
                 <div class="form-inline form-search ml-auto mr-0 mr-sm-1 d-none d-sm-flex">
-                    <inline-search placeholder="{{trans('general.search')}}"
+                    <inline-search placeholder="{{trans('nk::general.search')}}"
                                    full-page-search-url="{{route_i18n('search')}}"
                                    search-host-url="{{$search_url}}">
                     </inline-search>

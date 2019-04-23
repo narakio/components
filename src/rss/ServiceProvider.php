@@ -4,15 +4,12 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class ServiceProvider extends LaravelServiceProvider
 {
-    public function register()
+    public function boot()
     {
         $this->publishes([
             __DIR__.'/config/rss.php' => config_path('rss.php'),
         ], 'config');
-    }
 
-    public function boot()
-    {
         $this->app['router']->group([
             'middleware' => 'misc',
         ], function ($r) {

@@ -32,6 +32,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'media');
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/resources/migrations');
         }

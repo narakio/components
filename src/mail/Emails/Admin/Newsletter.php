@@ -12,8 +12,8 @@ class Newsletter extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.newsletter.title'),
-            'subject' => trans('email.newsletter.email_subject', ['app_name' => config('app.name')]),
+            'title' => trans('mail::tr.newsletter.title'),
+            'subject' => trans('mail::tr.newsletter.email_subject', ['app_name' => config('app.name')]),
         ]);
     }
 

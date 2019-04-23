@@ -31,7 +31,7 @@ class Login extends Controller
         $permissions = Permission::cacheUserPermissions($this->guard()->user()->getEntityType());
         if (is_null($permissions)) {
             throw ValidationException::withMessages([
-                $this->username() => [trans('auth.failed_not_allowed')],
+                $this->username() => [trans('core::tr.auth.failed_not_allowed')],
             ]);
         }
 

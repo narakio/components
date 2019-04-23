@@ -8,8 +8,8 @@
         <div class="row justify-content-md-center mt-3">
             <div class="col-md-8">
                     <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">{{ trans('auth.alerts.email_reset_title') }}</h4>
-                        <p>{{ trans('auth.alerts.email_reset_body') }}</p>
+                        <h4 class="alert-heading">{{ trans('core::tr.auth.alerts.email_reset_title') }}</h4>
+                        <p>{{ trans('core::tr.auth.alerts.email_reset_body') }}</p>
                     </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                             <div class="form-group row pt-3">
                                 <div class="col-xl-8 offset-xl-2 col-lg-6 offset-lg-3">
                                     <button type="submit" class="btn btn-primary btn-block">
-                                        {{trans('js-backend.pages.auth.reset_password')}}
+                                        {{trans('nk::jsb.pages.auth.reset_password')}}
                                     </button>
                                 </div>
                             </div>

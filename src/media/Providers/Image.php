@@ -170,7 +170,7 @@ class Image extends EloquentProvider implements ImageInterface
     {
         $targetEntityTypeId = $this->getTargetEntity($image);
         if (is_null($targetEntityTypeId)) {
-            throw new \UnexpectedValueException(trans('error.media.entity_not_found'));
+            throw new \UnexpectedValueException(trans('media::tr.error.entity_not_found'));
         }
         $this->createImage($image, $targetEntityTypeId, false, $formats);
         return $targetEntityTypeId;

@@ -75,7 +75,7 @@ class General
     {
         $orgs = [];
         foreach (Organization::$organizationList as $org => $v) {
-            $orgs[$org] = trans(sprintf('internal.jsonld.organizations.%s', $org));
+            $orgs[$org] = trans(sprintf('core::tr.jsonld.organizations.%s', $org));
         }
         return $orgs;
     }
@@ -84,7 +84,7 @@ class General
     {
         $ws = [];
         foreach (CreativeWork::$websiteList as $w => $v) {
-            $ws[$w] = trans(sprintf('internal.jsonld.websites.%s', $w));
+            $ws[$w] = trans(sprintf('core::tr.jsonld.websites.%s', $w));
         }
         return $ws;
     }

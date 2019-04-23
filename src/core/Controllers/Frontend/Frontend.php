@@ -26,7 +26,7 @@ class Frontend extends Controller
         );
         return redirect(route_i18n('home'))->with(
             'msg',
-            ['type' => 'success', 'title' => trans('messages.contact_send_success')]);
+            ['type' => 'success', 'title' => trans('nk::messages.contact_send_success')]);
     }
 
     /**
@@ -40,8 +40,8 @@ class Frontend extends Controller
             $this->dispatch(new SubscribeToNewsletter($input));
         }
         return response([
-            'title' => trans('titles.subscribed_msg_title'),
-            'text' => trans('titles.subscribed_msg_text')
+            'title' => trans('nk::titles.subscribed_msg_title'),
+            'text' => trans('nk::titles.subscribed_msg_text')
         ], Response::HTTP_OK);
     }
 

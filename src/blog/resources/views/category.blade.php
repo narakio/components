@@ -20,7 +20,7 @@
                                 </h3>
                             </div>
                             <div class="cat-date">
-                                {!! trans('pages.blog.written_by',[
+                                {!! trans('blog::tr.written_by',[
                                 'date'=>new \Carbon\Carbon($featured->getAttribute('date')),
                                 'author'=>sprintf('<a href="%s">%s</a>',route_i18n('blog.author',$featured->getAttribute('author')),$featured->getAttribute('author'))
                                 ])!!}
@@ -40,7 +40,7 @@
                                                 </h5>
                                             </div>
                                             <div class="cat-date">
-                                                {!! trans('pages.blog.written_by',[
+                                                {!! trans('blog::tr.written_by',[
                                                 'date'=>new \Carbon\Carbon($post->getAttribute('date')),
                                                 'author'=>sprintf('<a href="%s">%s</a>',route_i18n('blog.author',$post->getAttribute('author')),$post->getAttribute('author'))
                                                 ])!!}
@@ -75,7 +75,7 @@
                 <div class="container">
                     <div class="row">
                         <h5 class="bordered">
-                            <span>{{trans('pages.blog.most_viewed_in',['category'=>$featured->getAttribute('cat')])}}</span>
+                            <span>{{trans('blog::tr.most_viewed_in',['category'=>$featured->getAttribute('cat')])}}</span>
                         </h5>
                     </div>
                     @foreach($mvps as $mvp)

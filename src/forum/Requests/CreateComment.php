@@ -53,7 +53,7 @@ class CreateComment extends FormRequest
             $lastCommentDate = clone(Session::get('last_comment'));
             if (!is_null($lastCommentDate)) {
                 if ($lastCommentDate->addMinutes(2)->gt(Carbon::now())) {
-                    $this->getValidatorInstance()->errors()->add('_', trans('error.form.posting_delay'));
+                    $this->getValidatorInstance()->errors()->add('_', trans('forum::tr.posting_delay'));
                 }
             }
         }

@@ -49,8 +49,8 @@ trait Presentable
                 'label' => $info->name,
                 'sortable' => isset($sortable[$name])
             ];
-            if ($name === $filter->getFilter(trans('js-backend.filters.sortBy'))) {
-                $result[$name]['order'] = $filter->getFilter(trans('js-backend.filters.order'));
+            if ($name === $filter->getFilter(trans('nk::jsb.filters.sortBy'))) {
+                $result[$name]['order'] = $filter->getFilter(trans('nk::jsb.filters.order'));
             }
         }
         return $result;

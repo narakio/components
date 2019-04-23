@@ -15,8 +15,8 @@
                                     $post->getAttribute('author'
                                     ))}}">{{$post->getAttribute('person')}}</a></span>
                         @if(!is_null($post->getAttribute('page_views')))
-                            <span class="page-views-label"><i title="{{trans('pages.blog.page_view_count')}}"
-                                                              aria-label="{{trans('pages.blog.page_view_count')}}"
+                            <span class="page-views-label"><i title="{{trans('blog::tr.page_view_count')}}"
+                                                              aria-label="{{trans('blog::tr.page_view_count')}}"
                                                               class="fa fa-eye"></i>{{
                                                               $post->getAttribute('page_views')
                                                               }}</span>
@@ -33,15 +33,15 @@
             <div class="share-container">
                 <div id="blog-share-buttons" class="share-buttons">
                     <a class="stacked" href="#"
-                       title="{{trans('pages.blog.share_facebook')}}"
-                       aria-label="{{trans('pages.blog.share_facebook')}}">
+                       title="{{trans('blog::tr.share_facebook')}}"
+                       aria-label="{{trans('blog::tr.share_facebook')}}">
                         <span class="fa fa-stack-1x facebook">
                             <i class="fa fa-circle fa-stack-1x circle"></i>
                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                     <a class="stacked" href="#"
-                       title="{{trans('pages.blog.share_twitter')}}">
+                       title="{{trans('blog::tr.share_twitter')}}">
                         <span class="fa fa-stack-1x twitter">
                             <i class="fa fa-circle fa-stack-1x circle"></i>
                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
@@ -65,7 +65,7 @@
                                     <li class="d-block">References:</li>
                                     @foreach($sources as $source)
                                         <li class="source-label">
-                                            <i class="fa fa-link" title="{{trans('pages.blog.source_types.url')}}"></i>
+                                            <i class="fa fa-link" title="{{trans('blog::tr.source_types.url')}}"></i>
                                             {{$source->getAttribute('description')}}
                                             <a href="{{$source->getAttribute('source')}}">{{$source->getAttribute('source')}}</a>
                                         </li>
@@ -109,7 +109,7 @@
                         @endif
                         <div class="card-body">
                             <div class="label-more-reading">
-                                {{trans('pages.blog.more_reading')}}
+                                {{trans('blog::tr.more_reading')}}
                             </div>
                             <div class="label-title">
                                 <a href="{{route_i18n('blog',$otherPost->getAttribute('slug'))}}">{{$otherPost->getAttribute('title')}}</a>
@@ -121,7 +121,7 @@
                                 <div class="author-label"><i class="fa fa-user-circle-o"></i><a
                                             href="{{route_i18n('blog.author',$otherPost->getAttribute('author'))}}">{{$otherPost->getAttribute('person')}}</a>
                                 </div>
-                                <div class="page-views-label"><i title="{{trans('pages.blog.page_view_count')}}"
+                                <div class="page-views-label"><i title="{{trans('blog::tr.page_view_count')}}"
                                                                  class="fa fa-eye"></i>{{$otherPost->getAttribute('page_views')}}
                                 </div>
                             </div>

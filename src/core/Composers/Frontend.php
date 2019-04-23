@@ -17,7 +17,7 @@ class Frontend extends Composer
             $data['title'] = page_title(
                 trans(
                     sprintf(
-                        'titles.%s',
+                        'nk::titles.%s',
                         (!is_null($view))
                             ? str_replace(['.','core::'], ['_',''], $view->getName())
                             : 'error'

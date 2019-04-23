@@ -49,7 +49,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:20px;line-height:22px;text-align:center;color:#ffffff;"
                                 >
-                                    <span style="padding-bottom: 15px">{!! trans('email.reply.title') !!}</span>
+                                    <span style="padding-bottom: 15px">{!! trans('forum::tr.email.reply.title') !!}</span>
                                 </div>
 
                             </td>
@@ -123,7 +123,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.reply.body1',['user'=>$reply_user,'post'=>$post_title]) !!}
+                                    {!! trans('forum::tr.email.reply.body1',['user'=>$reply_user,'post'=>$post_title]) !!}
                                 </div>
 
                             </td>
@@ -137,7 +137,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.reply.body2') !!}
+                                    {!! trans('forum::tr.email.reply.body2') !!}
                                 </div>
 
                             </td>
@@ -218,7 +218,7 @@
                                             <a
                                                     href="{!! route_i18n('blog', ['slug'=> $slug]) !!}{!!'#'.$comment_slug!!}" style="background:#024944;color:white;font-family:Lato, Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:23px;Margin:0;text-decoration:none;text-transform:none;" target="_blank"
                                             >
-                                                {!! trans('email.mention.cta') !!}
+                                                {!! trans('forum::tr.email.mention.cta') !!}
                                             </a>
                                         </td>
                                     </tr>

@@ -34,6 +34,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'blog');
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/resources/views' => resource_path('views/vendor/blog'),

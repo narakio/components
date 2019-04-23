@@ -9,7 +9,7 @@
                                  :method="'POST'">
                         {!! csrf_field() !!}
                         <div class="form-group row">
-                            <label class="col-lg-4 col-form-label text-lg-right">{{trans('js-backend.db.first_name')}}</label>
+                            <label class="col-lg-4 col-form-label text-lg-right">{{trans('nk::jsb.db.first_name')}}</label>
                             <div class="col-lg-6">
                                 <input type="text"
                                        class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-4 col-form-label text-lg-right">{{trans('js-backend.db.last_name')}}</label>
+                            <label class="col-lg-4 col-form-label text-lg-right">{{trans('nk::jsb.db.last_name')}}</label>
                             <div class="col-lg-6">
                                 <input type="text"
                                        class="form-control{{ $errors->has('last_name',$user->getAttribute('last_name')) ? ' is-invalid' : '' }}"
@@ -45,7 +45,7 @@
                             <div class="col-xl-8 offset-xl-2 col-lg-6 offset-lg-3">
                                 <submit-button
                                         ref="submitButton"
-                                        :block="true" :value="'{{trans('js-backend.general.save')}}'"></submit-button>
+                                        :block="true" :value="'{{trans('nk::jsb.general.save')}}'"></submit-button>
                             </div>
                         </div>
                         <avatar-uploader

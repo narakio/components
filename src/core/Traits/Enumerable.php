@@ -114,7 +114,7 @@ trait Enumerable
         $name = static::getConstantNameByID($id);
         if (!is_null($name)) {
             if ($presentable) {
-                return trans(sprintf('general.enumerables.%s', strtolower($name)));
+                return trans(sprintf('nk::general.enumerables.%s', strtolower($name)));
             }
             return strtolower($name);
         }
@@ -144,7 +144,7 @@ trait Enumerable
     {
         $entities = array_flip(static::getConstants());
         if (isset($entities[$entityID])) {
-            return trans(sprintf('general.enumerables.%s', $entities[$entityID]));
+            return trans(sprintf('nk::general.enumerables.%s', $entities[$entityID]));
         }
         return null;
     }
@@ -160,7 +160,7 @@ trait Enumerable
         $output = [];
         $constants = static::getConstants();
         foreach ($constants as $name => $id) {
-            $output[$id] = trans(sprintf('general.enumerables.%s', strtolower($name)));
+            $output[$id] = trans(sprintf('nk::general.enumerables.%s', strtolower($name)));
         }
         return $output;
     }

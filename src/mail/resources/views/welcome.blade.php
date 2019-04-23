@@ -49,7 +49,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:25px;line-height:27px;text-align:center;color:#ffffff;"
                                 >
-                                    <span style="padding-bottom: 15px">{!! trans('email.welcome.title') !!}</span>
+                                    <span style="padding-bottom: 15px">{!! trans('mail::tr.welcome.title') !!}</span>
                                 </div>
 
                             </td>
@@ -139,7 +139,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.welcome.body1') !!}
+                                    {!! trans('mail::tr.welcome.body1') !!}
                                 </div>
 
                             </td>
@@ -153,7 +153,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.welcome.body2') !!}
+                                    {!! trans('mail::tr.welcome.body2') !!}
                                 </div>
 
                             </td>
@@ -167,7 +167,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.welcome.body3') !!}
+                                    {!! trans('mail::tr.welcome.body3') !!}
                                 </div>
 
                             </td>
@@ -248,7 +248,7 @@
                                             <a
                                                     href="{!! route_i18n('activate',$activation_token) !!}" style="background:#024944;color:white;font-family:Lato, Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:23px;Margin:0;text-decoration:none;text-transform:none;" target="_blank"
                                             >
-                                                {!! trans('email.welcome.cta') !!}
+                                                {!! trans('mail::tr.welcome.cta') !!}
                                             </a>
                                         </td>
                                     </tr>

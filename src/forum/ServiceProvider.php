@@ -16,7 +16,6 @@ class ServiceProvider extends LaravelServiceProvider
         $this->app->singleton(Contracts\Thread::class, Providers\Thread::class);
         $this->app->singleton(Contracts\Post::class, Providers\Post::class);
         $this->app->singleton(Contracts\Forum::class, Providers\Forum::class);
-
     }
 
     /**
@@ -26,6 +25,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'forum');
         app('events')->listen(Events\PostCreated::class,Listeners\PostCreated::class);
 
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'forum');

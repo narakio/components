@@ -12,6 +12,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'mail');
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/resources/config/mail.php' => config_path('mail-naraki.php'),

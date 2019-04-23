@@ -1,0 +1,51 @@
+<mjml>
+    <mj-head>
+        <mj-font name="Lato" href="https://fonts.googleapis.com/css?family=Lato:300,400,700"/>
+        <mj-attributes>
+            <mj-all font-family="Lato, Helvetica, Arial, sans-serif"/>
+        </mj-attributes>
+    </mj-head>
+    <mj-body>
+        <mj-section background-color="#ffffff" padding-left="0px" padding-right="0px" padding-bottom="25px"
+                    padding-top="20px" width="100%">
+            <mj-column vertical-align="top" width="600px">
+                <mj-image href="{!! route_i18n('home') !!}" src="{!! $message->embed(media_entity_root_path('img','site','logo.png')) !!}" alt="Logo" border="none" padding-left="0px" padding-right="0px"
+                          padding-bottom="0px" padding-top="0" width="300px" text-align="center"></mj-image>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#a42227" padding-left="0px" padding-right="0px" padding-bottom="10px"
+                    padding-top="10px" border-radius="16px 16px 0px 0px" align="center" border-bottom="8px solid #a75c23">
+            <mj-column>
+                <mj-text padding-left="0px" padding-right="0px" padding-bottom="25px" font-size="20px" line-height="22px"
+                         padding-top="20px" align="center" color="#ffffff"><span style="padding-bottom: 15px">{!! trans('email.mention.title') !!}</span>
+                </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#efd6ce" padding-left="0px" padding-right="0px" padding-bottom="50px"
+                    padding-top="50px" align="center">
+            <mj-column vertical-align="top" width="100%" align="center">
+                <mj-text font-size="15px" padding-top="15px">{!! trans('email.mention.body1',['user'=>$mention_user,'post'=>$mention_post]) !!}
+                </mj-text>
+              <mj-text font-size="15px" padding-top="15px">{!! trans('email.mention.body2') !!}
+              </mj-text>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#ce834a" padding-left="0px" padding-right="0px" padding-bottom="22px"
+                    padding-top="25px" align="center" border-radius="0px 0px 16px 16px" border-top="8px solid #a75c23">
+            <mj-column vertical-align="top" width="100%" align="center">
+                <mj-button font-weight="bold" background-color="#024944" color="white" href="{!! route_i18n('activate',$activation_token) !!}" font-size="18px"
+                           line-height="23px" padding="20px 30px">{!! trans('email.mention.cta') !!}
+                </mj-button>
+            </mj-column>
+        </mj-section>
+        <mj-section background-color="#ffffff" padding-left="0px" padding-right="0px" padding-bottom="15px"
+                    padding-top="10px">
+            <mj-column>
+                <mj-text align="center" font-size="10px" line-height="10px" font-family="Helvetica, Arial, sans-serif"
+                         padding-left="0px" padding-right="0px" padding-bottom="5px" padding-top="0" color="#707070"
+                         font-style="italic">{!! trans('email.origin', ['name'=>$recipient_name, 'email'=>$recipient_email,'app_name'=>config('app.name')]) !!}
+                </mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

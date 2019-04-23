@@ -50,7 +50,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:25px;line-height:27px;text-align:center;color:#ffffff;"
                                 >
-                                    <span style="padding-bottom: 15px">{!! trans('email.password_reset.title') !!}</span>
+                                    <span style="padding-bottom: 15px">{!! trans('mail::tr.password_reset.title') !!}</span>
                                 </div>
 
                             </td>
@@ -124,7 +124,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.password_reset.body1') !!}
+                                    {!! trans('mail::tr.password_reset.body1') !!}
                                 </div>
 
                             </td>
@@ -138,7 +138,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.password_reset.body2') !!}
+                                    {!! trans('mail::tr.password_reset.body2') !!}
                                 </div>
 
                             </td>
@@ -219,7 +219,7 @@
                                             <a
                                                     href="{!! route_i18n('password.reset',['token'=>$token,'email'=>urlencode($email)]) !!}" style="background:#024944;color:white;font-family:Lato, Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;line-height:23px;Margin:0;text-decoration:none;text-transform:none;" target="_blank"
                                             >
-                                                {!! trans('email.password_reset.cta') !!}
+                                                {!! trans('mail::tr.password_reset.cta') !!}
                                             </a>
                                         </td>
                                     </tr>

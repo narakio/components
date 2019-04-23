@@ -207,7 +207,7 @@
                                                 <div
                                                         style="font-family:Helvetica, Arial, sans-serif;font-size:10px;font-style:italic;line-height:10px;text-align:center;color:#707070;"
                                                 >
-                                                    {!! trans('email.origin', ['name'=>$recipient_name, 'email'=>$recipient_email,'app_name'=>config('app.name')]) !!}
+                                                    {!! trans('mail::tr.origin', ['name'=>$recipient_name, 'email'=>$recipient_email,'app_name'=>config('app.name')]) !!}
                                                 </div>
 
                                             </td>

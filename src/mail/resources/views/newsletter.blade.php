@@ -123,7 +123,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.newsletter.email') !!} <a
+                                    {!! trans('mail::tr.newsletter.email') !!} <a
                                             href="mailto:{!! $newsletter_email !!}" style="background:#efd6ce;color:#2a3bc6;font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;Margin:0;text-decoration:underline;text-transform:none;" target="_blank"
                                     >
                                         {!! $newsletter_email !!}
@@ -141,7 +141,7 @@
                                 <div
                                         style="font-family:Lato, Helvetica, Arial, sans-serif;font-size:15px;line-height:1.5;text-align:left;color:#000000;"
                                 >
-                                    {!! trans('email.newsletter.name') !!} {!! $newsletter_name !!}
+                                    {!! trans('mail::tr.newsletter.name') !!} {!! $newsletter_name !!}
                                 </div>
 
                             </td>

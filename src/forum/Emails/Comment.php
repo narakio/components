@@ -12,8 +12,8 @@ class Comment extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.comment.title'),
-            'subject' => trans('email.comment.subject', ['app_name' => config('app.name')])
+            'title' => trans('forum::tr.email.comment.title'),
+            'subject' => trans('forum::tr.email.comment.subject', ['app_name' => config('app.name')])
         ]);
     }
 

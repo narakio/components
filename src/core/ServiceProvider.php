@@ -29,6 +29,8 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'core');
+
         if (env('APP_OLD_ASS_RDBMS')) {
             Schema::defaultStringLength(191);
         }

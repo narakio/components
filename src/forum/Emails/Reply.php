@@ -12,8 +12,8 @@ class Reply extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.reply.title'),
-            'subject' => trans('email.reply.subject', ['app_name' => config('app.name')])
+            'title' => trans('forum::tr.email.reply.title'),
+            'subject' => trans('forum::tr.email.reply.subject', ['app_name' => config('app.name')])
         ]);
     }
 

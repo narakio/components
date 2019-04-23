@@ -16,7 +16,7 @@ class Auth
     public function handle($request, Closure $next)
     {
         if (!\Auth::guard('jwt')->check()) {
-            return response(trans('error.http.401'),Response::HTTP_UNAUTHORIZED);
+            return response(trans('nk::error.http.401'),Response::HTTP_UNAUTHORIZED);
         }
         return $next($request);
     }

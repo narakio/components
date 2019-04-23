@@ -85,7 +85,7 @@ class ExceptionHandler extends LaravelExceptionHandler
         } elseif ($e instanceof ValidationException) {
             return $this->convertValidationExceptionToResponse($e, $request);
         } elseif ($e instanceof AccessDeniedHttpException) {
-            return response_json(['msg' => trans('error.http.403')], 403);
+            return response_json(['msg' => trans('nk::error.http.403')], 403);
         }
         elseif ($e instanceof HttpException&&!$request->expectsJson()) {
             return response()->view(sprintf(

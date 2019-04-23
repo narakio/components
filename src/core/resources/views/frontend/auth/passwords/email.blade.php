@@ -13,8 +13,8 @@
                     </div>
                 @else
                     <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">{{ trans('auth.alerts.email_title') }}</h4>
-                        <p>{{ trans('auth.alerts.email_body') }}</p>
+                        <h4 class="alert-heading">{{ trans('core::tr.auth.alerts.email_title') }}</h4>
+                        <p>{{ trans('core::tr.auth.alerts.email_body') }}</p>
                     </div>
                 @endif
             </div>
@@ -27,7 +27,7 @@
                             {!! csrf_field() !!}
 
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label text-lg-right">{{ trans('auth.content.email') }}</label>
+                                <label class="col-lg-4 col-form-label text-lg-right">{{ trans('core::tr.auth.content.email') }}</label>
 
                                 <div class="col-lg-6">
                                     <input type="email"
@@ -44,7 +44,7 @@
                             <div class="form-group row">
                                 <div class="col-lg-6 offset-lg-4">
                                     <button type="submit"
-                                            class="btn btn-primary">{{ trans('auth.content.send_link') }}</button>
+                                            class="btn btn-primary">{{ trans('core::tr.auth.content.send_link') }}</button>
                                 </div>
                             </div>
                         </form>

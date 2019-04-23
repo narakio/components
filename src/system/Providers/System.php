@@ -83,6 +83,12 @@ class System extends EloquentProvider implements SystemInterface
         return $events;
     }
 
+    /**
+     * TODO: this method is not used but might be in the future if a home slider gets built
+     *
+     * @param $name
+     * @return array
+     */
     public function searchFeaturableEntities($name)
     {
         return DB::select('
@@ -96,8 +102,6 @@ and entity_id = ?
 ) bp on entity_types.entity_type_id = bp.entity_type_id',
             [Entity::BLOG_POSTS,sprintf('%%%s%%',$slug)]
         );
-
-
     }
 
 }

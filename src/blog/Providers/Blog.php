@@ -94,7 +94,7 @@ class Blog extends EloquentProvider implements BlogInterface
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return array
      */
     public function mostViewedByCategoryTotal()
     {

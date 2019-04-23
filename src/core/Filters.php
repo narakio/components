@@ -68,7 +68,7 @@ abstract class Filters
      */
     private function translateFilter($value)
     {
-        return trans(sprintf('js-backend.filters_inv.%s', $value));
+        return trans(sprintf('nk::jsb.filters_inv.%s', $value));
     }
 
     /**

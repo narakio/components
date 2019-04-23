@@ -7,12 +7,10 @@ class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'nk');
         if ($this->app->runningInConsole()) {
             $this->app->make(Factory::class)->load(__DIR__ . '/../database/factories');
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
-
     }
-
-
 }

@@ -113,8 +113,8 @@ class Post extends Controller
         return response([
             'type' => 'success',
             'title' => (!$request->has('reply_to')
-                ? trans('messages.comment_add_success')
-                : trans('messages.reply_add_success')
+                ? trans('forum::tr.comment_add_success')
+                : trans('forum::tr.reply_add_success')
             )
         ], Response::HTTP_OK);
     }
@@ -133,7 +133,7 @@ class Post extends Controller
         Session::put('last_comment', Carbon::now());
         return response([
             'type' => 'success',
-            'title' => trans('messages.comment_update_success')
+            'title' => trans('forum::tr.comment_update_success')
         ], Response::HTTP_OK);
 
     }

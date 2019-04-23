@@ -16,7 +16,7 @@ trait HasPermissions
         $result = [];
         foreach ($permissions as $label => $permissionValue) {
             if (($value & $permissionValue) !== 0) {
-                $result[trans(sprintf('internal.permissions.%s', $label))] = $permissionValue;
+                $result[trans(sprintf('permission::tr.%s', $label))] = $permissionValue;
             }
         }
         return ($toArray) ? $result : implode('/', $result);

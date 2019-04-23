@@ -12,8 +12,8 @@ class Mention extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.mention.title'),
-            'subject' => trans('email.mention.subject', ['app_name' => config('app.name')])
+            'title' => trans('forum::tr.email.mention.title'),
+            'subject' => trans('forum::tr.email.mention.subject', ['app_name' => config('app.name')])
         ]);
     }
 

@@ -82,13 +82,13 @@ class User extends Controller
             'sorted' => $userFilter->getFilter('sortBy'),
             'columns' => UserProvider::createModel()->getColumnInfo([
                 'full_name' => (object)[
-                    'name' => trans('js-backend.db.full_name'),
+                    'name' => trans('nk::jsb.db.full_name'),
                 ],
                 'email' => (object)[
-                    'name' => trans('js-backend.general.email'),
+                    'name' => trans('nk::jsb.general.email'),
                 ],
                 'created_ago' => (object)[
-                    'name' => trans('js-backend.db.user_created_at'),
+                    'name' => trans('nk::jsb.db.user_created_at'),
                 ]
             ], $userFilter)
         ];

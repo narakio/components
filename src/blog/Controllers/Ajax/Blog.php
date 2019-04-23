@@ -36,11 +36,11 @@ class Blog extends Controller
             ])->filter($filter)->paginate(25),
             'columns' => BlogRepo::createModel()->getColumnInfo([
                 'blog_post_title' => (object)[
-                    'name' => trans('js-backend.db.blog_post_title'),
+                    'name' => trans('blog::jsb.db.blog_post_title'),
                     'width' => '50%'
                 ],
                 'full_name' => (object)[
-                    'name' => trans('js-backend.db.full_name'),
+                    'name' => trans('blog::jsb.db.full_name'),
                     'width' => '30%'
                 ]
             ], $filter)
@@ -89,7 +89,7 @@ class Blog extends Controller
                 'entity_type_id'
             ])->first();
         if (is_null($record)) {
-            return response(trans('error.http.500.blog_post_not_found'), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response(trans('blog::post_not_found'), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         $blogPost = $record->toArray();
         $categories = \Naraki\Blog\Support\Trees\Category::getTreeWithSelected($blogPost['blog_post_id']);
@@ -216,7 +216,7 @@ class Blog extends Controller
                 return BlogRepo::deleteBySlug($slug);
             });
         } catch (\Exception $e) {
-            return response(trans('error.http.500.general_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response(trans('nk::error.http.500.general_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         $this->dispatch(new DeleteElasticsearch($deleteResult));
 
@@ -250,7 +250,7 @@ class Blog extends Controller
             ));
             return response(null, Response::HTTP_NO_CONTENT);
         }
-        return response(trans('error.http.500.general_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
+        return response(trans('nk::error.http.500.general_error'), Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 
     /**

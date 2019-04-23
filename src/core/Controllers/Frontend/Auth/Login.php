@@ -88,7 +88,7 @@ class Login extends Controller
     protected function sendFailedLoginResponse()
     {
         throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
+            $this->username() => [trans('core::tr.auth.failed')],
         ]);
     }
 

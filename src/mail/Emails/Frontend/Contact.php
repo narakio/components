@@ -12,8 +12,8 @@ class Contact extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.contact.title'),
-            'subject' => trans('email.contact.email_subject', ['app_name' => config('app.name')]),
+            'title' => trans('mail::tr.contact.title'),
+            'subject' => trans('mail::tr.contact.email_subject', ['app_name' => config('app.name')]),
         ]);
     }
 

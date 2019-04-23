@@ -17,7 +17,7 @@ class Group extends Filters
             return $this->builder
                 ->orderBy($name,
                     trans(
-                        sprintf('js-backend.filters.%s',
+                        sprintf('nk::jsb.filters.%s',
                             $this->getFilter('order')
                         )
                     ) ?? 'asc'
@@ -33,7 +33,7 @@ class Group extends Filters
     public function name($name)
     {
         return $this->builder->where(
-            trans(sprintf('js-backend.db_raw.%s', 'group_name')),
+            trans(sprintf('nk::jsb.db_raw.%s', 'group_name')),
             'like',
             sprintf('%%%s%%', $name));
     }

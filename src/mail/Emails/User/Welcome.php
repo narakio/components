@@ -12,8 +12,8 @@ class Welcome extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.welcome.title'),
-            'subject' => trans('email.welcome.subject', ['app_name' => config('app.name')]),
+            'title' => trans('mail::tr.welcome.title'),
+            'subject' => trans('mail::tr.welcome.subject', ['app_name' => config('app.name')]),
             'activation_token' => $this->data->activation_token
         ]);
     }

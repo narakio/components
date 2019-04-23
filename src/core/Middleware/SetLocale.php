@@ -38,14 +38,14 @@ class SetLocale
                 $locales = config('app.locales');
                 if (array_key_exists($locale, $locales)) {
                     Carbon::setLocale($locale);
-                    Carbon::setToStringFormat(trans('internal.date.pretty'));
+                    Carbon::setToStringFormat(trans('nk::general.date.pretty'));
                     return $locale;
                 }
 
                 $locale = substr($locale, 0, 2);
                 if (array_key_exists($locale, $locales)) {
                     Carbon::setLocale($locale);
-                    Carbon::setToStringFormat(trans('internal.date.pretty'));
+                    Carbon::setToStringFormat(trans('nk::general.date.pretty'));
                     return $locale;
                 }
                 $locale = config('app.locale');

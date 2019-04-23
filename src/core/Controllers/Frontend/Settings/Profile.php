@@ -26,9 +26,9 @@ class Profile extends Controller
         $user = auth()->user();
         return view('core::frontend.site.settings.panes.profile', [
             'user' => $user,
-            'title' => trans('pages.profile.settings_title'),
+            'title' => trans('nk::pages.profile.settings_title'),
             'breadcrumbs' => Breadcrumbs::render([
-                ['label' => trans('titles.routes.profile'), 'url' => route_i18n('profile')]
+                ['label' => trans('nk::titles.routes.profile'), 'url' => route_i18n('profile')]
             ]),
             'avatars' => UserProvider::getAvatars($user->getKey())
         ]);
@@ -69,7 +69,7 @@ class Profile extends Controller
         );
         return back()->with(
             'msg',
-            ['type' => 'success', 'title' => trans('messages.profile_update_success')]
+            ['type' => 'success', 'title' => trans('nk::messages.profile_update_success')]
         );
 
     }

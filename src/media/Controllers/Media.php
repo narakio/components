@@ -40,10 +40,10 @@ class Media extends Controller
             'columns' => MediaProvider::createModel()->getColumnInfo(
                 [
                     'media_title' => (object)[
-                        'name' => trans('js-backend.db.media_title'),
+                        'name' => trans('media::jsb.db.media_title'),
                     ],
                     'created_ago' => (object)[
-                        'name' => trans('js-backend.db.media_created_at'),
+                        'name' => trans('media::jsb.db.media_created_at'),
                     ]
                 ]
                 , $filter)
@@ -69,13 +69,13 @@ class Media extends Controller
                     //Type is users, forum posts, etc.
                     if (!Entity::isValidName($input->type)) {
                         throw new \UnexpectedValueException(
-                            trans('error.media.entity_type', ['type' => $input->type])
+                            trans('media::tr.error.entity_type', ['type' => $input->type])
                         );
                     }
                     //Media is image, image_avatar, etc.
                     if (!MediaModel::isValidName($input->media)) {
                         throw new \UnexpectedValueException(
-                            trans('error.media.media_type', ['type' => $input->media])
+                            trans('media::tr.error.media_type', ['type' => $input->media])
                         );
                     }
 
@@ -110,7 +110,7 @@ class Media extends Controller
                     }
                 } catch (\Exception $e) {
                     return response([
-                        'data' => trans('error.media.type_size'),
+                        'data' => trans('media::tr.error.type_size'),
                         'error' => $e->getMessage()
                     ], Response::HTTP_INTERNAL_SERVER_ERROR);
                 }
@@ -126,7 +126,7 @@ class Media extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         return response([
-            trans('error.media.no_file')
+            trans('media::tr.error.no_file')
         ], Response::HTTP_INTERNAL_SERVER_ERROR);
 
     }
@@ -262,7 +262,7 @@ class Media extends Controller
             MediaProvider::image()->saveAvatar($avatarInfo);
         } catch (\Exception $e) {
             return response([
-                'data' => trans('error.media.type_size'),
+                'data' => trans('media::tr.error.type_size'),
                 'error' => $e->getMessage()
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }

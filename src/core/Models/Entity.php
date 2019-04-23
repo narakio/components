@@ -134,7 +134,7 @@ class Entity extends Model
     {
         $entities = array_flip(static::getConstants());
         if (isset($entities[$entityID])) {
-            return trans(sprintf('general.enumerables.%s', $entities[$entityID]));
+            return trans(sprintf('nk::general.enumerables.%s', $entities[$entityID]));
         }
         return null;
     }

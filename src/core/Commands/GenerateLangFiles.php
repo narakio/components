@@ -18,21 +18,25 @@ class GenerateLangFiles extends Command
      *
      * @var    string
      */
-    protected $description = 'Translates the project language files in directory resources/lang/en';
-
-    private $languages;
+    protected $description = 'Translates the project language files';
 
     /**
-     * The directory containing the original language files that will serve as a template
-     *
+     * @var array
      */
-    protected $origDir = "resources/lang/en/";
+    protected $availableLocales;
+    /**
+     * @var bool
+     */
+    protected $deleteMode = false;
 
-    protected $origLang = "en";
 
     public function __construct()
     {
         parent::__construct();
+        $this->defaultLocale = config('app.locale');
+        $locales = config('app.locales');
+        unset($locales[$this->defaultLocale]);
+        $this->availableLocales = array_keys($locales);
     }
 
     /**
@@ -42,14 +46,14 @@ class GenerateLangFiles extends Command
      */
     protected function getOptions()
     {
-        return array(
-            array(
-                'l',
-                'l',
-                InputOption::VALUE_REQUIRED,
-                'Generate an empty set of language files using the language code of your choice (i.e app::lang -l zh_cn).'
-            ),
-        );
+        return [
+            [
+                'delete',
+                'd',
+                InputOption::VALUE_NONE,
+                'Delete language files other than those that match the default language.'
+            ]
+        ];
     }
 
     /**
@@ -59,76 +63,106 @@ class GenerateLangFiles extends Command
      */
     public function handle()
     {
-        $this->comment('=====================================');
-        $this->comment('');
-        $this->info('  App language file creation');
-        $this->comment('');
-        $this->comment('=====================================');
-
-        if ($this->option('l')) {
-            $this->languages = array(
-                "" => ['name' => $this->option('l'), 'code' => $this->option('l')],
-            );
-        } else {
-            $this->languages = array(
-                "" => ['name' => 'language', 'code' => "empty"]
-            );
+        if ($this->option('delete')) {
+            $this->deleteMode = true;
         }
+        $dirsToExplore = [
+            '/',
+            '/vendor/naraki/',
+            '/vendor/naraki/components/src/'
+        ];
 
-        $dir = opendir($this->origDir);
-        if (!$dir) {
-            die(sprintf("%s could not be read.", $this->origDir));
+        /**
+         * We look for a resources/lang folder in the list of above directories.
+         * If in those folders we find a folder matching the name of the current locale, we make as many copies of it
+         * as there are languages.
+         */
+        foreach ($dirsToExplore as $dir) {
+            $basePath = base_path() . $dir;
+            $basePathHandle = @opendir($basePath);
+            if ($basePathHandle) {
+                while (($basePathFile = readdir($basePathHandle)) !== false) {
+                    if (strpos($basePathFile, '.') === 0) {
+                        continue;
+                    }
+                    $langFolder = $basePath . $basePathFile . '/resources/lang/';
+                    $langFolderHandle = @opendir($langFolder);
+                    if ($langFolderHandle) {
+                        while (($langFolderFile = readdir($langFolderHandle)) !== false) {
+                            if (strpos($langFolderFile, '.') === 0) {
+                                continue;
+                            }
+                            $langHandle = @opendir($langFolder . $langFolderFile);
+                            if ($langHandle && strpos($langFolderFile, '.') !== 0) {
+                                if ($langFolderFile === $this->defaultLocale) {
+                                    if (!$this->deleteMode) {
+                                        $this->translate($langHandle, $langFolder . $langFolderFile);
+                                    } else {
+                                        foreach ($this->availableLocales as $locale) {
+                                            if (is_dir($langFolder . $locale)) {
+                                                $this->delTree($langFolder . $locale);
+                                            }
+                                        }
+                                    }
+                                }
+                                @closedir($langHandle);
+                            }
+                        }
+                        @closedir($langFolderHandle);
+                    }
+                }
+                @closedir($basePathHandle);
+            }
         }
-        $this->translate($dir, $this->origDir);
-        closedir($dir);
-
-        $this->comment('');
-        $this->comment('=====================================');
-        $this->comment('');
-        $this->info('    App language file creation complete.');
-        $this->comment('');
-        $this->comment('=====================================');
     }
 
-    private function translate($dir, $origDir)
+    private function translate($dirHandle, $baseDir)
     {
-        while (($file = readdir($dir)) !== false) {
-            if (is_file($origDir . $file) && substr($file, -4) == ".php") {
+        while (($file = readdir($dirHandle)) !== false) {
+            $path = $baseDir . '/' . $file;
+            if (is_file($path) && substr($file, -4) == '.php') {
                 //Importing the contents as a php array
-                $langArray = include($origDir . $file);
+                $langArray = include($path);
 
-                if (!$langArray) {
-                    die("The file " . $origDir . $file . "could not be read.");
+                if (empty($langArray) || is_null($langArray)) {
+                    continue;
                 }
 
-                $this->info('  Copying ' . $origDir . $file);
-                foreach ($this->languages as $langCode => $langInfo) {
-                    $this->info('     ------> ' . str_replace(
-                            sprintf('/%s/', $this->origLang),
-                            sprintf('/%s/', $this->languages[$langCode]['code']),
-                            $origDir . $file)
-                    );
-                    $result = $this->translateArray($langArray);
+                $pathString = explode('/', $baseDir);
+                $this->info(sprintf('Copying "%s->%s"...', $pathString[count($pathString) - 4], $file));
 
+                foreach ($this->availableLocales as $langCode) {
+                    $this->info(sprintf("\tinto the '%s' folder", $langCode));
+                    $result = $this->translateArray($langArray, true);
 
                     if (!empty($result)) {
                         $langFolderName = str_replace(
-                            sprintf('/%s/', $this->origLang),
-                            sprintf('/%s/', $this->languages[$langCode]['code']),
-                            $origDir
+                            sprintf('/%s', $this->defaultLocale),
+                            sprintf('/%s', $langCode),
+                            $baseDir
                         );
                         if (!is_dir($langFolderName)) {
                             mkdir($langFolderName, 0751, true);
                         }
 
-                        if (!is_file($langFolderName . $file)) {
-                            file_put_contents($langFolderName . $file,
-                                sprintf("<?php return [\n%s\n];", $this->arrayToString(($result))));
+                        $destination = $langFolderName . '/' . $file;
+                        //If the file doesn't already exist, we write our copied contents into the new file
+                        if (!is_file($destination)) {
+                            file_put_contents($destination,
+                                sprintf(
+                                    "<?php\n\nreturn [\n%s\n];",
+                                    $this->arrayToString(
+                                        $result
+                                    )
+                                )
+                            );
                         } else {
-                            $existingLangArray = include($langFolderName . $file);
-
-                            file_put_contents($langFolderName . $file,
-                                sprintf("<?php return [\n%s\n];",
+                            //If the file exist, it may contain translated strings that we want to keep,
+                            //but also strings that we need to add because they were created sometime
+                            //after that existing file was created.
+                            $existingLangArray = include($destination);
+                            file_put_contents($destination,
+                                sprintf("<?php\n\nreturn [\n%s\n];",
                                     $this->arrayToString(
                                         $this->translateArray(
                                             $this->compareNCopy($langArray, $existingLangArray),
@@ -137,28 +171,25 @@ class GenerateLangFiles extends Command
                                     )
                                 )
                             );
-
                         }
                     }
-                }
-            } else {
-                if (is_dir($origDir . $file) && strpos($origDir . $file, '/.') === false) {
-                    $tmpOrigDir = $origDir . $file . "/";
-                    $tmpDir = opendir($tmpOrigDir);
-                    $this->translate($tmpDir, $tmpOrigDir, $this->languages);
-                    closedir($tmpDir);
                 }
             }
         }
     }
 
+    /**
+     * @param array $old
+     * @param array $new
+     * @return array
+     */
     private function compareNCopy($old, $new)
     {
         $result = [];
         foreach ($old as $k => $v) {
             if (!isset($new[$k])) {
                 if (!is_array($v)) {
-                    $result[$k] = '__'.$v;
+                    $result[$k] = '__' . $v;
                 } else {
                     $result[$k] = $this->compareNCopy($v, []);
                 }
@@ -168,7 +199,18 @@ class GenerateLangFiles extends Command
                 } else {
                     $z = array_diff_key($new[$k], $v);
                     if (!empty($z)) {
-                        $result[$k] = array_merge($z, $this->compareNCopy($v, $new[$k]));
+                        //using '+' because array merge does not preserve keys
+                        $result[$k] = $z + $this->compareNCopy($v, $new[$k]);
+                    } else {
+                        $result[$k] = $this->compareNCopy($v, $new[$k]);
+                    }
+                    $z = array_diff_key($v, $new[$k]);
+                    if (!empty($z)) {
+                        //using '+' because array merge does not preserve keys
+                        foreach ($z as $key => $f) {
+                            unset($new[$key]);
+                        }
+                        $result[$k] = $z + $this->compareNCopy($v, $new[$k]);
                     } else {
                         $result[$k] = $this->compareNCopy($v, $new[$k]);
                     }
@@ -187,18 +229,17 @@ class GenerateLangFiles extends Command
      *
      * @return array
      */
-    public static function translateArray($langArray, $toEmptyArray = true)
+    public static function translateArray($langArray, $toTransposedArray = true)
     {
         $result = [];
         foreach ($langArray as $key => $value) {
             if (is_array($value)) {
-                $result[$key] = static::translateArray($value, $toEmptyArray);
+                $result[$key] = static::translateArray($value, $toTransposedArray);
             } else {
-                if (!empty($value) && $toEmptyArray === false) {
+                if (!empty($value) && $toTransposedArray === false) {
                     $result[$key] = sprintf("'%s'", str_replace("'", "\\'", $value));
                 } else {
-                    $result[$key] = "''";
-
+                    $result[$key] = sprintf("'__%s'", str_replace("'", "\\'", $value));
                 }
             }
         }
@@ -206,7 +247,13 @@ class GenerateLangFiles extends Command
         return $result;
     }
 
-    public static function arrayToString($data, $lvl = 1, $tabSize = 3)
+    /**
+     * @param array $data
+     * @param int $lvl
+     * @param int $tabSize
+     * @return string
+     */
+    public static function arrayToString($data, $lvl = 1, $tabSize = 4): string
     {
         $string = "";
         foreach ($data as $key => $value) {
@@ -223,5 +270,19 @@ class GenerateLangFiles extends Command
         return $string;
     }
 
+    public function delTree($dir)
+    {
+        $files = array_diff(scandir($dir), array('.', '..'));
+        foreach ($files as $file) {
+            (is_dir("$dir/$file")) ? delTree("$dir/$file") : @unlink("$dir/$file");
+        }
+        return @rmdir($dir);
+    }
+
+    public function __call($name, $args)
+    {
+        return $this->{$name}(...$args);
+
+    }
 
 }

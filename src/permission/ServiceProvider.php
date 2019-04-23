@@ -21,6 +21,7 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'permission');
         app('events')->listen(
             Events\PermissionEntityUpdated::class,
             Listeners\UpdatePermissions::class

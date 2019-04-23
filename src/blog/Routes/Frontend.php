@@ -30,13 +30,13 @@ class Frontend
     public static function guest($locale)
     {
         return function (Router $r) use ($locale) {
-            $r->get(trans('routes.blog_slug', [], $locale), 'Blog@getPost')
+            $r->get(trans('blog::tr.routes.blog_slug', [], $locale), 'Blog@getPost')
                 ->name(i18nRouteNames($locale, 'blog'));
-            $r->get(trans('routes.blog_cat', [], $locale), 'Blog@category')
+            $r->get(trans('blog::tr.routes.blog_cat', [], $locale), 'Blog@category')
                 ->name(i18nRouteNames($locale, 'blog.category'));
-            $r->get(trans('routes.blog_tag', [], $locale), 'Blog@tag')
+            $r->get(trans('blog::tr.routes.blog_tag', [], $locale), 'Blog@tag')
                 ->name(i18nRouteNames($locale, 'blog.tag'));
-            $r->get(trans('routes.blog_author', [], $locale), 'Blog@author')
+            $r->get(trans('blog::tr.routes.blog_author', [], $locale), 'Blog@author')
                 ->name(i18nRouteNames($locale, 'blog.author'));
         };
 

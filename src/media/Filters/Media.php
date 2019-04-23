@@ -17,7 +17,7 @@ class Media extends Filters
             return $this->builder
                 ->orderBy($name,
                     trans(
-                        sprintf('js-backend.filters.%s',
+                        sprintf('nk::jsb.filters.%s',
                             $this->getFilter('order')
                         )
                     ) ?? 'asc'

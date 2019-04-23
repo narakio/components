@@ -36,15 +36,15 @@ class Group extends Controller
                 ->filter($filter)->paginate(10),
             'columns' => (new \Naraki\Sentry\Models\Group)->getColumnInfo([
                 'group_name' => (object)[
-                    'name' => trans('js-backend.db.group_name'),
+                    'name' => trans('nk::jsb.db.group_name'),
                     'width' => '60%'
                 ],
                 'group_mask' => (object)[
-                    'name' => trans('js-backend.db.group_mask'),
+                    'name' => trans('nk::jsb.db.group_mask'),
                     'width' => '20%'
                 ]
             ], $filter),
-            'member_count' => trans('js-backend.db.member_count'),
+            'member_count' => trans('nk::jsb.db.member_count'),
 
         ];
 

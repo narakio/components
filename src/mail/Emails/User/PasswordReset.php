@@ -12,7 +12,7 @@ class PasswordReset extends Email
     {
         parent::prepareViewData();
         $this->viewData->add([
-            'title' => trans('email.password_reset.title'),
+            'title' => trans('mail::tr.password_reset.title'),
             'subject' => trans(
                 'email.password_reset.subject',
                 ['app_name' => config('app.name')]

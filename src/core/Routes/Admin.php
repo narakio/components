@@ -46,7 +46,7 @@ class Admin
             unset($availableLocales[app()->getLocale()]);
             $availableLocales[''] = '';
             foreach($availableLocales as $locale =>$v){
-                $r->post(trans('routes.admin_login', [], $locale), 
+                $r->post(trans('core::tr.routes.admin_login', [], $locale),
                     'Auth\Login@login')->name(i18nRouteNames($locale, 'admin.login')
                 );
             }

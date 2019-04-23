@@ -87,7 +87,7 @@ class Blog extends Controller
         $breadcrumbs = [];
         foreach ($categories as $cat) {
             $breadcrumbs[] = [
-                'label' => trans(sprintf('pages.blog.category.%s', $cat->getAttribute('cat'))),
+                'label' => trans(sprintf('blog::tr.category.%s', $cat->getAttribute('cat'))),
                 'url' => route_i18n('blog.category', $cat->getAttribute('cat'))
             ];
         }
@@ -129,10 +129,10 @@ class Blog extends Controller
 
         $breadcrumbs = Breadcrumbs::render([
             [
-                'label' => trans(sprintf('pages.blog.category.%s', $slug)),
+                'label' => trans(sprintf('blog::tr.category.%s', $slug)),
             ]
         ]);
-        $title = trans('titles.routes.blog.category', ['name' => $featured->getAttribute('cat')]);
+        $title = trans('blog::tr.titles.blog.category', ['name' => $featured->getAttribute('cat')]);
 
         return view(
             'blog::category',
@@ -164,7 +164,7 @@ class Blog extends Controller
         }
         $tag = (object)$posts->first()->only(['tag']);
         $media = $this->getImages($posts);
-        $title = trans('titles.routes.blog.tag', ['name' => $tag->tag]);
+        $title = trans('blog::tr.titles.blog.tag', ['name' => $tag->tag]);
         return view(
             'blog::tag', compact('posts', 'media', 'tag', 'title'));
     }
@@ -196,7 +196,7 @@ class Blog extends Controller
             throw new NotFoundHttpException('Author not found');
         }
         $media = $this->getImages($posts);
-        $title = trans('titles.routes.blog.author', ['name' => $author->author]);
+        $title = trans('blog::tr.titles.blog.author', ['name' => $author->author]);
         return view(
             'blog::author', compact('posts', 'media', 'author', 'title')
         );
