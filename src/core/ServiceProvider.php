@@ -47,6 +47,7 @@ class ServiceProvider extends LaravelServiceProvider
                 __DIR__ . '/resources/views' => resource_path('views/vendor/core'),
             ]);
         }
+
         $this->registerComposers();
         if ($this->app->runningInConsole()) {
             $this->registerCommands();
@@ -97,9 +98,9 @@ class ServiceProvider extends LaravelServiceProvider
             'core::frontend.errors.*',
             'blog::*'
         ], Composers\Frontend::class);
-        $this->app->make('view')->composer([
-            'core::frontend.site.home',
-        ], Composers\Frontend\Home::class);
+//        $this->app->make('view')->composer([
+//            'core::frontend.site.home',
+//        ], Composers\Frontend\Home::class);
 
     }
 
