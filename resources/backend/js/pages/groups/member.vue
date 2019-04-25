@@ -10,18 +10,18 @@
                         {{$t('general.save_changes')}}
                     </button>
                 </form>
-                <h5>{{$t('pages.members.group_name')}}&nbsp;{{this.$route.params.group}}
+                <h5>{{$t('members.group_name')}}&nbsp;{{this.$route.params.group}}
                 </h5>
             </div>
             <div id="member_edit_preview" class="card mb-3">
                 <div class="card-header">
-                    {{$t('pages.members.edit_preview')}}
+                    {{$t('members.edit_preview')}}
                 </div>
                 <div class="card-body">
                     <div class="row ml-1" v-if="removedUsers.length>0||addedUsers.length>0">
                         <div class="col-md">
                             <div class="row">
-                                <p>{{$t('pages.members.user_add_tag')}}</p>
+                                <p>{{$t('members.user_add_tag')}}</p>
                             </div>
                             <div class="row">
                                 <ul v-if="addedUsers.length>0" class="list-group col-md-6">
@@ -30,12 +30,12 @@
                                         {{addedUser.text}}
                                     </li>
                                 </ul>
-                                <p v-else>{{$t('pages.members.user_no_add')}}</p>
+                                <p v-else>{{$t('members.user_no_add')}}</p>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="row">
-                                <p>{{$t('pages.members.user_remove_tag')}}</p>
+                                <p>{{$t('members.user_remove_tag')}}</p>
                             </div>
                             <ul v-if="removedUsers.length>0" class="list-group col-md-6">
                                 <li v-for="(removedUser,idx) in removedUsers" :key="idx"
@@ -50,37 +50,37 @@
                                     </div>
                                 </li>
                             </ul>
-                            <p v-else>{{$t('pages.members.user_no_remove')}}</p>
+                            <p v-else>{{$t('members.user_no_remove')}}</p>
                         </div>
                     </div>
-                    <p v-else>{{$t('pages.members.no_changes')}}</p>
+                    <p v-else>{{$t('members.no_changes')}}</p>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-header">
-                    {{$t('pages.members.add_members')}}
+                    {{$t('members.add_members')}}
                 </div>
                 <div class="card-body mb-2">
                     <input-tag-search :typeahead="true"
-                                      :placeholder="$t('pages.members.member_search')"
+                                      :placeholder="$t('members.member_search')"
                                       :searchUrl="'/ajax/admin/users/search'"
                                       @updateAddedItems="updateAddedUsersFromSearch"/>
                 </div>
             </div>
             <div class="card mb-3">
                 <div class="card-header">
-                    {{$t('pages.members.remove_members')}}
+                    {{$t('members.remove_members')}}
                 </div>
                 <div class="card-body mb-2">
                     <div v-if="userCount>userCountThreshold">
                         <input-tag-search :typeahead="true"
-                                          :placeholder="$t('pages.members.member_search')"
+                                          :placeholder="$t('members.member_search')"
                                           :searchUrl="`/ajax/admin/members/${this.$route.params.group}/search`"
                                           @updateAddedItems="updateRemovedUsersFromSearch"/>
                     </div>
                     <div v-else-if="userCount>0">
                         <div class="container row">
-                            <p>{{$t('pages.members.current_members')}}</p>
+                            <p>{{$t('members.current_members')}}</p>
                         </div>
                         <div id="group-members-list" class="container row">
                             <div v-for="(member,idx) in members" :key="idx" class="col-md-3">
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <p v-else>{{$t('pages.members.user_none')}}</p>
+                    <p v-else>{{$t('members.user_none')}}</p>
                 </div>
             </div>
         </div>

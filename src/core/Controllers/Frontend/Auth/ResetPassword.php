@@ -36,7 +36,7 @@ class ResetPassword extends Controller
      */
     public function showResetForm($token, $email,Request $request)
     {
-        return view('core::frontend.auth.passwords.reset')->with(
+        return view('nk::frontend.auth.passwords.reset')->with(
             ['token' => $token, 'email' => urldecode($email)]
         );
     }

@@ -2,7 +2,7 @@
   <div class="card">
     <form @submit.prevent="mode==='edit'?save():create()" @keydown="form.onKeydown($event)">
       <b-tabs card>
-        <b-tab :title="form.fields.full_name?form.fields.full_name:$t('pages.users.new_user')" active>
+        <b-tab :title="form.fields.full_name?form.fields.full_name:$t('users.new_user')" active>
           <div class="col-md-8 offset-md-2">
             <div v-if="mediaData" class="form-group row justify-content-center">
               <img :src="getImageUrl(mediaData.uuid,null,mediaData.ext)"/>
@@ -121,10 +121,10 @@
               <p><span class="callout-tag callout-tag-warning">
                 <i class="fa fa-exclamation"></i>
               </span>
-                &nbsp;{{$t('pages.users.warning1')}}
+                &nbsp;{{$t('users.warning1')}}
               </p>
               <p>
-                {{$t('pages.users.warning2')}}
+                {{$t('users.warning2')}}
               </p>
             </div>
             <div>

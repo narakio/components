@@ -10,13 +10,13 @@
                 <input type="checkbox" name="open_graph"
                        class="custom-control-input" id="chk-open-graph"
                        v-model="form.fields.open_graph">
-                <label class="custom-control-label" for="chk-open-graph">{{ $t('pages.settings.enable_open_graph')
+                <label class="custom-control-label" for="chk-open-graph">{{ $t('settings.enable_open_graph')
                   }}</label>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.facebook_publisher') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.facebook_publisher') }}</label>
             <div class="col-md-8">
               <input type="text" class="form-control" name="facebook_publisher"
                      id="input-facebook-publisher" autocomplete="off"
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.facebook_app_id') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.facebook_app_id') }}</label>
             <div class="col-md-8">
               <input type="text" class="form-control" name="facebook_app_id"
                      id="input-facebook-app-id" autocomplete="off"
@@ -40,12 +40,12 @@
                        class="custom-control-input" id="chk-twitter-cards"
                        v-model="form.fields.twitter_cards">
                 <label class="custom-control-label"
-                       for="chk-twitter-cards">{{ $t('pages.settings.enable_twitter_cards') }}</label>
+                       for="chk-twitter-cards">{{ $t('settings.enable_twitter_cards') }}</label>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.twitter_publisher') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.twitter_publisher') }}</label>
             <div class="col-md-8">
               <input type="text" class="form-control" name="twitter_publisher"
                      id="input-name" autocomplete="off" placeholder="@twitter"

@@ -1,9 +1,9 @@
 <template>
     <div>
         <b-tabs card>
-            <b-tab :title="$t('pages.blog.tab_available')" @click="resetUploadsList">
+            <b-tab :title="$t('blog.tab_available')" @click="resetUploadsList">
                 <template v-if="thumbnails.length>0">
-                    <p class="font-italic">{{$t('pages.blog.click_featured')}}</p>
+                    <p class="font-italic">{{$t('blog.click_featured')}}</p>
                 </template>
                 <div class="thumbnail-group" :class="{'thumbnail-loading':ajaxIsLoading}">
                     <div v-show="ajaxIsLoading" class="fa-5x sync-icon">
@@ -22,12 +22,12 @@
                             <div class="thumbnail-controls">
                                 <button type="button" class="btn btn-sm"
                                         :class="{'btn-danger':!image.used,'disabled':image.used, 'btn-dark':image.used}"
-                                        :title="$t('pages.blog.delete_image')"
+                                        :title="$t('blog.delete_image')"
                                         @click="deleteImage(image.uuid,image.used)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-info"
-                                        :title="$t('pages.blog.edit_image')"
+                                        :title="$t('blog.edit_image')"
                                         @click="goToEditImagePage(image.uuid)">
                                     <i class="fa fa-pencil"></i>
                                 </button>
@@ -40,7 +40,7 @@
                     </ul>
                 </div>
             </b-tab>
-            <b-tab :title="$t('pages.blog.tab_upload')" :disabled="!isActive">
+            <b-tab :title="$t('blog.tab_upload')" :disabled="!isActive">
                 <dropzone class="dropzone"
                           tag="section"
                           v-bind="dropzoneOptions"
@@ -92,7 +92,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row preview-row" v-if="file.status==='success'">
-                                                    <p>{{$t('pages.blog.image_uploaded')}}</p>
+                                                    <p>{{$t('blog.image_uploaded')}}</p>
                                                 </div>
                                                 <div v-else-if="file.status!=='error'" class="row blinker blinker-red">
                                                     <p>{{$t('avatar-uploader.image_uploading')}}</p>

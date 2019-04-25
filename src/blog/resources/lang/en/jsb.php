@@ -68,7 +68,9 @@ return [
         'published_at' => 'Publishing date:',
         'save_success' => 'The blog post was updated.',
         'tab_available' => 'Available media',
-        'tab_upload' => 'Upload'
+        'tab_upload' => 'Upload',
+        'info_sticky' => 'This blog post is pinned. Click to unpin.',
+        'info_not_sticky' => 'Click to pin this post.'
     ],
     'blog_categories' => [
         'add_child_node' => 'Add a child element to "{name}"',

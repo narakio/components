@@ -11,7 +11,7 @@ class Account extends Controller
     public function edit()
     {
         $user = auth()->user();
-        return view('core::frontend.site.settings.panes.account', [
+        return view('nk::frontend.site.settings.panes.account', [
             'user' => $user,
             'title' => trans('nk::pages.profile.settings_title'),
             'breadcrumbs' => Breadcrumbs::render([

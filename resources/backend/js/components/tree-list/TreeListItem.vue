@@ -38,15 +38,15 @@
               <span class="li-label">{{node.label}}</span>
               <div class="li-btn-group">
                 <button type="button" class="btn btn-sm btn-default" @click="addItem"
-                        :title="$t('pages.blog_categories.add_child_node',{name:node.label})">
+                        :title="$t('blog_categories.add_child_node',{name:node.label})">
                   <i class="fa fa-plus"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-default" @click="editItem"
-                        :title="$t('pages.blog_categories.edit_node',{name:node.label})">
+                        :title="$t('blog_categories.edit_node',{name:node.label})">
                   <i class="fa fa-pencil"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-default" @click="deleteItem"
-                        :title="$t('pages.blog_categories.delete_node',{name:node.label})">
+                        :title="$t('blog_categories.delete_node',{name:node.label})">
                   <i class="fa fa-trash"></i>
                 </button>
               </div>

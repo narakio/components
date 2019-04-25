@@ -4,7 +4,7 @@
       <div class="col p-0 m-0">
         <form @submit.prevent="save">
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.site_title') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.site_title') }}</label>
             <div class="col-md-8">
               <input type="text" class="form-control" name="site_title"
                      id="input-website-title" autocomplete="off"
@@ -12,7 +12,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.site_keywords') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.site_keywords') }}</label>
             <div class="col-md-8">
               <input type="text" class="form-control" name="site_keywords"
                      id="input-website-keywords" autocomplete="off"
@@ -21,7 +21,7 @@
           </div>
           <div class="form-group row">
             <label for="site_description" class="col-md-3 col-form-label text-md-right">{{
-              $t('pages.settings.site_description') }}</label>
+              $t('settings.site_description') }}</label>
             <div class="col-md-8">
               <textarea v-model="form.fields.site_description"
                         name="site_description" id="site_description"
@@ -35,7 +35,7 @@
                 <input type="checkbox" name="robots"
                        class="custom-control-input" id="chk-robots"
                        v-model="form.fields.robots">
-                <label class="custom-control-label" for="chk-robots">{{ $t('pages.settings.allow_robots') }}</label>
+                <label class="custom-control-label" for="chk-robots">{{ $t('settings.allow_robots') }}</label>
               </div>
             </div>
           </div>
@@ -46,19 +46,19 @@
                 <input type="checkbox" name="jsonld"
                        class="custom-control-input" value="" id="chk-json-ld"
                        v-model="form.fields.jsonld">
-                <label class="custom-control-label" for="chk-json-ld">{{ $t('pages.settings.jsonld_on') }}</label>
+                <label class="custom-control-label" for="chk-json-ld">{{ $t('settings.jsonld_on') }}</label>
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.website_type') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.website_type') }}</label>
             <div class="col-md-8">
               <button-group @active-changed="changeWebsiteType" :field-name="'website-type'"
                             :active="form.fields.website_type" :choices="websiteTypes"></button-group>
             </div>
           </div>
           <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.entity_type') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.entity_type') }}</label>
             <div class="col-md-8">
               <button-group @active-changed="changeEntity" :field-name="'entity-type'"
                             :active="form.fields.entity_type" :choices="entityType"></button-group>
@@ -68,7 +68,7 @@
             <div class="container">
               <div class="row form-group ">
                 <label for="input-name" class="col-md-3 col-form-label text-md-right">{{
-                  $t('pages.settings.person_name') }}</label>
+                  $t('settings.person_name') }}</label>
                 <div class="col-md-8">
                   <input type="text" class="form-control" name="entity_name"
                          id="input-name" autocomplete="off"
@@ -77,7 +77,7 @@
               </div>
               <div class="row form-group ">
                 <label for="input-url" class="col-md-3 col-form-label text-md-right">{{
-                  $t('pages.settings.person_url') }}</label>
+                  $t('settings.person_url') }}</label>
                 <div class="col-md-8">
                   <input type="text" class="form-control" name="entity_name"
                          id="input-url" autocomplete="off"
@@ -90,7 +90,7 @@
             <div class="container">
               <div class="row form-group ">
                 <label for="input-org-name" class="col-md-3 col-form-label text-md-right">{{
-                  $t('pages.settings.person_url') }}</label>
+                  $t('settings.person_url') }}</label>
                 <div class="col-md-8">
                   <input type="text" class="form-control" name="entity_name"
                          id="input-org-name" autocomplete="off"
@@ -99,7 +99,7 @@
               </div>
               <div class="row form-group ">
                 <label for="organizations" class="col-md-3 col-form-label text-md-right">{{
-                  $t('pages.settings.entity_org_type')
+                  $t('settings.entity_org_type')
                   }}</label>
                 <div class="col-md-8">
                   <select id="organizations" class="custom-select" v-model="form.fields.org_type">
@@ -110,7 +110,7 @@
                 </div>
               </div>
               <div class="row form-group ">
-                <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.entity_logo')
+                <label class="col-md-3 col-form-label text-md-right">{{ $t('settings.entity_logo')
                   }}</label>
                 <div class="col-md-8">
                   <div class="custom-file">
@@ -128,7 +128,7 @@
             </div>
           </div>
           <hr class="col-md-9 ml-md-auto">
-          <p class="font-italic">{{ $t('pages.settings.entity_social_help') }}</p>
+          <p class="font-italic">{{ $t('settings.entity_social_help') }}</p>
           <div v-for="(field, idx) in form.fields.links" class="form-group row" :key="'links'+idx">
             <label class="col-md-3 col-form-label text-md-right"></label>
             <div class="col-md-8 form-inline">
@@ -137,7 +137,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="input-link" class="col-md-3 col-form-label text-md-right">{{ $t('pages.settings.social_url')
+            <label for="input-link" class="col-md-3 col-form-label text-md-right">{{ $t('settings.social_url')
               }}</label>
             <div class="col-md-8 form-inline">
               <input type="text" class="form-control w-75 mr-2" id="input-link" ref="inputLink" autocomplete="off">
@@ -188,8 +188,8 @@
           links: []
         }),
         entityType: {
-          person: this.$t('pages.settings.entity_person'),
-          organization: this.$t('pages.settings.entity_organization')
+          person: this.$t('settings.entity_person'),
+          organization: this.$t('settings.entity_organization')
         },
         organizationLogo: null,
         orgTypes: null,

@@ -6,7 +6,7 @@
                     <p class="text-danger">{{error}}</p>
                 </div>
                 <div class="row">
-                    <tree-list :add-root-button-label="$t('pages.blog.add_root_button')"
+                    <tree-list :add-root-button-label="$t('blog.add_root_button')"
                                :data="data"
                                :addCallback="addCat"
                                :editCallback="editCat"

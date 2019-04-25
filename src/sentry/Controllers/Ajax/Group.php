@@ -44,7 +44,7 @@ class Group extends Controller
                     'width' => '20%'
                 ]
             ], $filter),
-            'member_count' => trans('nk::jsb.db.member_count'),
+            'member_count' => trans('sentry::jsb.db.member_count'),
 
         ];
 

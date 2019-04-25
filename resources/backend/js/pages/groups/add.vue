@@ -39,8 +39,8 @@
         <b-tab :title="$tc('general.permission',2)">
           <div class="container">
             <div class="callout callout-info">
-              <p>{{$t('pages.groups.info1')}}</p>
-              <p>{{$t('pages.groups.info2')}}</p>
+              <p>{{$t('groups.info1')}}</p>
+              <p>{{$t('groups.info2')}}</p>
             </div>
             <hr>
             <div>

@@ -89,7 +89,7 @@ class ExceptionHandler extends LaravelExceptionHandler
         }
         elseif ($e instanceof HttpException&&!$request->expectsJson()) {
             return response()->view(sprintf(
-                'core::frontend.errors.%s',
+                'nk::frontend.errors.%s',
                 $e->getStatusCode()), [
                 'errors' => new ViewErrorBag(),
                 'exception' => $e->getMessage(),

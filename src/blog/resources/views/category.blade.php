@@ -1,4 +1,4 @@
-@extends('core::frontend.default')
+@extends('nk::frontend.default')
 
 @section('content')
     <div id="blog-category" class="container p-0">
@@ -8,7 +8,7 @@
                     <div class="row">
                         <div id="blog-cat-featured" class="row">
                             <div class="cat-img">
-                                @include('core::partials.img',[
+                                @include('nk::partials.img',[
                                     'media'=>isset($media[$featured->getAttribute('type')])?
                                     $media[$featured->getAttribute('type')]->present('asset'):null,
                                     'alt'=>$featured->getAttribute('title')
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="col-lg-4 col-md-12">
                                             <div class="cat-img">
-                                                @include('core::partials.img',[
+                                                @include('nk::partials.img',[
                                                     'media'=>isset($media[$post->getAttribute('type')])?
                                                     $media[$post->getAttribute('type')]->present('asset'):null,
                                                     'alt'=>$post->getAttribute('title')
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-sm-6 p-0">
-                                        @include('core::partials.img',[
+                                        @include('nk::partials.img',[
                                              'media'=>isset($mvpImages[$mvp->getAttribute('type')])?
                                              $mvpImages[$mvp->getAttribute('type')]->present('thumbnail'):null,
                                              'alt'=>$mvp->getAttribute('title'),

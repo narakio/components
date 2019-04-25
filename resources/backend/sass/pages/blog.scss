@@ -1,3 +1,22 @@
+#table-blog_posts {
+  td {
+    .btn-pin {
+      color: #fff;
+
+      .fa {
+        opacity: 0.5;
+      }
+
+      &.pinned {
+        .fa {
+          opacity: 1;
+          transform: rotate(-25deg);
+        }
+      }
+    }
+  }
+}
+
 #blog-post {
   #blog-post-title {
     position: relative;
@@ -7,7 +26,33 @@
     position: absolute;
     top: 0.5rem;
     right: -1rem;
+  }
 
+  .blog-post-pinned {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    padding: 0.4rem 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .pin-container {
+      position: relative;
+      color: #7d7d7d;
+
+      &.pinned {
+        color: $success;
+      }
+    }
+
+    .pin-marker {
+      position: absolute;
+      font-size: 0.6rem;
+      bottom: -0.3rem;
+      right: -0.4rem;
+    }
   }
 
   .blog-post-url {
@@ -15,10 +60,6 @@
       &:focus {
         box-shadow: none;
       }
-
-      //&:hover{
-      //  background-color:#f3f3f3;
-      //}
     }
   }
 

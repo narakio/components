@@ -7,6 +7,16 @@
           <div class="container">
             <div class="form-group row col-lg mt-3">
               <div class="col-lg-10">
+                <span class="blog-post-pinned"
+                      @click="togglePin"
+                :title="pinned?$t('blog.info_sticky'):$t('blog.info_not_sticky')"
+                :aria-label="pinned?$t('blog.info_sticky'):$t('blog.info_not_sticky')">
+                  <div class="pin-container" :class="[pinned?'pinned':null]">
+                    <i class="fa fa-thumb-tack"></i>
+                    <i v-if="pinned" class="fa fa-check pin-marker"></i>
+                    <i v-else="pinned" class="fa fa-times pin-marker"></i>
+                  </div>
+                </span>
                 <input v-model="form.fields.blog_post_title" type="text" required autocomplete="off"
                        name="blog_post_title"
                        id="blog-post-title"
@@ -82,7 +92,7 @@
                     <div class="m-0 p-0 col-lg d-inline-flex">
                       <div class="container d-inline-flex">
                         <input-tag-search :typeahead="true"
-                                          :placeholder="$t('pages.members.member_search')"
+                                          :placeholder="$t('members.member_search')"
                                           :searchUrl="'/ajax/admin/people/search'"
                                           @updateAddedItems="updatePeople"
                                           limit="1"/>
@@ -101,7 +111,7 @@
                   </div>
                 </div>
                 <template v-else>
-                  <span>{{$t('pages.blog.author')}}: </span>
+                  <span>{{$t('blog.author')}}: </span>
                   <span class="form-field-togglable"
                         @click="toggleEditing('form_user_editing')"
                   >{{blog_post_person}}</span>
@@ -137,7 +147,7 @@
                   </button>
                 </div>
                 <div class="col pl-0" v-else>
-                  <span id="span-published-at">{{$t('pages.blog.published_at')}}&nbsp;<span
+                  <span id="span-published-at">{{$t('blog.published_at')}}&nbsp;<span
                       id="span-nice-datetime"
                       @click="toggleEditing('form_publish_date_editing')">{{formattedPublishedAt}}</span></span>
                 </div>
@@ -167,7 +177,7 @@
                    v-model="tagInput"
                    @keydown.enter.prevent="addTag"
                    maxlength="35"
-                   :placeholder="$t('pages.blog.add_tag_pholder')"/>
+                   :placeholder="$t('blog.add_tag_pholder')"/>
           </div>
         </div>
       </div>
@@ -200,7 +210,7 @@
                   </div>
                   <div class="form-group w-25">
                     <submit-button :native-type="'button'" :loading="loadingButton===0"
-                                   @click="addSource" :disabled="saveMode === 'create'">{{$t('pages.blog.add_source_button')}}
+                                   @click="addSource" :disabled="saveMode === 'create'">{{$t('blog.add_source_button')}}
                     </submit-button>
                   </div>
                 </div>
@@ -228,7 +238,7 @@
       </div>
       <div class="row p-0 m-0 my-1">
         <div class="card col-lg-6 p-0 m-0">
-          <div class="card-header bg-transparent">{{$t('pages.blog.blog_post_excerpt')}}</div>
+          <div class="card-header bg-transparent">{{$t('blog.blog_post_excerpt')}}</div>
           <div class="card-body">
             <div class="form-group">
               <label for="blog_post_excerpt"></label>
@@ -237,19 +247,19 @@
                         placeholder="Post Excerpt"
                         @input="changedField('blog_post_excerpt')"></textarea>
               <small id="help_new_group_name" class="text-muted"
-              >{{$t('pages.blog.excerpt_label')}}
+              >{{$t('blog.excerpt_label')}}
               </small>
             </div>
           </div>
         </div>
         <div class="card col-lg-6 p-0 m-0">
-          <div class="card-header bg-transparent">{{$t('pages.blog.categories')}}</div>
+          <div class="card-header bg-transparent">{{$t('blog.categories')}}</div>
           <div class="card-body">
             <div class="mini-tree-list-container container">
               <div class="row">
                 <tree-list :data="this.blog_categories"
                            :edit-mode="false"
-                           :add-root-button-label="$t('pages.blog.add_root_button')"
+                           :add-root-button-label="$t('blog.add_root_button')"
                            @tree-selected="categorySelected"
                            :mini="true"></tree-list>
               </div>
@@ -314,6 +324,7 @@
         current_publish_date: new Date(),
         blog_post_person: null,
         url: null,
+        pinned: false,
         saveMode: null,
         blog_categories: [],
         tagInput: '',
@@ -327,6 +338,7 @@
           blog_post_title: '',
           blog_status: '',
           blog_post_person: '',
+          blog_post_is_sticky: false,
           categories: [],
           tags: []
         })
@@ -359,6 +371,10 @@
       // window.removeEventListener('beforeunload', this.checkBeforeUnload)
     },
     methods: {
+      togglePin () {
+        this.pinned = !this.pinned
+        axios.post(`/ajax/admin/blog/post/${this.pinned?'pin':'unpin'}/${this.$route.params.slug}`)
+      },
       async deleteSource (record, index) {
         this.loadingButton = index
         const {data} = await axios.delete(
@@ -469,11 +485,11 @@
         let route = this.$route
         if ((route.name.lastIndexOf('add') > 0)) {
           this.saveMode = verb = 'create'
-          msg = this.$t('pages.blog.add_success')
+          msg = this.$t('blog.add_success')
         } else {
           this.saveMode = 'edit'
           verb = `${this.saveMode}/${route.params.slug}`
-          msg = this.$t('pages.blog.save_success')
+          msg = this.$t('blog.save_success')
         }
         this.form.fields.published_at = dayjs(this.form.fields.published_at).format('YYYYMMDDHHmm')
         let formBeforeSave = this.form.getFormData()
@@ -500,6 +516,7 @@
         this.form.fields.blog_post_person = this.form.fields.person_slug
         delete (this.form.fields.person_slug)
         this.status_list = data.status_list
+        this.pinned = (this.form.fields.blog_post_is_sticky!==0)
         this.url = data.url
         this.current_status = this.$t(`constants.${data.record.blog_status}`)
         this.saveMode = saveMode

@@ -23,7 +23,7 @@ class Notifications extends Controller
     {
 
         $user = auth()->user();
-        return view('core::frontend.site.settings.panes.notifications', [
+        return view('nk::frontend.site.settings.panes.notifications', [
             'user' => $user,
             'title' => trans('nk::pages.profile.settings_title'),
             'breadcrumbs' => Breadcrumbs::render([
