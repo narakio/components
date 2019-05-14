@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'admins' => '__admin',
+    'admin.users.index' => '__admin/users',
+    'admin.users.edit' => '__admin/users/:user',
+    'admin.users.add' => '__admin/user/add',
+    'admin.user.profile' => '__admin/user/profile',
+    'admin.user.password' => '__admin/user/password',
+    'admin.user.general' => '__admin/user/general',
+    'admin.user' => '__',
+    'admin.settings' => '__',
+    'admin.settings.general' => '__admin/settings/general',
+    'admin.settings.homepage' => '__admin/settings/homepage',
+    'admin.settings.social' => '__admin/settings/social',
+    'admin.settings.sitemap' => '__admin/settings/sitemap',
+    'admin.system.log' => '__admin/system/log',
+    'admin.media.edit' => '__admin/media/edit/:entity/:media',
+    'admin.media.index' => '__admin/media',
+    'admin.login' => '__admin/login',
+    'admin.groups.members' => '__admin/group/:group/members',
+    'admin.groups.index' => '__admin/groups',
+    'admin.groups.edit' => '__admin/groups/:group',
+    'admin.groups.add' => '__admin/group/create',
+    'admin.dashboard' => '__admin/dashboard',
+    'admin.blog_posts.index' => '__admin/blog/posts',
+    'admin.blog_posts.edit' => '__admin/blog/post/edit/:slug',
+    'admin.blog_posts.delete' => '__admin/blog/post/:slug',
+    'admin.blog_posts.category' => '__admin/blog/category',
+    'admin.blog_posts.add' => '__admin/blog/post/add',
+
+];
