@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="update" @keydown="form.onKeydown($event)">
     <div class="form-group row">
-      <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.user.language') }}</label>
+      <label class="col-md-3 col-form-label text-md-right">{{ $t('user.language') }}</label>
       <div class="col-md-7">
         <select class="custom-select" v-model="form.fields.locale">
           <option v-for="(locale,idx) in locales" :key="idx" :value="locale">{{$t('locales.'+locale)}}
@@ -12,9 +12,9 @@
     <div class="form-group row">
       <label class="col-md-3 col-form-label text-md-right"></label>
       <div class="col-md-7">
-        <h5>{{$t('pages.user.notification_header')}}</h5>
+        <h5>{{$t('user.notification_header')}}</h5>
         <hr class="my-1 mb-3">
-        <p class="mt-3">{{$t('pages.user.notifications')}}</p>
+        <p class="mt-3">{{$t('user.notifications')}}</p>
         <div v-for="event in settings.events" :key="'events'+event.id"
              class="custom-control custom-switch m-1">
           <input type="checkbox"
@@ -27,7 +27,7 @@
     <div class="form-group row">
       <label class="col-md-3 col-form-label text-md-right"></label>
       <div class="col-md-7">
-        <h5>{{$t('pages.user.email_header')}}</h5>
+        <h5>{{$t('user.email_header')}}</h5>
         <hr class="mt-1 mb-3">
         <div v-for="event in settings.events" :key="'email'+event.id"
              class="custom-control custom-switch m-1">

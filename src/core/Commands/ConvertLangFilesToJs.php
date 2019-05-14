@@ -54,7 +54,6 @@ class ConvertLangFilesToJs extends Command
                             }
                             $langHandle = @opendir($langFolder . $langFolderFile);
                             if ($langHandle && strpos($langFolderFile, '.') !== 0) {
-//                                dump($langFolder . $langFolderFile);
                                 $this->scanDir($langFolder . $langFolderFile);
                                 @closedir($langHandle);
                             }
@@ -75,19 +74,21 @@ class ConvertLangFilesToJs extends Command
             $fileBackend = sprintf('%s/lang/%s/routes-admin.php', $jsDir, $locale);
             if (is_file($fileBackend)) {
                 $routes[$locale] = include($fileBackend);
-                $this->info('    - (routes)' . $locale);
+                $this->info(sprintf("\tRoutes (%s)", $locale));
             }
-
         }
+        $this->info("\tWriting routes file");
         $fh = fopen($jsDir . 'backend/js/lang/routes.json', 'w');
         fwrite($fh, json_encode($routes));
         fclose($fh);
+        $this->info("Json file generation complete.");
     }
 
     public function outputToFile($jsDir)
     {
         if (!empty($this->backendFileContents) && !empty($this->frontendFileContents) && !empty($this->commonFileContents)) {
 
+            $this->info('Generating json lang files:');
             $locales = array_keys($this->commonFileContents);
             foreach ($locales as $locale) {
                 foreach ($this->commonFileContents[$locale] as $k => $v) {
@@ -101,18 +102,28 @@ class ConvertLangFilesToJs extends Command
                     }
                 }
                 $fh = fopen(sprintf($jsDir . 'backend/js/lang/%s.json', $locale), 'w');
+                ksort($this->backendFileContents[$locale]);
                 fwrite($fh, json_encode($this->backendFileContents[$locale]));
                 fclose($fh);
-                $this->info('    - Backend ' . $locale);
+                $this->info(sprintf("\tBackend (%s)", $locale));
+                unset($this->backendFileContents);
 
                 foreach ($this->commonFileContents[$locale] as $k => $v) {
-                    $this->backendFileContents[$locale][$k] = $v;
+                    if (isset($this->frontendFileContents[$locale][$k])) {
+                        $this->frontendFileContents[$locale][$k] = array_merge(
+                            $this->frontendFileContents[$locale][$k],
+                            $v
+                        );
+                    } else {
+                        $this->frontendFileContents[$locale][$k] = $v;
+                    }
                 }
 
                 $fh = fopen(sprintf($jsDir . 'frontend/js/lang/%s.json', $locale), 'w');
-                fwrite($fh, json_encode($this->backendFileContents[$locale]));
+                ksort($this->frontendFileContents[$locale]);
+                fwrite($fh, json_encode($this->frontendFileContents[$locale]));
                 fclose($fh);
-                $this->info('    - Frontend ' . $locale);
+                $this->info(sprintf("\tFrontend (%s)", $locale));
             }
         }
 
@@ -134,74 +145,11 @@ class ConvertLangFilesToJs extends Command
             if (!isset($this->{$instanceContentVar}[$lang])) {
                 $this->{$instanceContentVar}[$lang] = include($path);
             } else {
-                $this->{$instanceContentVar}[$lang] = array_merge($this->{$instanceContentVar}[$lang], include($path));
+                $this->{$instanceContentVar}[$lang] = array_merge_recursive(
+                    $this->{$instanceContentVar}[$lang],
+                    include($path)
+                );
             }
         }
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle2()
-    {
-
-        $jsDir = 'vendor/naraki/components/resources/';
-        $origDir = $jsDir . 'lang/';
-
-        $dir = opendir($origDir);
-        if (!$dir) {
-            die(sprintf("%s could not be read.", $origDir));
-        }
-        $this->info('The following files were converted:');
-        $routes = [];
-        while (($languageDir = readdir($dir)) !== false) {
-            $langDir = $origDir . $languageDir;
-            if (is_dir($langDir)) {
-                $fileBackend = sprintf('%s/jsb.php', $langDir);
-                $fileFrontend = sprintf('%s/jsf.php', $langDir);
-                $fileCommon = sprintf('%s/jsc.php', $langDir);
-                if (is_file($fileBackend) && is_file($fileFrontend) && is_file($fileCommon)) {
-                    $contents = include($fileBackend);
-                    $varsCommon = include($fileCommon);
-                    foreach ($varsCommon as $k => $v) {
-                        if (isset($contents[$k])) {
-                            $contents[$k] = array_merge($contents[$k], $v);
-                        } else {
-                            $contents[$k] = $v;
-                        }
-                    }
-                    $fh = fopen(sprintf($jsDir . 'backend/js/lang/%s.json', $languageDir), 'w');
-                    fwrite($fh, json_encode($contents));
-                    fclose($fh);
-                    $this->info('    - Backend ' . $languageDir);
-
-                    $contents = include($fileFrontend);
-                    foreach ($varsCommon as $k => $v) {
-                        if (isset($contents[$k])) {
-                            $contents[$k] = array_merge($contents[$k], $v);
-                        } else {
-                            $contents[$k] = $v;
-                        }
-                    }
-                    $fh = fopen(sprintf($jsDir . 'frontend/js/lang/%s.json', $languageDir), 'w');
-                    fwrite($fh, json_encode($contents));
-                    fclose($fh);
-                    $this->info('    - Frontend ' . $languageDir);
-                }
-                $fileBackend = sprintf('%s/routes-admin.php', $langDir);
-                if (is_file($fileBackend)) {
-                    $routes[$languageDir] = include($fileBackend);
-                    $this->info('    - (routes)' . $languageDir);
-                }
-
-            }
-        }
-        $fh = fopen($jsDir . 'backend/js/lang/routes.json', 'w');
-        fwrite($fh, json_encode($routes));
-        fclose($fh);
-
-        closedir($dir);
     }
 }

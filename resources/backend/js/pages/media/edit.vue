@@ -22,7 +22,7 @@
             </div>
             <div class="form-group row">
               <label for="title"
-                     class="col-md-3 col-form-label">{{$t('pages.media.attached_to')}}</label>
+                     class="col-md-3 col-form-label">{{$t('media.attached_to')}}</label>
               <div class="col-md-9">
                 <input type="text"
                        id="title" class="form-control"
@@ -119,7 +119,7 @@
           </div>
         </b-tab>
         <b-tab :title="$t('general.crop')">
-          <div v-html="$t('pages.media.formats_help')" class="py-2"></div>
+          <div v-html="$t('media.formats_help')" class="py-2"></div>
           <button-group @active-changed="editCropperDimensions" class="py-2" ref="btnGroupDimensions"
                         :field-name="'formats'"
                         :choices="imgFormats">

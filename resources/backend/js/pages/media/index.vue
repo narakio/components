@@ -9,8 +9,8 @@
           <div class="col-md-4">
             <div class="input-group">
               <input type="text" class="form-control"
-                     :placeholder="$t('pages.blog.filter_title')"
-                     :aria-label="$t('pages.blog.filter_title')"
+                     :placeholder="$t('blog.filter_title')"
+                     :aria-label="$t('blog.filter_title')"
                      v-model="titleFilter"
                      @keyup.enter="filterTitle">
               <div class="input-group-append">

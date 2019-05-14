@@ -39,6 +39,8 @@ class Admin
             $r->get('blog/post/edit/{slug}', 'Blog@edit')
                 ->middleware('can:edit,Naraki\Blog\Models\BlogPost');
             $r->post('blog/post/url/edit/{slug}', 'Blog@updateUrl');
+            $r->post('blog/post/pin/{slug}', 'Blog@pin');
+            $r->post('blog/post/unpin/{slug}', 'Blog@unpin');
             $r->post('blog/post/edit/{slug}', 'Blog@update')
                 ->middleware('can:edit,Naraki\Blog\Models\BlogPost');
             $r->delete('blog/post/{slug}', 'Blog@destroy');

@@ -10,6 +10,6 @@ class Search extends Controller
     {
         $q = strip_tags($q);
         $search_url = env('ELASTIC_SEARCH_URL');
-        return view('core::frontend.site.search', compact('q', 'search_url'));
+        return view('nk::frontend.site.search', compact('q', 'search_url'));
     }
 }

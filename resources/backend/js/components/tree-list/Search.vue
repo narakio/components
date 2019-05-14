@@ -2,8 +2,8 @@
     <div class="tree-search-wrapper">
         <div class="input-group input-wrapper">
             <input type="text" class="form-control"
-                   :placeholder="$t('pages.blog.filter_name')"
-                   :aria-label="$t('pages.blog.filter_name')"
+                   :placeholder="$t('blog.filter_name')"
+                   :aria-label="$t('blog.filter_name')"
                    v-model="searchTerm"
                    @input="onInput($event.target.value)"
                    @keyup.esc="isOpen = false"

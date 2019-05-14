@@ -82,7 +82,7 @@ class User extends Controller
             'sorted' => $userFilter->getFilter('sortBy'),
             'columns' => UserProvider::createModel()->getColumnInfo([
                 'full_name' => (object)[
-                    'name' => trans('nk::jsb.db.full_name'),
+                    'name' => trans('sentry::jsb.db.full_name'),
                 ],
                 'email' => (object)[
                     'name' => trans('nk::jsb.general.email'),

@@ -43,17 +43,17 @@
           },
           {
             icon: 'home',
-            name: this.$t('pages.settings.homepage'),
+            name: this.$t('settings.homepage'),
             route: 'admin.settings.homepage'
           },
           {
             icon: 'share-alt',
-            name: this.$t('pages.settings.social'),
+            name: this.$t('settings.social'),
             route: 'admin.settings.social'
           },
           {
             icon: 'map-signs',
-            name: this.$t('pages.settings.sitemap'),
+            name: this.$t('settings.sitemap'),
             route: 'admin.settings.sitemap'
           }
         ]

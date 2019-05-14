@@ -5,7 +5,7 @@ class Admin extends Controller
 
     public function index()
     {
-        return view('core::admin.default');
+        return view('nk::admin.default');
     }
 
 }

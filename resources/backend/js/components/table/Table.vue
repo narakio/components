@@ -5,7 +5,7 @@
         <h3>{{$t('tables.empty')}}</h3>
       </template>
       <template v-else>
-        <table class="table table-hover table-striped">
+        <table class="table table-hover table-striped" :id="`table-${entity}`">
           <thead>
           <tr>
             <slot name="header-select-all">
@@ -30,9 +30,7 @@
                 :class="[info.sortable?'fa fa-'+getColumnHeaderIcon(info):null]"></i></span>
             </th>
             <slot name="header-action">
-              <th class="column-header">
-                {{$t('general.actions')}}
-              </th>
+              <th class="column-header">{{$t('general.actions')}}</th>
             </slot>
           </tr>
           </thead>
@@ -50,9 +48,8 @@
                 </div>
               </td>
             </slot>
-            <td v-for="(info,colIdx) in table.columns" :key="colIdx">
-              {{row[info.name]}}
-            </td>
+            <td v-for="(info,colIdx) in table.columns"
+                :key="colIdx">{{row[info.name]}}</td>
             <slot name="body-action" :row="row">
             </slot>
           </tr>

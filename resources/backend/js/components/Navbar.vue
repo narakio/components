@@ -27,7 +27,7 @@
           <li class="btn-nav-group">
             <div class="btn-nav">
               <router-link :to="{ name: 'admin.settings.general' }"
-                           :title="$t('pages.settings.title')">
+                           :title="$t('settings.title')">
                 <i class="fa fa-cogs"></i>
               </router-link>
             </div>
@@ -42,7 +42,7 @@
                     class="badge badge-pill badge-danger">{{notificationCount}}</span>
             </template>
             <b-dropdown-header>{{$tc(
-              'pages.system_log.notifications',
+              'system_log.notifications',
               notificationCount,
               {number:notificationCount}
               )}}
@@ -62,7 +62,7 @@
             <b-dropdown-item router-tag="a"
                              :to="{ name: 'admin.user.profile' }">
               <i class="fa fa-cog"></i>
-              {{ $t('pages.user.settings') }}
+              {{ $t('user.settings') }}
             </b-dropdown-item>
             <b-dropdown-divider/>
             <b-dropdown-item-button @click="logout">

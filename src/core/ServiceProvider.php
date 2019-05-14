@@ -41,7 +41,6 @@ class ServiceProvider extends LaravelServiceProvider
             \URL::forceScheme('http');
         }
 
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'core');
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/resources/views' => resource_path('views/vendor/core'),
@@ -80,26 +79,26 @@ class ServiceProvider extends LaravelServiceProvider
      */
     private function registerComposers()
     {
-        $this->app->make('view')->composer('core::admin.default', Composers\Admin::class);
+        $this->app->make('view')->composer('nk::admin.default', Composers\Admin::class);
         $this->app->make('view')->composer(
             [
-                'core::frontend.site.settings.panes.profile',
-                'core::frontend.site.settings.panes.account'
+                'nk::frontend.site.settings.panes.profile',
+                'nk::frontend.site.settings.panes.account'
             ],
             Composers\Frontend\Profile::class
         );
         $this->app->make('view')->composer(
-            'core::frontend.site.settings.panes.*',
+            'nk::frontend.site.settings.panes.*',
             Composers\Frontend\Settings::class
         );
         $this->app->make('view')->composer([
-            'core::frontend.auth.*',
-            'core::frontend.site.*',
-            'core::frontend.errors.*',
+            'nk::frontend.auth.*',
+            'nk::frontend.site.*',
+            'nk::frontend.errors.*',
             'blog::*'
         ], Composers\Frontend::class);
 //        $this->app->make('view')->composer([
-//            'core::frontend.site.home',
+//            'nk::frontend.site.home',
 //        ], Composers\Frontend\Home::class);
 
     }

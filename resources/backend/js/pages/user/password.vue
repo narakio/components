@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="update" @keydown="form.onKeydown($event)">
         <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.auth.current_password') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('auth.current_password') }}</label>
             <div class="col-md-7">
                 <input v-model="form.fields.current_password" type="password" name="current_password"
                        class="form-control" autocomplete="current-password"
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.auth.new_password') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('auth.new_password') }}</label>
             <div class="col-md-7">
                 <input v-model="form.fields.password" type="password" name="password"
                        class="form-control" autocomplete="new-password"
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('pages.auth.confirm_password') }}</label>
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('auth.confirm_password') }}</label>
             <div class="col-md-7">
                 <input v-model="form.fields.password_confirmation" type="password" name="password_confirmation"
                        class="form-control" autocomplete="new-password"

@@ -10,13 +10,13 @@
           <div class="col-md-4">
             <div class="input-group">
               <input type="text" class="form-control" ref="inputFilterFullname"
-                     :placeholder="$t('pages.users.filter_full_name')"
-                     :aria-label="$t('pages.users.filter_full_name')"
+                     :placeholder="$t('users.filter_full_name')"
+                     :aria-label="$t('users.filter_full_name')"
                      v-model="nameFilter"
                      @keyup.enter="fullNameFilter">
               <div class="input-group-append">
                 <label class="input-group-text"
-                       :title="$t('pages.users.filter_full_name')"
+                       :title="$t('users.filter_full_name')"
                        @click="fullNameFilter">
                   <i class="fa fa-user"></i>
                 </label>
@@ -26,12 +26,12 @@
           <div class="col-md-4">
             <div class="input-group">
               <select class="custom-select" v-model="groupFilter">
-                <option disabled value="">{{$t('pages.users.filter_group')}}</option>
+                <option disabled value="">{{$t('users.filter_group')}}</option>
                 <option v-for="(group,idx) in data.groups" :key="idx">{{group}}</option>
               </select>
               <div class="input-group-append">
                 <label class="input-group-text"
-                       :title="$t('pages.users.filter_group')">
+                       :title="$t('users.filter_group')">
                   <i class="fa fa-users"></i>
                 </label>
               </div>
@@ -40,7 +40,7 @@
           <div class="col-md-4">
             <div class="input-group">
               <select class="custom-select" id="inputGroupSelect02" v-model="createdFilter">
-                <option disabled value="">{{$t('pages.users.filter_created_at')}}</option>
+                <option disabled value="">{{$t('users.filter_created_at')}}</option>
                 <option :value="$t('filters.day')">{{$t('filter_labels.created_today')}}</option>
                 <option :value="$t('filters.week')">{{$t('filter_labels.created_week')}}</option>
                 <option :value="$t('filters.month')">{{$t('filter_labels.created_month')}}</option>
@@ -48,7 +48,7 @@
               </select>
               <div class="input-group-append">
                 <label class="input-group-text"
-                       :title="$t('pages.users.filter_created_at')">
+                       :title="$t('users.filter_created_at')">
                   <i class="fa fa-calendar"></i>
                 </label>
               </div>

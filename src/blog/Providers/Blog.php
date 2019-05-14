@@ -145,9 +145,9 @@ from  blog_posts
 where language_id = ?) as ranks where ranks.rk <? order by cat asc, page_views desc;
         ', [Entity::BLOG_POSTS, Language::getAppLanguageId(), 6]);
 
-        $types=[];
+        $types = [];
         foreach ($mostViewed as $mvp) {
-            $types[]=$mvp->type;
+            $types[] = $mvp->type;
         }
         $dbImages = MediaProvider::image()->getImages(
             $types, [
@@ -163,11 +163,11 @@ where language_id = ?) as ranks where ranks.rk <? order by cat asc, page_views d
         }
         $result = [];
         foreach ($mostViewed as $mvp) {
-            $tmp =new BlogCollection((array)$mvp);
-            if(isset($mediaTmp[$mvp->type])){
+            $tmp = new BlogCollection((array)$mvp);
+            if (isset($mediaTmp[$mvp->type])) {
                 $tmp->put('media', $mediaTmp[$mvp->type]);
-            }else{
-                $tmp->put('media',new MediaEntity());
+            } else {
+                $tmp->put('media', new MediaEntity());
             }
             $result[$mvp->cat][] = $tmp;
         }
@@ -264,6 +264,16 @@ where language_id = ?) as ranks where ranks.rk <? order by cat asc, page_views d
             }
         }
         return $model;
+    }
+
+    /**
+     * @param string $slug
+     * @param bool $flag
+     */
+    public function pin($slug, $flag)
+    {
+        $this->select(['blog_post_id'])->where('blog_post_slug', $slug)
+            ->update(['blog_post_is_sticky' => $flag]);
     }
 
     /**

@@ -24,7 +24,7 @@ class Profile extends Controller
     public function edit()
     {
         $user = auth()->user();
-        return view('core::frontend.site.settings.panes.profile', [
+        return view('nk::frontend.site.settings.panes.profile', [
             'user' => $user,
             'title' => trans('nk::pages.profile.settings_title'),
             'breadcrumbs' => Breadcrumbs::render([

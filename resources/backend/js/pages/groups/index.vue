@@ -3,7 +3,7 @@
     <div class="row mb-2">
       <router-link :to="{name: 'admin.groups.add'}">
         <button class="btn btn-add"
-                type="button">{{$t('pages.groups.add_group')}}
+                type="button">{{$t('groups.add_group')}}
         </button>
       </router-link>
     </div>

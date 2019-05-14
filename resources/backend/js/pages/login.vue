@@ -26,12 +26,12 @@
               <div class="col-md-3"></div>
               <div class="col-md-9 d-flex">
                 <checkbox v-model="form.fields.remember" name="remember">
-                  {{ $t('pages.auth.remember_me') }}
+                  {{ $t('auth.remember_me') }}
                 </checkbox>
 
-                <a href="/password/reset" class="small ml-auto my-auto">{{ $t('pages.auth.forgot_password') }}</a>
+                <a href="/password/reset" class="small ml-auto my-auto">{{ $t('auth.forgot_password') }}</a>
                 <!--<router-link :to="{ name: 'admin.password.request' }" class="small ml-auto my-auto">-->
-                <!--{{ $t('pages.auth.forgot_password') }}-->
+                <!--{{ $t('auth.forgot_password') }}-->
                 <!--</router-link>-->
               </div>
             </div>

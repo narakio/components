@@ -10,13 +10,13 @@
                 <input type="checkbox" name="sitemap"
                        class="custom-control-input" id="chk-sitemap"
                        v-model="form.fields.sitemap">
-                <label class="custom-control-label" for="chk-sitemap">{{ $t('pages.settings.enable_sitemap')
+                <label class="custom-control-label" for="chk-sitemap">{{ $t('settings.enable_sitemap')
                   }}</label>
               </div>
             </div>
           </div>
           <hr class="col-md-9 ml-md-auto">
-          <p class="font-italic">{{ $t('pages.settings.sitemap_help') }}</p>
+          <p class="font-italic">{{ $t('settings.sitemap_help') }}</p>
           <div v-for="(field, idx) in form.fields.links" class="form-group row" :key="'links'+idx">
             <div class="row form-inline ml-4" style="width:90%">
               <span class="mr-2" style="width:90%">{{field.link}}</span>
@@ -27,8 +27,8 @@
           </div>
           <div class="form-group row py-0 my-0">
             <div class="col form-inline py-0 my-0">
-              <label class="col-form-label" style="width:60%">{{$t('pages.settings.link_url')}}</label>
-              <label class="col-form-label" style="width:40%">{{$t('pages.settings.link_last_modified')}}</label>
+              <label class="col-form-label" style="width:60%">{{$t('settings.link_url')}}</label>
+              <label class="col-form-label" style="width:40%">{{$t('settings.link_last_modified')}}</label>
             </div>
           </div>
           <div class="form-group row">
@@ -43,7 +43,7 @@
                   :open-left="true"
                   :class-list="['ml-3']"
                   v-model="link_updated_at"
-                  :placeholder="$t('pages.settings.link_date_placeholder')"
+                  :placeholder="$t('settings.link_date_placeholder')"
               ></datepicker>
             </div>
           </div>

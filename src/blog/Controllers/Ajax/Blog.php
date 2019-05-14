@@ -32,7 +32,8 @@ class Blog extends Controller
                 \DB::raw('null as selected'),
                 'blog_post_title',
                 'full_name',
-                'blog_post_slug'
+                'blog_post_slug',
+                'blog_post_is_sticky'
             ])->filter($filter)->paginate(25),
             'columns' => BlogRepo::createModel()->getColumnInfo([
                 'blog_post_title' => (object)[
@@ -40,7 +41,7 @@ class Blog extends Controller
                     'width' => '50%'
                 ],
                 'full_name' => (object)[
-                    'name' => trans('blog::jsb.db.full_name'),
+                    'name' => trans('sentry::jsb.db.full_name'),
                     'width' => '30%'
                 ]
             ], $filter)
@@ -82,6 +83,7 @@ class Blog extends Controller
                 'blog_post_slug',
                 'blog_post_content',
                 'blog_post_excerpt',
+                'blog_post_is_sticky',
                 'published_at',
                 'blog_posts.blog_status_id',
                 'blog_status_name as blog_status',
@@ -308,6 +310,22 @@ class Blog extends Controller
             $params['preview'] = true;
         }
         return route_i18n('blog', $params);
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function pin($slug)
+    {
+        BlogRepo::pin($slug,true);
+    }
+
+    /**
+     * @param string $slug
+     */
+    public function unpin($slug)
+    {
+        BlogRepo::pin($slug,false);
     }
 
 }

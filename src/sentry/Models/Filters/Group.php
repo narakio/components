@@ -33,7 +33,7 @@ class Group extends Filters
     public function name($name)
     {
         return $this->builder->where(
-            trans(sprintf('nk::jsb.db_raw.%s', 'group_name')),
+            trans(sprintf('sentry::jsb.db_raw.%s', 'group_name')),
             'like',
             sprintf('%%%s%%', $name));
     }

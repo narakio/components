@@ -22,7 +22,7 @@ class ForgotPassword extends Controller
 
     public function showLinkRequestForm()
     {
-        return view('core::frontend.auth.passwords.email');
+        return view('nk::frontend.auth.passwords.email');
     }
 
 

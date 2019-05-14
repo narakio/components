@@ -28,7 +28,7 @@ class Login extends Controller
     public function index()
     {
         $status = Session::get('status');
-        return view('core::frontend.auth.login', compact('status'));
+        return view('nk::frontend.auth.login', compact('status'));
     }
 
     /**
