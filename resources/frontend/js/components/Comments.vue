@@ -138,17 +138,17 @@
       this.$root.$on('commentDeleted', async ({slug}) => {
         await axios.delete(`/ajax/forum/blog_posts/${vm.slug}/comment/${slug}`)
       })
-      // if (!window.IntersectionObserver) {
-      //   initIntersection(window, document)
-      // }
-      // this.container = this.$el
-      // this.io = new IntersectionObserver(([entry]) => {
-      //   if (entry.isIntersecting) {
-      //     this.scrolledPast = true
-      //     this.io.unobserve(this.container)
-      //   }
-      // })
-      // this.io.observe(this.container)
+      if (!window.IntersectionObserver) {
+        initIntersection(window, document)
+      }
+      this.container = this.$el
+      this.io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          this.scrolledPast = true
+          this.io.unobserve(this.container)
+        }
+      })
+      this.io.observe(this.container)
     },
     methods: {
       changeNotifications (type) {
