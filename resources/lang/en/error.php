@@ -2,7 +2,7 @@
 
 return [
     'http' => [
-        '401' => 'Non-authenticated users may not proceed.',
+        '401' => 'Access denied to non-authenticated users.',
         '500' => [
             'general_error' => 'The operation caused an error. We\'ll be tracking the source of the problem shortly.',
             'general_retrieval_error' => 'The requested resource could not be retrieved. It may have been deleted.',
