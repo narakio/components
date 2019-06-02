@@ -2,12 +2,12 @@
 
 return [
     'general' => [
-        'cancel' => '__Cancel',
-        'confirm' => '__Confirm',
-        'next' => '__Next',
-        'ok' => '__Ok',
-        'prev' => '__Previous',
-        'search' => '__Search',
+        'cancel' => 'Annuler',
+        'confirm' => 'Confirmer',
+        'next' => 'Suivant',
+        'ok' => 'Ok',
+        'prev' => 'Précédent',
+        'search' => 'Recherche',
     ],
     'pwd-strength' => [
         'too_short' => '__The password must meet the minimum length condition.',
