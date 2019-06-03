@@ -11,7 +11,7 @@ return [
     ],
     'pwd-strength' => [
         'too_short' => 'The password must meet the minimum length condition.',
-        'too_long' => 'The password must fewer the maximum length condition.',
+        'too_long' => 'The password must meet the maximum length condition.',
         'one_lowercase' => 'The password must contain at least one lowercase letter.',
         'one_uppercase' => 'The password must contain at least one uppercase letter.',
         'one_number' => 'The password must contain at least one number.',
