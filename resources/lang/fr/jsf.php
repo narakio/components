@@ -2,31 +2,31 @@
 
 return [
     'login-o-auth' => [
-        'login_with_google' => '__Login with Google',
-        'login_with_twitter' => '__Login with Twitter',
-        'login_with_github' => '__Login with Github',
+        'login_with_google' => 'Connexion avec Google',
+        'login_with_twitter' => 'Connexion avec Twitter',
+        'login_with_github' => 'Connexion avec Github',
     ],
     'search' => [
-        'articles' => '__ARTICLES',
-        'authors' => '__AUTHORS',
-        'tags' => '__TAGS',
-        'no_result' => '__NO RESULTS',
-        'more_results' => '__MORE RESULTS FOR {0}',
-        'rss' => '__SEARCH RSS FEED',
+        'articles' => 'ARTICLES',
+        'authors' => 'CONTRIBUTEURS',
+        'tags' => 'TAGS',
+        'no_result' => 'AUCUN RESULTAT',
+        'more_results' => 'PLUS DE RESULTATS POUR {0}',
+        'rss' => 'FLUX RSS',
     ],
     'wysiwyg' => [
-        'delete_link' => '__Remove link',
-        'update_link' => '__Update link',
-        'add_link' => '__Add link',
-        'no_results' => '__No results found.',
+        'delete_link' => 'Supprimer le lien',
+        'update_link' => 'Mettre à jour le lien',
+        'add_link' => 'Ajouter un lien',
+        'no_results' => 'Aucun résultat.',
     ],
     'modal' => [
         'user_delete' => [
-            'h' => '__Confirm user deletion',
-            't' => '__Do you really want to delete your account? This action is irreversible.',
+            'h' => 'Confirmer la suppression du compte',
+            't' => 'Souhaitez-vous vraiment supprimer votre compte ? Cette action est irréversible.',
         ],
         'user_delete_confirm' => [
-            't' => '__Your request for account deletion will be processed shortly. We will log you out now.',
+            't' => 'Votre demande de suppression de compte a été prise en compte, nous allons la traiter dès que possible. Nous allons fermer la session courante.',
         ],
     ],
 
