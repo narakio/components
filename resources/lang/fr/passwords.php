@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'password' => '__Passwords must be at least eight characters and match the confirmation.',
-    'sent' => '__We have e-mailed your password reset link!',
-    'token' => '__This password reset token is invalid.',
-    'user' => '__We can\'t find a user with that e-mail address.',
+    'password' => 'Les mots de passe doivent contenir au moins huit caractères et être identiques.',
+    'sent' => 'Nous avons envoyé le lien vous permettant de modifier votre mot de passe par e-mail.',
+    'token' => 'Ce jeton de réinitialisation de mot de passe n\'est pas valide.',
+    'user' => 'Nous ne pouvons pas trouver d\'utilisateur avec cette adresse e-mail.',
 
 ];
