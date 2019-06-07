@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'error' => '__Error',
+    'error' => 'Erreur',
     'frontend_errors_404' => '__Resource not found',
     'frontend_auth_passwords_email' => '__Reset your password',
     'frontend_auth_login' => '__Log in',
