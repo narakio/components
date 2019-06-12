@@ -2,47 +2,47 @@
 
 return [
     'title' => [
-        'blog_index' => '__Listing blog posts',
-        'blog_add' => '__Managing a blog entry',
-        'blog_category' => '__Managing blog categories',
+        'blog_index' => 'Lister les articles',
+        'blog_add' => 'Ajouter un article',
+        'blog_category' => 'Gestion des catégories de blog',
     ],
     'breadcrumb' => [
-        'admin-blog_posts-index' => '__Blog Posts',
-        'admin-blog_posts-add' => '__Create',
-        'admin-blog_posts-edit' => '__Edit',
-        'admin-blog_posts-category' => '__Categories',
+        'admin-blog_posts-index' => 'Articles',
+        'admin-blog_posts-add' => 'Créer',
+        'admin-blog_posts-edit' => 'Éditer',
+        'admin-blog_posts-category' => 'Catégories',
     ],
     'sidebar' => [
-        'blog' => '__Blog',
+        'blog' => 'Blog',
     ],
     'db' => [
-        'blog_post_title' => '__Post title',
-        'blog_posts' => '__Blog Post|Blog Posts',
+        'blog_post_title' => 'Titre de l\'article',
+        'blog_posts' => 'Article|Articles',
     ],
     'db_raw' => [
-        'blog_post_title' => '__blog_post_title',
+        'blog_post_title' => 'blog_post_title',
     ],
     'db_raw_inv' => [
-        'blog_post_title' => '__blog_post_title',
+        'blog_post_title' => 'blog_post_title',
     ],
     'filters' => [
-        'blog_posts_title' => '__title',
+        'blog_posts_title' => 'title',
     ],
     'filter_labels' => [
-        'blog_posts_title' => '__Post title:',
+        'blog_posts_title' => 'Title de l\'article :',
     ],
     'filters_inv' => [
-        'blog_post_title' => '__title',
+        'blog_post_title' => 'titre',
     ],
     'constants' => [
-        'BLOG_STATUS_DRAFT' => '__Draft',
-        'BLOG_STATUS_REVIEW' => '__Under review',
-        'BLOG_STATUS_PUBLISHED' => '__Published',
+        'BLOG_STATUS_DRAFT' => 'Brouillon',
+        'BLOG_STATUS_REVIEW' => 'En cours de révision',
+        'BLOG_STATUS_PUBLISHED' => 'Publié',
     ],
     'modal' => [
         'blog_post_delete' => [
-            'h' => '__Confirm blog deletion',
-            't' => '__Do you really want to delete blog post "{name}"?|Do you really want to delete those {number} blog posts?',
+            'h' => 'Confirmer la suppression de l\'article',
+            't' => 'Souhaitez-vous supprimer l\'article "{name}" ?|Souhaitez-vous supprimer ces {number} articles ?',
         ],
     ],
     'message' => [
