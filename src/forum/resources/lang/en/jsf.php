@@ -18,7 +18,7 @@ return [
         'delete_confirm_h' => 'Comment deletion',
         'delete_confirm_t' => 'Do you really want to delete this comment?',
         'delete_confirm_c' => 'Go ahead',
-        'posting_warning' => 'We enforce a two minute delay between postings.',
+        'posting_warning' => 'Please wait two minutes between postings.',
         'deleted_user' => 'Deleted User'
     ]
 ];
