@@ -3,27 +3,27 @@
 return [
     'email' => [
         'comment' => [
-            'title' => '__A new comment was posted',
-            'subject' => '__[:app_name] A new comment was posted',
-            'body1' => '__:user commented in the ":post" post.',
+            'title' => 'Un commentaire a été posté',
+            'subject' => '[:app_name] Un commentaire a été posté',
+            'body1' => '__:user a commenté dans l\'article ":post".',
         ],
         'reply' => [
-            'title' => '__Someone replied to one of your comments',
-            'subject' => '__[:app_name] Someone replied to one of your comments',
-            'body1' => '__:user replied to one of your comments in the ":post" post.',
-            'body2' => '__If you do not wish to receive such emails, notification settings can be modified by clicking on the cog icon in the comments section of a blog post.',
+            'title' => 'Une personne a répondu à l\'un de vos commentaires.',
+            'subject' => '[:app_name] Une personne a répondu à l\'un de vos commentaires',
+            'body1' => ':user a répondu à l\'un de vos commentaires dans l\'article ":post".',
+            'body2' => 'Si vous ne souhaitez pas reçevoir ces e-mails, vos options de notification peuvent être modifiées dans la zone de commentaires à côté du bouton d\'envoi de commentaires."',
         ],
         'mention' => [
-            'title' => '__Someone mentioned you in a comment',
-            'subject' => '__[:app_name] Someone mentioned you in a comment',
-            'body1' => '__You were mentioned by :user in the ":post" post.',
-            'body2' => '__If you do not wish to receive such emails, notification settings can be modified by clicking on the cog icon in the comments section of a blog post.',
-            'cta' => '__Go to discussion',
+            'title' => 'Une personne vous a mentionné dans un commentaire',
+            'subject' => '[:app_name] Une personne vous a mentionné dans un commentaire',
+            'body1' => 'Vous avez été mentionné par :user dans l\'article ":post".',
+            'body2' => 'Si vous ne souhaitez pas reçevoir ces e-mails, vos options de notification peuvent être modifiées dans la zone de commentaires à côté du bouton d\'envoi de commentaires.',
+            'cta' => 'Lien vers la discussion',
         ],
     ],
-    'comment_add_success' => '__Your comment has been submitted for publication! It will be posted in a moment.',
-    'reply_add_success' => '__Your reply has been submitted for publication. It will be posted as soon as possible.',
-    'comment_update_success' => '__Your comment has been submitted for update.',
-    'posting_delay' => '__We enforce a two minute delay between posts. Please try again in a few moments.',
+    'comment_add_success' => 'Votre commentaire a été envoyé, nous allons le publier dans un instant.',
+    'reply_add_success' => 'Votre réponse a été envoyée, nous allons le publier dans un instant.',
+    'comment_update_success' => 'Votre modification de commentaire a été envoyée.',
+    'posting_delay' => 'Nous n\'autorisons qu\'un commentaire toutes les deux minutes. Merci de patienter quelques instants avant d\'envoyer le commentaire.',
 
 ];
