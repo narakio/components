@@ -2,12 +2,12 @@
 
 return [
     'welcome' => [
-        'subject' => '__[:app_name] Your registration',
-        'title' => '__You registered to our website. This pleases us.',
-        'body1' => '__You can use your e-mail address and the password entered during registration to log in.',
-        'body2' => '__If you don\'t remember your password, please click on the \'forgot password\' button below the login form and set a new password.',
-        'body3' => '__Before using your account, please make sure to click on the \'activate account\' button below.',
-        'cta' => '__Activate Account',
+        'subject' => '[:app_name] Votre création de compte',
+        'title' => 'Nous vous remercions d\'avoir ouvert un compte.',
+        'body1' => 'Vous pouvez utiliser l\'adresse e-mail et le mot de passe saisis dans le formulaire de création de compte pour vous connecter.',
+        'body2' => 'Si vous ne vous souvenez pas du mot de passe, vous pouvez modifier le mot de passe en cliquant sur le lien \'mot de passe oublié\' situé sous le formulaire de connexion.',
+        'body3' => 'Avant de pouvoir utiliser votre compte, merci de bien vouloir cliquer sur le bouton d\'activation de compte ci-dessous.',
+        'cta' => 'Activer le compte',
     ],
     'password_reset' => [
         'subject' => '__[:app_name] Resetting your password',
