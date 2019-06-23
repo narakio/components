@@ -2,47 +2,47 @@
 
 return [
     'title' => [
-        'media_edit' => '__Editing a media',
-        'media_index' => '__Managing media',
+        'media_edit' => 'Modifier un média',
+        'media_index' => 'Gestion de médias',
     ],
     'breadcrumb' => [
-        'admin-media-edit' => '__Edit Image',
-        'admin-media-index' => '__Manage media',
+        'admin-media-edit' => 'Modifier une image',
+        'admin-media-index' => 'Gestion de médias',
     ],
     'db' => [
-        'media' => '__Media|Media',
-        'media_alt' => '__Alt text',
-        'media_caption' => '__Caption',
-        'media_created_at' => '__Creation date',
-        'media_description' => '__Description',
-        'media_title' => '__Title',
-        'medias' => '__Media',
+        'media' => 'Media|Medias',
+        'media_alt' => 'Texte "alt"',
+        'media_caption' => 'Sous-titre',
+        'media_created_at' => 'Date de création',
+        'media_description' => 'Description',
+        'media_title' => 'Titre',
+        'medias' => 'Média',
     ],
     'db_raw' => [
-        'media_title' => '__media_title',
+        'media_title' => 'media_title',
     ],
     'db_raw_inv' => [
-        'media_title' => '__media_title',
-        'media_uuid' => '__media_uuid',
+        'media_title' => 'media_title',
+        'media_uuid' => 'media_uuid',
     ],
     'filters' => [
-        'media_title' => '__title',
+        'media_title' => 'titre',
     ],
     'form' => [
         'description' => [
-            'media_title' => '__Title of the media',
-            'media_alt' => '__A text alternative to the image for screen readers or when the image does not load.',
-            'media_description' => '__For internal purposes, to help with tracking in searches.',
-            'media_caption' => '__May be displayed below the image for commentary/description purposes.',
+            'media_title' => 'Titre du média',
+            'media_alt' => 'Un texte de remplacement pour les liseuses ou lorsque l\'image n\'est pas chargée.',
+            'media_description' => 'Pour une utilisation interne.',
+            'media_caption' => 'Peut être affiché sous l\'image en guise de description ou commentaire.',
         ],
     ],
     'message' => [
-        'media_update_ok' => '__The media was updated.',
+        'media_update_ok' => 'Le média a été modifié.',
     ],
     'pages' => [
         'media' => [
-            'formats_help' => '__Formats marked with <i class="fa fa-check"></i> have already been created and are ready to be served. Click on a format to create an image file with the associated dimensions.',
-            'attached_to' => '__Attached to',
+            'formats_help' => 'Les formats marqués avec un <i class="fa fa-check"></i> ont déjà été créés et peuvent être utilisés dans la plateforme. Cliquez sur un format pour créer une image aux dimensions associées.',
+            'attached_to' => 'Attaché à',
         ],
     ],
 
