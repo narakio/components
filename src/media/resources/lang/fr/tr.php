@@ -2,12 +2,12 @@
 
 return [
     'error' => [
-        'no_file' => '__No file to process.',
-        'type_size' => '__The file could not be processed. Make sure to check accepted file types and maximum sizes.',
-        'wrong_type' => '__The target for this media was not recognized.',
-        'entity_not_found' => '__The entity for which the media was uploaded could not be found.',
-        'entity_type' => '__The ":type" image entity type does not match anything on record.',
-        'media_type' => '__The media type ":type" does not match anything on disk.',
+        'no_file' => 'Pas de fichier à traiter.',
+        'type_size' => 'Le fichier n\'a pas pu être traité. Assurez-vous d\'avoir vérifié les types de fichiers acceptés et la taille de fichier maximale autorisée.',
+        'wrong_type' => 'Le type d\'entité associée au média n\'a pas été reconnue.',
+        'entity_not_found' => 'L\'entité associée au média est introuvable.',
+        'entity_type' => 'Le type d\'image :type" n\'est pas reconnu.',
+        'media_type' => 'Le type de média ":type" n\'a pas été trouvé sur le disque.',
     ],
 
 ];
