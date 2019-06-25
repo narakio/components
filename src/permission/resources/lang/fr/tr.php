@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'PERMISSION_VIEW' => '__View',
-    'PERMISSION_ADD' => '__Add',
-    'PERMISSION_EDIT' => '__Edit',
-    'PERMISSION_DELETE' => '__Delete',
-    'PERMISSION_LOGIN' => '__Login',
-    'PERMISSION_SETTINGS' => '__Settings',
-    'PERMISSION_PERMISSIONS' => '__Permissions',
-    'PERMISSION_NOTIFICATIONS' => '__Notifications',
+    'PERMISSION_VIEW' => 'Visualiser',
+    'PERMISSION_ADD' => 'Ajouter',
+    'PERMISSION_EDIT' => 'Modifier',
+    'PERMISSION_DELETE' => 'Supprimer',
+    'PERMISSION_LOGIN' => 'Connexion',
+    'PERMISSION_SETTINGS' => 'Paramètres',
+    'PERMISSION_PERMISSIONS' => 'Permissions',
+    'PERMISSION_NOTIFICATIONS' => 'Notifications',
 
 ];
