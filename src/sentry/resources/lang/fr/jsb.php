@@ -2,13 +2,13 @@
 
 return [
     'breadcrumb' => [
-        'admin-users-index' => '__Users',
-        'admin-groups-index' => '__Groups',
-        'admin-users-edit' => '__Edit',
-        'admin-users-add' => '__Add',
-        'admin-groups-edit' => '__Edit',
-        'admin-groups-add' => '__New Group',
-        'admin-groups-members' => '__Edit Members',
+        'admin-users-index' => 'Utilisateurs',
+        'admin-groups-index' => 'Groupes',
+        'admin-users-edit' => 'Modifier',
+        'admin-users-add' => 'Ajouter',
+        'admin-groups-edit' => 'Modifier',
+        'admin-groups-add' => 'Nouveau Groupe',
+        'admin-groups-members' => 'Modifier Membres',
     ],
     'db' => [
         'first_name' => '__First name',
