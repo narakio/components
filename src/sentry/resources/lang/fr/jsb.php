@@ -96,12 +96,12 @@ return [
     ],
     'modal' => [
         'user_delete' => [
-            'h' => '__Confirm user deletion',
-            't' => '__Do you really want to delete user {name}?|Do you really want to delete those {number} users?',
+            'h' => 'Confirmer la suppression de l\'utilisateur',
+            't' => 'Souhaitez-vous supprimer l\'utilisateur {name} ?|Souhaitez-vous supprimer ces {number} utilisateurs ?',
         ],
         'group_delete' => [
-            'h' => '__Confirm group deletion',
-            't' => '__Do you really want to delete group {name}?',
+            'h' => 'Confirmer la suppression du groupe',
+            't' => 'Souhaitez-vous supprimer le groupe {name} ?',
         ],
     ],
     'users' => [
