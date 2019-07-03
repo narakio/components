@@ -105,13 +105,12 @@ return [
         ],
     ],
     'users' => [
-        'warning1' => '__Setting individual permissions for this user will override permissions set on groups of which the user is a member.',
-        'warning2' => '__We recommend setting permissions on groups instead, 
-            and use individual user permissions to handle exceptions.',
-        'filter_full_name' => '__Filter by full name',
-        'filter_group' => '__Filter by group',
-        'filter_created_at' => '__Filter by registration date',
-        'new_user' => '__New User',
+        'warning1' => 'Les permissions attribuées ici vont prendre précédence sur les permissions des groupes dont l\'utilisateur est membre.',
+        'warning2' => 'Nous recommandons d\'utiliser les permissions des groupes par défaut et utiliser les permissions individualisées pour gérer les exceptions.',
+        'filter_full_name' => 'Filtrer par nom complet' ,
+        'filter_group' => 'Filtrer par groupe',
+        'filter_created_at' => 'Filtrer par date d\'inscription',
+        'new_user' => 'Nouvel utilisateur',
     ],
 
 ];
